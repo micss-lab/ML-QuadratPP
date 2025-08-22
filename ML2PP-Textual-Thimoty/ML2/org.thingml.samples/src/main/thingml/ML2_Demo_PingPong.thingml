@@ -1,0 +1,215 @@
+// Armin Moin, moin@in.tum.de
+// A sample model instance for the smart ping-pong example. This is based on the ping-pong example of ThingML. However, the idea is to prevent the so-called Distributed Denial-of-Service (DDoS) attacks via Data Analytics & Machine Learning (DAML).
+// There exist 3 "Things": (i) PingServer, (ii) PingClient, (iii) PingPongDataAnalytics.
+// The server, PingServer simply waits for ping messages. Once a ping message is received from the client, PingClient, the server first asks the data analytics server, called PingPongDataAnalytics whether the sender of the ping message, i.e., PingClient is prone to be an attacker or not.
+// If PingPongDataAnalytics predicts that the client is more likely to be malicious, then the server will simply ignore the ping message and may blacklist the client for a certain period of time (e.g., X weeks or monnths). Otherwise, the server will reply with a pong message.
+// This example is for illustration purposes and does not use a real dataset. A number of small dummy datasets are available here (ip_dataset_*.csv): https://github.com/arminmoin/ML-Quadrat/tree/master/ML2/org.thingml.samples/src/main/thingml/ML2_Demos_SampleData
+
+object String
+    @type_checker "String"
+	@c_type "char *"
+	@java_type "String"
+    @js_type "String";
+	
+datatype Boolean<1>
+    @type_checker "Boolean"
+	@c_type "uint8_t"
+	@java_type "boolean"
+ 	@js_type "boolean";
+ 	
+datatype Int32<4>
+    @type_checker "Integer"
+	@c_type "int32_t"
+	@java_type "int"
+    @js_type "int";
+
+thing fragment PingPongMsgs { // The Thing-fragment defines the messages and their parameters.
+	message ping(ip: String, code: Int32);
+	message pong();
+	message query(client_ip: String, client_code: Int32);
+	message prediction_positive();
+	message prediction_negative();
+}
+
+thing PingClient includes PingPongMsgs { // The PingClient Thing inclues the Thing-fragment above (Thus, implicitly imports the above-mentioned messages).
+
+	required port ping_service { // This port is for the communication between PingClient and PingServer.
+		sends ping // The port may send a ping message.
+		receives pong // The port may receive a pong message.
+	}
+		
+	property my_ip_address: String = "192.168.1.1" // This is a property, i.e., local variable, that stores the IP address of the client.
+	property my_code: Int32 = 10 // This is a property, i.e., local variable, that stores a protocol code to be shared with the server.
+	
+	statechart PingClientBehavior init Ping { // This statechart models the behavior of the PingClient Thing. Initially, it is in the Ping state.
+	
+	on entry print "Ping/Pong Client Started!\n"
+	
+		state Ping {
+			
+			on entry do				
+				print "Sending Ping...\n"				
+				ping_service!ping(my_ip_address,my_code)				
+			end				
+			
+			transition -> Pong // Switch to the Pong state upon receiving a pong response from the PingServer Thing.
+			event ping_service?pong
+		}
+		
+		state Pong {
+			on entry print "Got pong!\n"
+			
+			transition -> Stop // Eventually, switch to the Stop state.
+			
+		}
+		
+		state Stop {
+			on entry print "Bye.\n"
+		}
+		
+	}
+
+}
+
+thing PingServer includes PingPongMsgs { // The PingServer Thing inclues the Thing-fragment above (Thus, implicitly imports the above-mentioned messages).
+	
+	provided port ping_service { // This port is for the communication between the PingServer Thing and the PingClient Thing.
+		receives ping // The port may receive ping messages.
+		sends pong // The port may send pong messages.
+	}
+	
+	required port da_service { // This port is for the communication between the PingServer Thing and the PingPongDataAnalytics Thing.
+		sends query // The port may send query messages.
+		receives prediction_positive, prediction_negative // The port may receive prediction messages from the PingPongDataAnalytics Thing, either prediction_positive, i.e., malicious or prediction_negative, i.e., nonmalicious. .
+	}
+	
+	property client_ip_address: String // This is a property, i.e., local variable that stores the IP address of the current/latest client that has sent a ping message.
+	property client_code: Int32 // This is a property, i.e., local variable that stores the protocol code of the current/latest client that has sent a ping message.
+	property malicious_client: Boolean // This is a property, i.e., local variable that stores the prediction of the PingPongDataAnalytics Thing concerning the current/latest ping message.
+	
+	statechart PongServerBehavior init GetPing { // This statechart models the behavior of the PingServer Thing. Initially, it is in the GetPing state.
+
+        on entry print "Ping/Pong Server Started!\n"
+	
+		state GetPing {			
+			internal event e: ping_service?ping // As soon as a ping message arrives, take the following actions.		
+			action		 
+			do				
+			client_ip_address = e.ip // Store the IP address parameter of the ping message in the property, i.e., local variable, client_ip_address.
+			client_code = e.code // Store the protocol code parameter of the ping message in the property, i.e., local variable, client_code.
+			print("Checking if the client is a malicious one...\n")
+			da_service!query(client_ip_address, client_code) // Send a query to the PingPongDataAnalytics Thing to consult and see whether the client is more likely to be an attacker.
+			end
+			transition -> Pong // Switch to the Pong state if the prediction of the PingPongDataAnalytics Thing is negative, i.e., nonmalicious client.
+			event da_service?prediction_negative
+			
+			transition -> Ignore // Switch to the Ignore state if the prediction of the PingPongDataAnalytics Thing is positive, i.e., malicious client.
+			event da_service?prediction_positive
+		}
+		
+		state Pong {
+			on entry do
+			print "Got ping from: " + client_ip_address + " code: " + client_code + "\n"
+			print "Sending Pong...\n"
+			ping_service!pong() // Send the pong response to the client.
+			malicious_client = false
+			end
+			transition -> GetPing // Eventually, switch back to the GetPing state.
+		}
+		
+		state Ignore {
+			on entry do
+			print "Got ping from: " + client_ip_address + "\n"
+			print "Ignoring the ping message, since the client is probably a malicious one...\n"
+			malicious_client = true
+			end
+			transition -> GetPing // Eventually, switch back to the GetPing state. No pong response was sent. Hence, the ping message was intentionally ignored.
+		}
+	}
+
+}
+
+thing PingPongDataAnalytics includes PingPongMsgs {
+		
+	provided port da_service { // This port is for the communication of the PingPongDataAnalytics Thing with the PingServer Thing.
+		receives query // The port may receive query messages.
+		sends prediction_positive, prediction_negative // The port may send prediction messages, either prediction_positive or prediction_negative.
+	}
+	
+	property client_ip_address: String // This is a property, i.e., local variable, that stores the IP address of the sender of the ping message to the PingServer Thing, for which the PingPongDataAnalytics Thing is being consulted. 
+	property client_code: Int32 // This is a property, i.e., local variable, that stores the protocol code of the ping message sent to the PingServer Thing, for which the PingPongDataAnalytics Thing is being consulted. 
+	property prediction: Boolean = false // This is a property, i.e., local variable, that stores the final prediction of the PingPongDataAnalytics Thing.
+
+	data_analytics da1 // This optional section of the model instance is responsible for the Data Analytics and Machine Learning (DAML) capabilities of the "thing".
+	@dalib "scikit-learn" { // This optional annotation (@dalib) specifies the specific library/framework for DAML. The code generators will try to generate the APIs of this library/framework.
+	//@dalib "keras-tensorflow" {
+	//{
+		labels ON // If the labels parameter is set to on, we are dealing with supervised Machine Learning (ML).
+		features client_ip_address,client_code,prediction // These are the thing properties (local variables) that shall be used as ML features/attributes. 
+		prediction_results prediction // The prediction results of the ML model will be stored in the thing property (local variable) stated here.
+		dataset "data/ip_dataset.csv" // This CSV file will be used as the dataset for training the ML model. The path is relative to the target directory of the generated Maven project (in the case of the Java and the Python & Java code generation).
+		automl OFF // If AutoML is ON, some advanced Automated Machine Learning (AutoML) functionalities will be enabled. This would be useful for the novice users in DAML.
+		sequential TRUE // This parameter specifies whether the data are sequential, i.e., whether the order of the data instances does matter.
+		timestamps OFF // This parameters determines if the first column of the dataset includes the timestamps of the data instances. If this is set to TRUE, in the case of adding the new predictions of the ML model to the dataset, they will also be timestamped automatically.
+		preprocess_feature_scaler StandardScaler // This parameter may enable some sort of feature scaling as part of the data preparation process.
+		model_algorithm nn_multilayer_perceptron my_nn_mlp(activation relu, optimizer adam, loss SparseCategoricalCrossentropy) // This line determines the ML model that shall be deployed, as well as the hyperparameters, such as the choice of the learning algorithm.
+		training_results "data/training.txt" // This is the path of the log file that will store the training data.
+	}
+
+	statechart PingPongDataAnalyticsBehavior init Preprocess {
+	
+	on entry print "Ping Pong Data Analytics Started!\n"
+	
+		state Preprocess {
+			on entry do
+			print "Ping Pong Data Analytics: Data Preprocessing\n"
+			da_preprocess da1
+			end
+			transition -> Train			
+		}
+		
+		state Train {
+			on entry do
+			print "Ping Pong Data Analytics: Training\n"
+			da_train da1
+			end
+			transition -> Ready
+		}
+		
+		state Ready {
+			on entry do
+			print "Ping Pong Data Analytics: Ready for Prediction\n"
+			end
+			transition -> Predict
+			event m: da_service?query
+			action do
+				client_ip_address = m.client_ip
+				client_code = m.client_code
+			end
+		}
+		
+		state Predict {
+			on entry do
+			print "Ping Pong Data Analytics: Predicting\n"
+			da_predict da1(client_ip_address, client_code)
+			if(prediction==false)
+			da_service!prediction_negative()
+			else
+			da_service!prediction_positive()		
+			end
+			transition -> Ready
+			on exit da_save da1
+		}	
+	}
+}
+
+configuration ML2_Demo_PingPong_Cfg @compiler "python_java" { // The configuration section is required if the model instance shall be capable of being used by the code generators. Alternaticely, one might have a Platform-Independent Model (PIM) that would be imported in a Platform-Specific Model (PSM), or into several PSMs each for a certain target platform, and that PSM or those PSMs would then include their own configuration sections for the respective target platforms.
+// The optional @compiler annotation may determine the model-to-code transformation (code generator) that shall be deployed by default.
+    instance pingClient : PingClient // The instances of things are analog to the objects that are instances of classes in the object-oriented design.
+    instance pingServer : PingServer
+    instance pingPongDataAnalytics : PingPongDataAnalytics
+
+    connector pingClient.ping_service => pingServer.ping_service // The ports of the instances of things must be connected in this manner. This way, they will be able to communicate using asynchronous message-passing.
+    connector pingServer.da_service => pingPongDataAnalytics.da_service
+    
+}
