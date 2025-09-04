@@ -1,13 +1,31 @@
-# ML2PP-Textual-Zahra
+# ML2++ Tutorial (Textual DSL)
 
-This folder contains Zahra’s textual ML2++ tutorial and sources.
+*Comprehensive guide for modeling, code generation, and running ML2++ use cases.*
 
-## Contents
-- `tutorial/quickstart.md` – step-by-step guide
-- `src/` – example ML2++ models / code
-- `images/` – screenshots used in the tutorial
+---
 
-## Quick start
-1) Open files under `tutorial/`.
-2) Run the sample under `src/`.
+## 1) Introduction
 
+**ML2++** extends ThingML to integrate time-series forecasting and ML into IoT system design. We’ll use a simple **PingPong** use case—client ↔ server ↔ data-analytics—to illustrate messages, ports, statecharts, and the ML pipeline. :contentReference[oaicite:1]{index=1}
+
+---
+
+## 2) ML2++ Web Editor (buttons & flow)
+
+Use the hosted web editor to try models:
+- **Save Model** – save your current model
+- **Show Preprocessing Plot** – visualize preprocessing
+- **Generate Code** – create Python/Java backend
+- **Download Code**
+- **Run Code** – execute generated pipeline
+- **Show Forecasting Plots** – view outputs  
+These provide an end-to-end loop from model → code → results. :contentReference[oaicite:2]{index=2}
+
+---
+
+## 3) ThingML Syntax (mini-cheatsheet)
+
+- **Thing**  
+  ```thingml
+  thing ThingName { /* messages, ports, properties, behavior */ }
+message ping(ip: String)
