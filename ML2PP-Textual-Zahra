@@ -1,1 +1,13 @@
+# ML2PP-Textual-Zahra
+
+This folder contains Zahra’s textual ML2++ tutorial and sources.
+
+## Contents
+- `tutorial/quickstart.md` – step-by-step guide
+- `src/` – example ML2++ models / code
+- `images/` – screenshots used in the tutorial
+
+## Quick start
+1) Open files under `tutorial/`.
+2) Run the sample under `src/`.
 
