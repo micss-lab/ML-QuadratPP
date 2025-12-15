@@ -1,121 +1,162 @@
 **Please watch our video here: https://www.youtube.com/watch?v=VAuz25w0a5k**
 
-# ML-Quadrat (ML2)
-ML2 is a Computer-Aided Software Engineering (CASE) tool, based on the Model-Driven Software Engineering (MDSE) paradigm, specifically the Domain-Specific Modeling (DSM) methodology with full code generation. ML2 is focused on creating smart services for the Internet of Things (IoT) and Cyber-Physical Systems (CPS). Moreover, it is based on the [ThingML](https://github.com/TelluIoT/ThingML) / [HEADS](https://github.com/HEADS-project) projects. Similar to ThingML/HEADS, ML2 is built using the [Eclipse Modeling Framework (EMF)](https://www.eclipse.org/modeling/emf/), as well as the [Xtext framework](https://www.eclipse.org/Xtext/), and is released under the terms of the Apache 2.0 permissive open source license. 
+% ===========================
+% README.md (GitHub) text in LaTeX environment
+% Copy everything inside this environment
+% ===========================
 
-The name ML-Quadrat ("Quadrat" is the German word for "square" / ˆ2) refers to the fact that the project is about two MLs simultaneously: (i) ML for Modeling Language (as in ThingML); (ii) ML for Machine Learning, i.e., a sub-discipline of Artificial Intelligence (AI). However, in what follows, we refer to the project name as ML2 for simplicity.
+\begin{verbatim}
+# ML-Quadrat++ (ML2++)
+**Please watch our video here:** https://www.youtube.com/watch?v=VAuz25w0a5k  
+**Quick-Start Editor (Web):** https://ml2plusplus.jvmhost.net/
 
-## Why ML2?
-ThingML/HEADS and other Model-Driven Software Engineering (MDSE) tools for the IoT/CPS, that we are aware of, do not support Data Analytics and Machine Learning (DAML) at the modeling layer. However, DAML methods and techniques are crucial for developing smart IoT services and CPS applications. Therefore, we enable DAML at the modeling layer through our Domain-Specific Modeling Language (DSML) and tool. In other words, the practitioner has access to the APIs of ML libraries and frameworks, such as [Scikit-Learn](https://scikit-learn.org/stable/), [Keras](https://keras.io)/[TensorFlow](https://www.tensorflow.org), [PyTorch](https://pytorch.org) and [WEKA](https://www.cs.waikato.ac.nz/~ml/weka/) at the modeling layer. The model-to-code transformations generate the full source code of the entire software solution, including the ML part in a fully automated manner. 
+ML2++ is a Model-Driven Software Engineering (MDSE) environment for building **IoT/CPS smart services** with
+**automated machine learning, time-series forecasting, and data visualization**. ML2++ builds on the ML-Quadrat
+(ML2) and ML2+ lines of work and extends the ThingML/HEADS ecosystem with **first-class time-series workflows**
+directly at the modeling layer.
 
-Moreover, the generated code is capable of creating, training, deploying and possibly re-training the ML models as necessary. Further, one may bring a pre-trained ML model with any arbitrary architecture, which might have been trained using any learning algorithm, and simply "connect" or "plug" it into the software model. This is called the blackbox-ML mode or the hybrid/mixed MDSE/Non-MDSE mode. This mode offers a lot of flexibility since the practitioner is not limited to the ML models/algorithms/methods/techniques that are already supported by the DSML of ML2. However, the drawback is that the software model instance does not include sufficient details about the ML model, so that it can re-train it in the future. Hence, it is called the blackbox-ML mode. 
+From a single **ThingML-based** executable specification, ML2++ generates:
+- **IoT orchestration / communication code** (ThingML-generated Java), and
+- **data analytics + ML pipelines** (Python scripts for preprocessing, training, prediction, and plotting),
+
+so users can run end-to-end workflows without manual glue code.
+
+---
+
+## Why ML2++?
+
+While ThingML/HEADS and many MDSE tools support IoT/CPS architecture modeling, they typically do not provide
+**time-series forecasting + ML experiment pipelines** at the modeling layer. ML2++ fills this gap by allowing
+practitioners to model:
+
+- datasets + feature definitions (including timestamps),
+- preprocessing directives (e.g., resampling),
+- time-series supervised conversion (lag/steps, multivariate),
+- forecasting algorithms (MLP, LSTM, GRU, ARIMA, etc. depending on your tool support),
+- evaluation metrics (MSE/RMSE/MAE, …),
+- visualization directives (preprocessing plots + forecasting/overfitting plots),
+- and runtime decision logic (e.g., safe/alert thresholds),
+
+all inside one DSL instance model.
+
+---
 
 <a name="toc"></a>
 # Table of Contents
 
-1. [How to Cite ML2 in Your Publications](#citation)
-2. [Reporting Issues/Bugs and Requests](#issues)
-3. [Quick (15 mins) Tutorial](#user-doc-quick)
-4. [Users' Documentation (Full Tutorial)](#user-doc)
-5. [Maven Artifacts](#maven)
-6. [Developers' Documentation (for Contributors)](#dev-doc)
-7. [Exploitation & Industry Adoption](#exploitation)
+1. [How to Cite ML2++ in Your Publications](#citation)  
+2. [Reporting Issues/Bugs and Requests](#issues)  
+3. [Quick (15 mins) Tutorial (Web Quick-Start Editor)](#quick)  
+4. [Users' Documentation (Full Tutorial)](#user-doc)  
+5. [Local Execution (Optional)](#local)  
+6. [Developers' Documentation (for Contributors)](#dev-doc)  
+7. [Exploitation & Industry Adoption](#exploitation)  
+
+---
 
 <a name="citation"></a>
-## 1. How to Cite ML2 in Your Publications
-Please cite the following journal paper if you are using ML2 or referring to it in your papers:
+## 1. How to Cite ML2++ in Your Publications
 
-[**A model-driven approach to machine learning and software modeling for the IoT:** Generating full source code for smart Internet of Things (IoT) services and cyber-physical systems (CPS), Armin Moin, Moharram Challenger, Atta Badii and Stephan Günnemann, Software and Systems Modeling (SoSyM), January 2022.](https://link.springer.com/article/10.1007/s10270-021-00967-x)
+If you use ML2++ or refer to it in your publications, please cite the ML2 baseline paper **and** the ML2++ paper
+(if/when published).
+
+### ML2 baseline (SoSyM 2022)
+**A model-driven approach to machine learning and software modeling for the IoT: Generating full source code for smart Internet of Things (IoT) services and cyber-physical systems (CPS)**  
+Armin Moin, Moharram Challenger, Atta Badii, Stephan Günnemann, *Software and Systems Modeling (SoSyM)*, 2022.  
+https://link.springer.com/article/10.1007/s10270-021-00967-x
+
 BibTeX:
-```
+```bibtex
 @article{Moin+2022-SoSyM,
-	author = {Armin Moin and Moharram Challenger and Atta Badii and Stephan G{\"u}nnemann},
-	date = {2022/01/19},
-	doi = {10.1007/s10270-021-00967-x},
-	isbn = {1619-1374},
-	journal = {Software and Systems Modeling (SoSyM)},
-	title = {A model-driven approach to machine learning and software modeling for the {IoT}},
-	url = {https://doi.org/10.1007/s10270-021-00967-x},
-	year = {2022},
+  author  = {Armin Moin and Moharram Challenger and Atta Badii and Stephan G{\"u}nnemann},
+  title   = {A model-driven approach to machine learning and software modeling for the {IoT}},
+  journal = {Software and Systems Modeling (SoSyM)},
+  year    = {2022},
+  doi     = {10.1007/s10270-021-00967-x},
+  url     = {https://doi.org/10.1007/s10270-021-00967-x}
 }
-```
-
+[Back to top](#toc)
 <a name="issues"></a>
-## 2. Reporting Issues/Bugs and Requests
-ML2 is a research prototype. If you find any issues/bugs or have any feature request, please kindly report that through our issue tracking system: https://github.com/arminmoin/ML-Quadrat/issues
+
+2. Reporting Issues/Bugs and Requests
+
+ML2++ is a research prototype. Please report bugs/issues/feature requests via the repository issue tracker:
+
+Issues: https://github.com/<ORG>/<ML2PP-REPO>/issues
+
+When reporting, please include:
+
+your model file (.thingml) or a minimal snippet reproducing the issue,
+
+the Quick-Start Editor console output (copy/paste),
+
+and steps to reproduce.
 
 [Back to top](#toc)
 
+
+
 <a name="user-doc-quick"></a>
 ## 3. Quick (15 mins) Tutorial
-Here, we provide a quick tutorial to get familiar with ML2. However, in order to read the full documentation, please go to the section [ML2 Users' Documentation (Full Tutorial)](#user-doc) below.
+3. Quick (15 mins) Tutorial (Web Quick-Start Editor)
 
-### How to install ML2?
-**System requirements and software prerequisites:**
-We recommend a normal PC/laptop with at least 4GB of main memory (RAM) and at least 1GB of free disk space. In this tutorial, we use a x86_64 Linux system with the Ubuntu 20.04.2 LTS (focal) operating system. Please install the following software before proceeding with the installation of ML2 (use ```sudo su``` to run the commands as root and at the end ```exit``` in order to get back to the non-root user):
+This quick tutorial uses the ML2++ browser-based Quick-Start Editor:
 
-1. [Git](https://git-scm.com/): 
-```
-sudo su
-apt-get install git
-```
-2. [The Java Runtime Environment (JRE) and the Java Development Kit (JDK)](https://www.java.com/en/download/): 
-```
-apt-get install default-jre default-jdk
-```
-3. [Apache Maven](https://maven.apache.org/): 
-```
-apt-get install maven
-exit
-```
+Editor URL: https://ml2plusplus.jvmhost.net/
 
-**Now, please follow the steps below in the Linux terminal / shell / command line:**
+3.1 Log in
 
-1. Check out the source code from the Git repository:
-```bash
-git clone https://github.com/arminmoin/ML-Quadrat/
-```
+Use the credentials provided by the instructor (or your deployment admin). Example:
 
-2. Install ML2 using the Apache Maven:
-```bash
-cd ML-Quadrat
-mvn clean install -DskipTests
-cd ML2/language
-mvn clean install -DskipTests
-cd ../..
-```
+Username: user1 Password: password1
 
-Note that the -DskipTests option lets us skip running the tests, thus saving more time.
+3.2 Identify the workspace elements
 
-If you want to see a more detailed output to debug, use the option -X:
+After login, the workspace includes:
 
-```bash
-mvn clean install -DskipTests -X
-```
+a Model Editor text area,
 
-Moreover, if you want to use Maven in the offline mode, e.g., in the case that your machine is behind a firewall that prohibits the Internet access, you should use the option -o, but, remember that you would need to first copy the .m2 directory, which includes the Maven cache from another computer behind the firewall (on which you have already cached ´the required dependencies) to this computer. The .m2 directory is usually stored in the user's home directory.
+action buttons:
 
-```bash
-mvn clean install -DskipTests -o
-```
+Save Model
 
-### How to find a sample model instance?
-There exist a number of sample model instances with the .thingml extension at this location: https://github.com/arminmoin/ML-Quadrat/tree/master/ML2/org.thingml.samples/src/main/thingml
+Show Preprocessing Plot
 
-Let's choose [ML2_Demo_PingPong.thingml](https://github.com/arminmoin/ML-Quadrat/blob/master/ML2/org.thingml.samples/src/main/thingml/ML2_Demo_PingPong.thingml) for this quick tutorial, and generate, e.g., the Python and Java source code out of it using the Python_Java model-to-code transformation (a.k.a. code generator or "compiler"). This example is about a simple client-server interaction, where a thing called "PingServer" simply waits for the ping messages of another thing, called "PingClient". In the original version from [ThingML](https://github.com/TelluIoT/ThingML) / [HEADS](https://github.com/HEADS-project), the server used to reply to every ping message of the client with a pong response. However, this was in general in a real-world scenario prone to the so-called "Distributed Denial of Service" (DDoS) attacks, where malicious clients may overload the server with their requests (ping messages). However, in ML2, this example is enhanced in order to make the server a bit "smarter"! Hence, the server will first consult a new thing, called PingPongDataAnalytics, which deploys ML, in order to see if a client is likely to be an attacker or not. If it is likely to be an attacker, then the ping message will simply be ignored (optionally, the IP address of the sender might be blacklisted for some time). Otherwise, the ping message will be responded with a pong message.
+Generate Code
 
-The details of the syntax of the sample model instance will be explained in the [full tutorial](#user-doc) below. Note that the software model instances in ML2 have the .thingml extension, similar to the ThingML/HEADS projects, although the meta-models/grammars of the DSMLs are different (ML2 is backward-compatible).  
+Download Code
 
-### How to generate code out of the sample model instance?
-Run the following commands in the Linux terminal:
-```bash
-cd ML2/compilers/registry/target
-java -jar mlquadrat.compilers.registry-2.0.0-SNAPSHOT-jar-with-dependencies.jar -c auto -s ../../../org.thingml.samples/src/main/thingml/ML2_Demo_PingPong.thingml -o ../../../../../Generated_ML2_Demo_PingPong
-```
-The -c option specifies the model-to-code transformation (a.k.a. the code generator) or "**c**ompiler" that shall be deployed. Here, we choose "auto" since the model instance already includes this information in the configuration section of it (the optional @compiler annotation). Also, the -s and the -o options let the user state the paths of the **s**ource model instance and the **o**utput directory for the target generated code, respectively. If the output directory does not exist, it will be created. 
+Run Code
 
-The generated code includes the entire source code that is needed, as well as the necessary build scripts. Thus, it can be easily built/installed. For instance, in this case, the generated code is in Java and Python. Hence, it can be easily built/installed using the Apache Maven with one command (mvn clean install). The Java and the Python parts are already seamlessly integrated. Also, the output of Maven will include an executable JAR file with all the dependencies as a bundle. Hence, running the generated IoT service will be also very easy with just one command (java -jar ...). Below, we illustrate how to install and run the generated code.
+Show Forecasting Plots
 
+a Console Output panel (logs for preprocessing, code generation, and execution).
+
+3.3 Run the pipeline
+
+Paste a sample ML2++ model into the editor (see Section 4 / Appendix model example).
+
+Click Save Model
+
+Click Generate Code
+
+Click Run Code
+
+Click Show Forecasting Plots
+
+3.4 Modify a parameter (small exercise)
+
+Inside the model { ... } block:
+
+reduce epochs (e.g., 20 -> 5)
+
+or change hidden_layer_sizes (e.g., (90,90) -> (32,32))
+
+Re-run:
+
+Save → Generate Code → Run Code → Show Forecasting Plots
+
+Back to top
 [Back to top](#toc)
 
 <a name="user-doc"></a>
@@ -492,3 +533,4 @@ The -X option is optional and enables the debugging mode, thus resulting in a mo
 ## 7. Exploitation & Industry Adoption
 
 [DriotData](https://arxiv.org/abs/2107.02692) provides citizen data scientists and citizen / end-user software developers with a web-based "Low-Code" platform that has a graphical drag-and-drop dashboard, so that they can easily create their desired smart IoT services without extensive knowledge and skills in Software Engineering or Artificial Intelligence (AI).
+
