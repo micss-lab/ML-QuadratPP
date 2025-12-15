@@ -1,0 +1,165 @@
+object String
+    @type_checker "String"
+	@c_type "char *"
+	@java_type "String"
+    @js_type "String";
+
+datatype Double<4>
+	@type_checker "Real"
+	@c_type "double"
+	@c_byte_size "4"
+	@java_type "double"
+  	@js_type "float"
+	@java_primitive "true"
+;
+ 	
+datatype Int32<4>
+	@type_checker "Integer"
+	@c_type "int32_t"
+	@java_type "int"
+	@js_type "int"
+;
+    
+    
+thing fragment StressMsgs {
+	message current_stress(humidity: Double, temperature: Double, step_count: Double, stress : String);
+	message normal();
+	message alert();
+}
+
+
+thing StressWatch includes StressMsgs {
+
+	required port stress_service { 
+		sends current_stress 
+		receives normal,alert 
+	}
+	
+	property stress_watch_humidity : Double = 11.0
+	property stress_watch_temperature : Double = 80.3
+	property stress_watch_step_count : Double = 90
+	property stress : String = "low"
+	
+	statechart PingClientBehavior init Send { 
+		state Send {
+			on entry do				
+				print "Sending current stress metrics\n"				
+				stress_service!current_stress(stress_watch_humidity,stress_watch_temperature,stress_watch_step_count, stress)				
+			end				
+			
+			transition -> Receive
+
+		}
+		state Receive {
+			internal event stress_service?normal
+			action do
+				print "Stress levels are normal \n"
+			end
+			internal event stress_service?alert
+			action do
+				print "Stress levels are abnormal \n"
+			end
+		}
+	}
+}
+
+thing StressDataAnalytics includes StressMsgs {
+	provided port stress_service { 
+		receives current_stress 
+		sends normal, alert
+	}
+	
+	property da_humidity : Double = 11.0
+	property da_temperature : Double = 80.3
+	property da_step_count : Double = 90
+	
+	property stress : String = "high"
+	
+        property prediction : String 
+	
+	data_analytics da @dalib "scikit-learn" {
+		data  {
+			dataset "/home/zahra/data/Stress-Lysis.csv" 
+			labels ON 
+			features da_humidity,da_temperature,da_step_count,stress
+			output_features stress
+			timestamps OFF
+		}
+		preprocessing {
+			preprocess_feature_scaler StandardScaler
+		}
+		model {
+			algorithm linear_classifier_logistic_regression my_logistic_regressor(random_state 42, max_iter 1000) 
+			training_results "data/training.txt" 
+		}
+		evaluation {
+			prediction_results stress
+		}
+	}
+	
+	statechart StressDABehaviour init Preprocess {
+	
+		state Preprocess {
+			on entry do
+			print "Stress Data Analytics: Data Preprocessing\n"
+			da_preprocess da
+			end
+			transition -> Train			
+		}
+		
+		state Train {
+			on entry do
+			print "Ping Pong Data Analytics: Training\n"
+			da_train da
+			end
+			transition -> Ready
+		}
+		
+		state Ready {
+			on entry do
+			print "Stress Data Analytics: Ready for Prediction\n"
+			end
+			transition -> Predict
+			event m: stress_service?current_stress
+			action do
+				da_humidity = m.humidity
+				da_temperature = m.temperature
+				da_step_count = m.step_count
+				print "Printing Values \n"
+				print da_humidity
+				print "\n"
+				print da_temperature
+				print "\n"
+				print da_step_count
+				print "\n"
+			end
+		}
+		
+		state Predict {
+			on entry do
+			print "Stress Data Analytics: Predicting\n"
+			da_predict da(da_humidity,da_temperature,da_step_count)
+			print "Prediction output: "
+			print stress
+			print "\n"
+			if(stress=="high")
+				stress_service!alert()
+			else
+				stress_service!normal()		
+			end
+			transition -> Ready
+			on exit da_save da
+		}
+		state End {
+		
+		}
+	}
+}
+
+
+configuration StressWatch @compiler "python_java" {
+    instance stressWatch : StressWatch
+    instance stressAnalytics : StressDataAnalytics
+    connector stressWatch.stress_service => stressAnalytics.stress_service
+    
+}

@@ -1,0 +1,1593 @@
+/**
+* Extended by Armin Moin, moin@in.tum.de, moin@arminmoin.de
+*/
+grammar org.thingml.xtext.ThingML hidden(WS, ML_COMMENT, SL_COMMENT)
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+generate thingML "http://www.thingml.org/xtext/ThingML"
+
+
+ThingMLModel returns ThingMLModel:
+		imports+=Import*
+		(types+=Type | protocols+=Protocol | configs+=Configuration)*;	
+
+
+Import returns Import:
+	"import" importURI=STRING ("from" from=ID)?;
+
+
+PlatformAnnotation returns PlatformAnnotation:
+	name=ANNOTATION_ID (value=EXTERN | value=STRING)?; 
+
+
+NamedElement:
+	Protocol | Function  | Message | Port | Configuration | Handler | State | StateContainer | 
+	Type | Variable | Instance | AbstractConnector | EnumerationLiteral | Event |
+	Parameter | DataAnalytics | //ML2
+	";" name=ID // This is never used, it is just to have the attributes in the superclass
+;
+
+AnnotatedElement:
+	Protocol | Function  | Message | Port | Configuration | Handler | State | StateContainer | 
+	Type | PropertyAssign | Variable | Instance | AbstractConnector | EnumerationLiteral |
+	Parameter | DataAnalytics | //ML2
+	";" ( annotations+=PlatformAnnotation )* // This is never used, it is just to have the attributes in the superclass
+;
+
+Variable:
+	"var" name=ID ':' typeRef=TypeRef | // This is never used, it is just to have the attributes in the superclass
+	LocalVariable | Property | Parameter ;
+	
+/*****************************************************************************
+* TYPES / ENUMERATIONS *
+*****************************************************************************/
+TypeRef returns TypeRef:
+	type=[Type|ID] (^isArray?='[' (cardinality=(IntegerLiteral|PropertyReference))? ']')?
+;
+Type:
+	PrimitiveType | ObjectType | Enumeration | Thing;
+PrimitiveType returns PrimitiveType:
+	'datatype' name=ID =>'<' ByteSize=INT '>'	( annotations+=PlatformAnnotation )* (';')?;
+	
+ObjectType returns ObjectType:
+	'object' name=ID ( annotations+=PlatformAnnotation )* (';')?;
+Enumeration returns Enumeration:
+	'enumeration' name=ID (=>'as' typeRef=TypeRef)? ( annotations+=PlatformAnnotation )* '{' (literals+=EnumerationLiteral)* '}';
+EnumerationLiteral returns EnumerationLiteral:
+	name=ID ('=' init=Literal)? ( annotations+=PlatformAnnotation )* ;
+/*****************************************************************************
+* THING / COMPONENT MODEL *
+*****************************************************************************/
+Thing returns Thing:
+	'thing' (^fragment?='fragment')? name=ID ('includes' includes+=[Thing|ID] ( "," includes+=[Thing|ID])*)?
+	( annotations+=PlatformAnnotation )*'{'
+		(messages+=Message | ports += Port | properties+=Property | functions+=Function | assign+=PropertyAssign /* | streams+=Stream*/)*
+		(dataAnalytics+=DataAnalytics)* //ML2
+		(behaviour=StateMachine)?
+	'}';
+PropertyAssign returns PropertyAssign:
+	'set' property=[Property|ID] (=>'[' index=Expression ']')? '=' init=Expression ( annotations+=PlatformAnnotation )*;
+Protocol returns Protocol:
+	'protocol' name=ID ( annotations+=PlatformAnnotation )* (';')?;
+Function returns Function:
+	'function' name=ID '(' (parameters+=Parameter ( "," parameters+=Parameter)* )? ')' (':' typeRef=TypeRef)?
+							( annotations+=PlatformAnnotation )* body=Action | AbstractFunction
+;
+AbstractFunction returns Function:
+	abstract?='abstract' 'function' name=ID '(' (parameters+=Parameter ( "," parameters+=Parameter)* )? ')' (':' typeRef=TypeRef)?
+							( annotations+=PlatformAnnotation )*
+;
+Property returns Property:
+	(readonly?='readonly')? 'property' name=ID ':' typeRef=TypeRef ( '=' init=Expression)?
+	( annotations+=PlatformAnnotation )*
+;
+Message returns Message:
+	'message' name=ID '(' ( parameters+=Parameter ( "," parameters+=Parameter)* )? ')'
+	( annotations+=PlatformAnnotation )* (';')?;
+	
+Parameter returns Parameter:
+	name=ID ':' typeRef=TypeRef ( annotations+=PlatformAnnotation )*
+;
+Port returns Port:
+	RequiredPort | ProvidedPort | InternalPort;
+	
+	
+RequiredPort returns RequiredPort:
+	(optional?='optional')? 'required' 'port' name=ID ( annotations+=PlatformAnnotation )* '{'
+		(('sends' sends+=[Message|ID] ( "," sends+=[Message|ID])* ) |
+		('receives' receives+=[Message|ID] ( "," receives+=[Message|ID])* ))*
+	'}';
+ProvidedPort returns ProvidedPort:
+	'provided' 'port' name=ID ( annotations+=PlatformAnnotation )* '{'
+		(('sends' sends+=[Message|ID] ( "," sends+=[Message|ID])* ) |
+		('receives' receives+=[Message|ID] ( "," receives+=[Message|ID])* ))*
+	'}';
+InternalPort returns InternalPort:
+	'internal' 'port' name=ID ( annotations+=PlatformAnnotation )* '{'
+		(('sends' sends+=[Message|ID] ( "," sends+=[Message|ID])* ) |
+		('receives' receives+=[Message|ID] ( "," receives+=[Message|ID])* ))*
+	'}';
+/*****************************************************************************
+* STATE MECHINES *
+*****************************************************************************/
+State returns State:
+	StateMachine | FinalState | CompositeState |
+	'state' name=ID ( annotations+=PlatformAnnotation )* '{'
+		(properties+=Property)*
+		(
+			('on' 'entry' entry=Action)? &
+			('on' 'exit' exit=Action)? &
+			(properties+=Property | internal+=InternalTransition | outgoing+=Transition)*
+		)
+	'}';
+Handler:
+	Transition | InternalTransition
+;
+Transition returns Transition:
+	'transition' (name=ID)? '->' target=[State|ID]
+	( annotations+=PlatformAnnotation )*
+	('event' event=Event)?
+	('guard' guard=Expression)?
+	('action' action=Action)?;
+InternalTransition returns InternalTransition:
+	{InternalTransition}
+	'internal' (name=ID)?
+	( annotations+=PlatformAnnotation )*
+	('event' event=Event)?
+	('guard' guard=Expression)?
+	('action' action=Action)?;
+CompositeState returns CompositeState:
+	'composite' 'state' name=ID 'init' initial=[State|ID] ('keeps' history?='history')?	( annotations+=PlatformAnnotation )* '{'
+		(properties+=Property)*
+		(
+			('on' 'entry' entry=Action)? &
+			('on' 'exit' exit=Action)? &
+			(properties+=Property | substate+=State | internal+=InternalTransition | outgoing+=Transition)*
+		)
+		(region+=Region | session+=Session)*
+	'}';
+StateMachine returns CompositeState: // Actually only another syntax for a composite state
+	'statechart' (name=ID)? 'init' initial=[State|ID] ('keeps' history?='history')?	( annotations+=PlatformAnnotation )* '{'
+		(properties+=Property)*
+		(
+			('on' 'entry' entry=Action)? &
+			('on' 'exit' exit=Action)? &
+			(properties+=Property | substate+=State | internal+=InternalTransition)*
+		)
+		(region+=Region | session+=Session)*
+	'}';
+Session returns Session:
+	'session' name=ID ('<' maxInstances=(IntegerLiteral | PropertyReference) '>')? 'init' initial=[State|ID] ( annotations+=PlatformAnnotation )* '{'
+		(substate+=State)*
+	'}';
+Region returns Region:
+	'region' (name=ID)? 'init' initial=[State|ID] ('keeps' history?='history')?	( annotations+=PlatformAnnotation )* '{'
+		(substate+=State)*
+	'}';
+FinalState returns FinalState:
+	'final' 'state' name=ID ( annotations+=PlatformAnnotation )* '{' ('on' 'entry' entry=Action)? '}'
+;
+StateContainer:
+	CompositeState | Region | Session |
+	'keeps' initial=[State|ID] ('keeps' history?='history')?	 '{' // This is never used, it is just to have the attributes in the superclass
+		(substate+=State)*
+	'}'
+;
+/*****************************************************************************
+* DATA ANALYTICS // ML2 Also check out ThingMLScopeProvider at org.thingml.xtext.scoping in thingml and
+* 			ThingMLAntlrTokenToAttributeIdMapper at org.thingml.xtext.ui in thingml.ui
+*****************************************************************************/
+
+
+MessageParameter returns MessageParameter:
+	Message | Parameter
+;
+
+
+
+
+// Grammar for Data Analytics Configurations
+
+
+DataAnalytics returns DataAnalytics:
+    'data_analytics' name=ID (annotations+=PlatformAnnotation)* '{'
+
+        // Data Inputs Section
+        'data' '{'
+            'dataset' dataset=STRING
+            (
+                ('labels' labels=Labels)?
+                ('features' features+=[Property|ID] ("," features+=[Property|ID])*)?
+                ('input_features' input_features+=[Property|ID] ("," input_features+=[Property|ID])*)?
+                ('output_features' output_features+=[Property|ID] ("," output_features+=[Property|ID])*)?
+                ('timestamps' timestamps=Timestamps)?
+                ('common_period_threshold' combine_threshold=INT)?
+            )
+        '}'
+
+        // Preprocessing Section (optional)
+        ('preprocessing' '{'
+            
+            ('preprocess_feature_scaler' preprocess_feature_scaler=Preprocess_feature_scaler)?
+		('preprocess_sample_normalizer' preprocess_sample_normalizer=Preprocess_sample_normalizer)?
+            
+            ('fill_missing' fill_missing_value=FillingMissingValue)?
+            ('remove_outliers' remove_outliers=RemoveOutliers)?
+            ('advanced_imputation' advanced_imputation=AdvancedImputation)?
+            ('lag_features' lagged_features=LaggedFeatures)?
+            ('rolling_window' rolling_window_features=RollingWindowFeatures)?
+            ('resample' resampling=Resampling)?
+            ('transformations' transformations+=DataTransformation ("," transformations+=DataTransformation)*)?
+        '}')?
+
+        // Time Series Specifics and Supervised Learning Settings (optional)
+        ('time_series' '{'
+            ('sequential' sequential=Sequential)?
+            ('steps' steps=IntegerLiteral (',')?)?
+            ('lag' lag=IntegerLiteral (',')?)?
+            ('multivariate' multivariate=Multivariate)?
+            ('stationary_check' stationary=Stationary)?
+            ('seasonality_detection' seasonality_detection=SeasonalityDetection)?
+            ('supervised_learning' supervised_learning=SupervisedLearning)?
+            ('create_lagged_features' create_lagged_features=CreateLaggedFeatures)?
+            ('sliding_window' sliding_window=SlidingWindow)?
+        '}')?
+
+        // Model Settings Section
+        'model' '{'
+            ('autoML' autoML=AutoML)?
+            ('algorithm' modelAlgorithm=DataAnalyticsModelAlgorithm)?
+            
+('blackbox_ml' blackbox_ml=BooleanLiteral)?
+		('blackbox_ml_model' blackbox_ml_model=STRING)?
+		('blackbox_import_algorithm' blackbox_import_algorithm=STRING)?
+		('blackbox_label_encoder' blackbox_label_encoder=STRING)?
+            ('training_results' trainingResults=STRING)?
+            ('hyperparameter_tuning' hyperparameter_tuning=HyperparameterTuning)?
+            ('ensemble_methods' ensemble_methods=EnsembleMethods)?
+        '}'
+
+        // Evaluation and Analysis Section (optional)
+        ('evaluation' '{'
+            ('prediction_results' predictionResults+=[Property|ID] ("," predictionResults+=[Property|ID])*)?
+            ('metrics' model_evaluation=ModelEvaluation)?
+            ('outlier_detection' outlier_detection=OutlierDetection)?
+            ('clustering' time_series_clustering=TimeSeriesClustering)?
+            ('context' contextArea=ContextArea)?
+        '}')?
+
+        // Visualization Section (optional)
+        ('visualization' '{'
+            ('plots' plots+=PreprocessingPlots ("," plots+=PreprocessingPlots)*)?
+        '}')?
+    '}';
+    
+    
+    
+
+// Enumerations Definitions
+
+enum Labels:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON' | SEMI='SEMI'
+;
+
+enum FillingMissingValue:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON' | FF='FF' | BF='BF' | INTERPOLATION='INTERPOLATION' | MEAN='MEAN'
+;
+
+enum Resampling:
+    NOT_SET   = 'NOT_SET'   // default / unset
+ 
+  | MINUTELY  = 'MINUTELY'  // roll up into 1-minute bins
+  | HOURLY    = 'HOURLY'    // roll up into 1-hour bins
+  | DAILY     = 'DAILY'     // roll up into 1-day bins
+  | WEEKLY    = 'WEEKLY'    // roll up into 1-week bins
+  | MONTHLY   = 'MONTHLY'   // roll up into 1-month bins
+  | YEARLY    = 'YEARLY'    // roll up into 1-year bins
+;
+
+enum Multivariate:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum Stationary:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum SeasonalityDetection:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON' | FOURIER='FOURIER' | MOVING_AVERAGE='MOVING_AVERAGE'
+;
+
+enum RemoveOutliers:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum ContextArea:
+    RiverFlow='RiverFlow' | ServerMonitoring='ServerMonitoring' | IoTDataCenter='IoTDataCenter' | Other='Other'
+;
+
+enum LaggedFeatures:
+    OFF='OFF' | ON='ON'
+;
+
+enum RollingWindowFeatures:
+    OFF='OFF' | ON='ON'
+;
+
+enum AdvancedImputation:
+    OFF='OFF' | ON='ON'
+;
+
+enum OutlierDetection:
+    OFF='OFF' | ON='ON'
+;
+
+enum TimeSeriesClustering:
+    OFF='OFF' | ON='ON'
+;
+
+enum HyperparameterTuning:
+    OFF='OFF' | GRID_SEARCH='GRID_SEARCH' | RANDOM_SEARCH='RANDOM_SEARCH' | BAYESIAN_OPTIMIZATION='BAYESIAN_OPTIMIZATION'
+;
+
+enum ModelEvaluation:
+    RMSE='RMSE' | MAE='MAE' | MSE='MSE' | R_SQUARED='R_SQUARED'
+    | ACCURACY='ACCURACY' | PRECISION='PRECISION'
+    | RECALL='RECALL' | F1_SCORE='F1_SCORE'
+;
+
+enum EnsembleMethods:
+    OFF='OFF' | BAGGING='BAGGING' | BOOSTING='BOOSTING' | STACKING='STACKING'
+;
+
+enum AutoML:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum Sequential:
+    NOT_SET='NOT_SET' | FALSE='FALSE' | TRUE='TRUE'
+;
+
+enum Timestamps:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum Preprocess_feature_scaler:
+	NOT_SET='NOT_SET' | OFF='OFF' | STANDARD_SCALER='StandardScaler' | MIN_MAX_SCALER='MinMaxScaler' | ROBUST_SCALER='RobustScaler'  
+;
+
+enum Preprocess_sample_normalizer:
+	NOT_SET='NOT_SET' | OFF='OFF' | NORMALIZER_L2_NORM='NORMALIZER_L2_NORM' | NORMALIZER_L1_NORM='NORMALIZER_L1_NORM' | NORMALIZER_MAX_NORM='NORMALIZER_MAX_NORM' 
+;
+enum PreprocessingPlots:
+    LINE_PLOT='LINE_PLOT'
+    | HISTOGRAM='HISTOGRAM'
+    | BOX_PLOT='BOX_PLOT'
+    | SCATTER_PLOT='SCATTER_PLOT'
+    | HEAT_MAP='HEAT_MAP'
+    | AUTOCORRELATION_PLOT='AUTOCORRELATION_PLOT'
+    | LAG_PLOT='LAG_PLOT'
+    | VIOLIN_PLOT='VIOLIN_PLOT'
+    | CORRELATION_MATRIX_PLOT='CORRELATION_MATRIX_PLOT'
+    | PAIR_PLOT='PAIR_PLOT'
+    | CLASS_IMBALANCE='CLASS_IMBALANCE'
+    | MULTIVARIATE_DISTRIBUTION='MULTIVARIATE_DISTRIBUTION'
+    
+    
+    
+;
+
+enum PredictionPlots:
+    // —— Regression / Forecasting ——
+    PREDICTION_VS_ACTUAL        = 'PREDICTION_VS_ACTUAL'        // preds vs. true
+  | RESIDUALS_PLOT              = 'RESIDUALS_PLOT'              // residuals vs. index
+  | ERROR_DISTRIBUTION          = 'ERROR_DISTRIBUTION'          // hist or KDE of errors
+  | CONFIDENCE_INTERVALS        = 'CONFIDENCE_INTERVALS'        // prediction bands
+    // —— Classification diagnostics ——
+  | CONFUSION_MATRIX            = 'CONFUSION_MATRIX'            // true vs. predicted labels
+  | ROC_CURVE                   = 'ROC_CURVE'                   // TPR vs. FPR
+  | PR_CURVE                    = 'PR_CURVE'                    // precision vs. recall
+;
+
+
+enum ForecastingPlots:
+    FORECAST_VS_ACTUAL='FORECAST_VS_ACTUAL'
+    | FORECAST_ERROR='FORECAST_ERROR'
+    | FORECAST_INTERVALS='FORECAST_INTERVALS'
+;
+
+enum OverfittingPlots:
+    TRAINING_LOSS='TRAINING_LOSS'
+    | VALIDATION_LOSS='VALIDATION_LOSS'
+    | LEARNING_CURVE='LEARNING_CURVE'
+    | BIAS_VARIANCE_TRADEOFF='BIAS_VARIANCE_TRADEOFF'
+;
+
+enum SupervisedLearning:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum CreateLaggedFeatures:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+enum SlidingWindow:
+    NOT_SET='NOT_SET' | OFF='OFF' | ON='ON'
+;
+
+// Enum for different data transformations that can be applied to your dataset
+enum DataTransformation:
+    LOG_TRANSFORMATION='LogTransformation'
+    | DIFFERENCING='Differencing'
+    | NORMALIZATION='Normalization'
+    | STANDARDIZATION='Standardization'
+    | SCALING='Scaling'
+    | SMOOTHING='Smoothing'
+    | AGGREGATION='Aggregation'
+    | DOWNSAMPLING='Downsampling'
+    | UPSAMPLING='Upsampling'
+;
+
+// time series models
+// TODO To be extended
+// ─────────────────────────────────────────────────────────────────────────────
+// Top-level union of all model‐algorithm types
+// ─────────────────────────────────────────────────────────────────────────────
+DataAnalyticsModelAlgorithm returns DataAnalyticsModelAlgorithm:
+      ML2_ModelAlgorithm
+    | Time_series_ModelAlgorithm
+    | PMML_ModelAlgorithm
+    | PFA_ModelAlgorithm
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// The ML2 family of algorithms (pure scikit-learn–style, non-TS, non-PMML/PFA)
+// ─────────────────────────────────────────────────────────────────────────────
+ML2_ModelAlgorithm returns ML2_ModelAlgorithm:
+      LinearClassifierLogisticRegression
+    | LinearRegression
+    | NaiveBayesGaussian
+    | NaiveBayesMultinomial
+    | NaiveBayesComplement
+    | NaiveBayesBernoulli
+    | NaiveBayesCategorical
+    | DecisionTreeRegressor
+    | DecisionTreeClassifier
+    | RandomForestRegressor
+    | RandomForestClassifier
+    | NN_MultilayerPerceptron
+    | KMeans
+    | MiniBatchKMeans
+    | DBSCAN
+    | SpectralClustering
+    | GaussianMixture
+    | SelfTrainingClassifier
+    | LabelPropagation
+    | LabelSpreading
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Time-series algorithms, subdivided into TS families
+// ─────────────────────────────────────────────────────────────────────────────
+Time_series_ModelAlgorithm returns Time_series_ModelAlgorithm:
+      Deep_learning_ModelAlgorithm
+    | statistical_ModelAlgorithm
+    | machine_learning_ModelAlgorithm
+    | hybrid_ModelAlgorithm
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Deep-learning time-series models
+// ─────────────────────────────────────────────────────────────────────────────
+Deep_learning_ModelAlgorithm returns Deep_learning_ModelAlgorithm:
+      MLP
+    | GRU
+    | CNN
+    | LSTM
+    | RNN
+    | TCN
+    | Transformer
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Classical statistical time-series models
+// ─────────────────────────────────────────────────────────────────────────────
+statistical_ModelAlgorithm returns statistical_ModelAlgorithm:
+      ARIMA
+    | SARIMA
+    | HWES
+    | ETS
+    | StateSpaceModel
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Non-TS machine-learning models often used on windowed/lagged data
+// ─────────────────────────────────────────────────────────────────────────────
+machine_learning_ModelAlgorithm returns machine_learning_ModelAlgorithm:
+      SVR
+    | RFR
+    | GBM
+    | XGBoost
+;
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Hybrid TS models (e.g. combined ARIMA/GARCH, Facebook Prophet, etc.)
+// ─────────────────────────────────────────────────────────────────────────────
+hybrid_ModelAlgorithm returns hybrid_ModelAlgorithm:
+      ARIMA_GARCH
+    | Prophet
+;
+
+
+MLP returns MLP:
+  'MLP' name=ID '('
+    ('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)*) ')' (',')?)?
+    ('input_activation' input_activation=Activation (',')?)?
+    ('hidden_activation' hidden_activation=Activation (',')?)?
+    ('output_activation' output_activation=Activation (',')?)?
+    ('regularization' regularization=Regularization (',')?)?
+    ('dropout' dropout=FLOAT (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('rate' rate=FLOAT (',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots (',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots (',')?)?
+  ')';
+
+GRU returns GRU:
+  'GRU' name=ID '('
+    'return_sequences' return_sequences=BooleanLiteral ','
+    ('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)*) ')' (',')?)?
+    ('input_activation' input_activation=Activation (',')?)?
+    ('hidden_activation' hidden_activation=Activation (',')?)?
+    ('output_activation' output_activation=Activation (',')?)?
+    ('regularization' regularization=Regularization (',')?)?
+    ('dropout' dropout=FLOAT (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('rate' rate=FLOAT(',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots (',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots (',')?)?
+  ')';
+
+CNN returns CNN:
+  'CNN' name=ID '('
+    ('units' units=IntegerLiteral (',')?)?
+    ('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)*) ')' (',')?)?
+    ('input_activation' input_activation=Activation (',')?)?
+    ('hidden_activation' hidden_activation=Activation (',')?)?
+    ('output_activation' output_activation=Activation (',')?)?
+    ('regularization' regularization=Regularization (',')?)?
+    ('dropout' dropout=FLOAT (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('rate' rate=FLOAT (',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots (',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots (',')?)?
+  ')';
+
+LSTM returns LSTM:
+  'LSTM' name=ID '('
+    ('units' units=IntegerLiteral (',')?)?
+    ('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)* )? ')' (',')?)?
+    ('return_sequences' return_sequences=BooleanLiteral (',')?)?
+    ('input_activation' input_activation=Activation (',')?)?
+    ('hidden_activation' hidden_activation=Activation (',')?)?
+    ('output_activation' output_activation=Activation (',')?)?
+    ('regularization' regularization=Regularization (',')?)?
+    ('dropout' dropout=FLOAT (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('rate' rate=FLOAT(',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots(',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+  ')';
+
+RNN returns RNN:
+  'RNN' name=ID '('
+    ('units' units=IntegerLiteral (',')?)?
+    ('activation' activation=Activation (',')?)?
+    ('return_sequences' return_sequences=BooleanLiteral (',')?)?
+    ('regularization' regularization=Regularization (',')?)?
+    ('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)* )? ')' (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('rate' rate=FLOAT(',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots(',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+  ')';
+
+TCN returns TCN:
+  'TCN' name=ID '('
+    ('hidden_layers' hidden_layers='(' (units+=IntegerLiteral ("," units+=IntegerLiteral)*)? ')' (',')?)?
+    ('nb_filters' nb_filters=IntegerLiteral (',')?)?
+    ('kernel_size' kernel_size=IntegerLiteral (',')?)?
+    ('dilations' dilations=STRING (',')?)?
+    ('nb_stacks' nb_stacks=IntegerLiteral (',')?)?
+    ('dropout_rate' dropout_rate=FLOAT(',')?)?
+    ('activation' activation=Activation (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('learning_rate' learning_rate=FLOAT(',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('loss' loss=Loss (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('dense_layers' dense_layers='(' (neurons+=IntegerLiteral ("," neurons+=IntegerLiteral)*)? ')' (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots(',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+  ')';
+
+Transformer returns Transformer:
+  'Transformer' name=ID '('
+    ('hidden_layers' hidden_layers='(' (units+=IntegerLiteral ("," units+=IntegerLiteral)*)? ')' (',')?)?
+    ('num_layers' num_layers=IntegerLiteral (',')?)?
+    ('d_model' d_model=IntegerLiteral (',')?)?
+    ('num_heads' num_heads=IntegerLiteral (',')?)?
+    ('dff' dff=IntegerLiteral (',')?)?
+    ('dropout_rate' dropout_rate=FLOAT (',')?)?
+    ('activation' activation=Activation (',')?)?
+    ('optimizer' optimizer=Optimizer (',')?)?
+    ('learning_rate' learning_rate=FLOAT (',')?)?
+    ('batch_size' batch_size=IntegerLiteral (',')?)?
+    ('epochs' epochs=IntegerLiteral (',')?)?
+    ('loss' loss=Loss (',')?)?
+    ('metrics' metrics=Metrics (',')?)?
+    ('dense_layers' dense_layers='(' (neurons+=IntegerLiteral ("," neurons+=IntegerLiteral)*)? ')' (',')?)?
+    ('early_stopping' early_stopping=EarlyStopping (',')?)?
+    ('overfitting_Plots' overfitting_Plots=OverfittingPlots(',')?)?
+    ('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+  ')';
+
+	
+	
+ARIMA returns ARIMA:
+	'ARIMA' name=ID
+	'('
+	('p' p=IntegerLiteral (',')?)? // Non-seasonal autoregressive order
+	('differencing' differencing=IntegerLiteral (',')?)? // Non-seasonal differencing order
+	('q' q=IntegerLiteral (',')?)? // Non-seasonal moving average order
+	
+	('trend' trend=STRING (',')?)? // Trend component (e.g., "n", "c", "t", "ct")
+	
+	('seasonalP' seasonalP=IntegerLiteral (',')?)? // Seasonal autoregressive order
+	('seasonalD' seasonalD=IntegerLiteral (',')?)? // Seasonal differencing order
+	('seasonalQ' seasonalQ=IntegerLiteral (',')?)? // Seasonal moving average order
+	('seasonality' seasonality=IntegerLiteral (',')?)? // Length of seasonality
+	('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+	
+	')';
+
+SARIMA returns SARIMA:
+	'SARIMA' name=ID
+	'('
+	('p' p=IntegerLiteral (',')?)? // Non-seasonal autoregressive order
+	('differencing' differencing=IntegerLiteral (',')?)? // Non-seasonal differencing order
+	('q' q=IntegerLiteral (',')?)? // Non-seasonal moving average order
+	('seasonalP' seasonalP=IntegerLiteral (',')?)? // Seasonal autoregressive order
+	('seasonalD' seasonalD=IntegerLiteral (',')?)? // Seasonal differencing order
+	('seasonalQ' seasonalQ=IntegerLiteral (',')?)? // Seasonal moving average order
+	('seasonality' seasonality=IntegerLiteral (',')?)? // Length of the seasonal cycle
+	('trend' trend=STRING (',')?)? // Trend component (e.g., "n", "c", "t", "ct")
+	('start_params' start_params=STRING (',')?)? // Starting parameters for optimization
+	('method' method=STRING (',')?)? // Method for fitting the model (e.g., "lbfgs", "newton", "nm", "cg", "bfgs")
+	('transparams' transparams=BooleanLiteral (',')?)? // Transform parameters
+	('solver' solver=STRING (',')?)? // Solver for optimization
+	('maxiter' maxiter=IntegerLiteral (',')?)? // Maximum number of iterations
+	('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+	
+	')';
+
+
+HWES returns HWES:
+	'HWES' name=ID
+	'('
+		('trend' trend=STRING (',')?)? // Trend component (e.g., "add", "mul", "additive", "multiplicative")
+		('damped' damped=BooleanLiteral (',')?)? // Damped trend
+		('seasonal' seasonal=STRING (',')?)? // Seasonal component (e.g., "add", "mul", "additive", "multiplicative")
+		('seasonal_periods' seasonal_periods=IntegerLiteral (',')?)? // Number of seasonal periods
+		('initialization_method' initialization_method=STRING (',')?)? // Initialization method (e.g., "estimated", "heuristic")
+		('use_boxcox' use_boxcox=BooleanLiteral (',')?)? // Use Box-Cox transformation
+		('remove_bias' remove_bias=BooleanLiteral (',')?)? // Remove bias
+		('optimized' optimized=BooleanLiteral (',')?)? // Optimize parameters
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+ETS returns ETS:
+	'ETS' name=ID
+	'('
+		('error' error=STRING (',')?)? // Error component (e.g., "add", "mul")
+		('trend' trend=STRING (',')?)? // Trend component (e.g., "add", "mul", "additive", "multiplicative")
+		('seasonal' seasonal=STRING (',')?)? // Seasonal component (e.g., "add", "mul", "additive", "multiplicative")
+		('damped' damped=BooleanLiteral (',')?)? // Damped trend
+		('seasonal_periods' seasonal_periods=IntegerLiteral (',')?)? // Number of seasonal periods
+		('initialization_method' initialization_method=STRING (',')?)? // Initialization method (e.g., "estimated", "heuristic")
+		('use_boxcox' use_boxcox=BooleanLiteral (',')?)? // Use Box-Cox transformation
+		('remove_bias' remove_bias=BooleanLiteral (',')?)? // Remove bias
+		('optimized' optimized=BooleanLiteral (',')?)? // Optimize parameters
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+StateSpaceModel returns StateSpaceModel:
+	'StateSpaceModel' name=ID
+	'('
+		('transition_matrix' transition_matrix=STRING (',')?)? // Transition matrix (e.g., "[[1,0],[0,1]]")
+		('selection_matrix' selection_matrix=STRING (',')?)? // Selection matrix (e.g., "[[0.1,0.1],[0.1,0.1]]")
+		('state_cov' state_cov=STRING (',')?)? // State covariance matrix (e.g., "[[0.1,0],[0,0.1]]")
+		('obs_cov' obs_cov=STRING (',')?)? // Observation covariance matrix (e.g., "[[0.1,0],[0,0.1]]")
+		('initial_state_mean' initial_state_mean=STRING (',')?)? // Initial state mean (e.g., "[0,0]")
+		('initial_state_cov' initial_state_cov=STRING (',')?)? // Initial state covariance (e.g., "[[0.1,0],[0,0.1]]")
+		('nobs' nobs=IntegerLiteral (',')?)? // Number of observations
+		('obs_intercept' obs_intercept=STRING (',')?)? // Observation intercept
+		('state_intercept' state_intercept=STRING (',')?)? // State intercept
+		('obs' obs=STRING (',')?)? // Observations
+		('obs_offset' obs_offset=STRING (',')?)? // Observation offset
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+
+
+
+
+SVR returns SVR:
+	'SVR' name=ID
+	'('
+		('kernel' kernel=STRING (',')?)? // Kernel type (e.g., "linear", "poly", "rbf", "sigmoid")
+		('degree' degree=IntegerLiteral (',')?)? // Degree of the polynomial kernel function
+		('gamma' gamma=STRING (',')?)? // Kernel coefficient
+		('coef0' coef0=DOUBLE (',')?)? // Independent term in kernel function
+		('tol' tol=DOUBLE (',')?)? // Tolerance for stopping criteria
+		('C' C=DOUBLE (',')?)? // Regularization parameter
+		('epsilon' epsilon=DOUBLE (',')?)? // Epsilon in the epsilon-SVR model
+		('shrinking' shrinking=BooleanLiteral (',')?)? // Whether to use the shrinking heuristic
+		('cache_size' cache_size=DOUBLE (',')?)? // Specify the size of the kernel cache
+		('verbose' verbose=BooleanLiteral (',')?)? // Enable verbose output
+		('max_iter' max_iter=IntegerLiteral (',')?)? // Hard limit on iterations within solver
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+RFR returns RFR:
+	'RFR' name=ID
+	'('
+		('n_estimators' n_estimators=IntegerLiteral (',')?)? // The number of trees in the forest
+		('criterion' criterion=STRING (',')?)? // The function to measure the quality of a split
+		('max_depth' max_depth=IntegerLiteral (',')?)? // The maximum depth of the tree
+		('min_samples_split' min_samples_split=IntegerLiteral (',')?)? // The minimum number of samples required to split an internal node
+		('min_samples_leaf' min_samples_leaf=IntegerLiteral (',')?)? // The minimum number of samples required to be at a leaf node
+		('min_weight_fraction_leaf' min_weight_fraction_leaf=DOUBLE (',')?)? // The minimum weighted fraction of the sum total of weights required to be at a leaf node
+		('max_features' max_features=STRING (',')?)? // The number of features to consider when looking for the best split
+		('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)? // Grow trees with `max_leaf_nodes` in best-first fashion
+		('min_impurity_decrease' min_impurity_decrease=DOUBLE (',')?)? // A node will be split if this split induces a decrease of the impurity greater than or equal to this value
+		('bootstrap' bootstrap=BooleanLiteral (',')?)? // Whether bootstrap samples are used when building trees
+		('oob_score' oob_score=BooleanLiteral (',')?)? // Whether to use out-of-bag samples to estimate the generalization accuracy
+		('n_jobs' n_jobs=IntegerLiteral (',')?)? // The number of jobs to run in parallel
+		('random_state' random_state=IntegerLiteral (',')?)? // Controls both the randomness of the bootstrapping of the samples used when building trees
+		('verbose' verbose=BooleanLiteral (',')?)? // Controls the verbosity when fitting and predicting
+		('warm_start' warm_start=BooleanLiteral (',')?)? // When set to `True`, reuse the solution of the previous call to fit and add more estimators to the ensemble
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+GBM returns GBM:
+	'GBM' name=ID
+	'('
+		('loss' loss=STRING (',')?)? // Loss function to be optimized
+		('learning_rate' learning_rate=FLOAT (',')?)? // Learning rate shrinks the contribution of each tree by `learning_rate`
+		('n_estimators' n_estimators=IntegerLiteral (',')?)? // The number of boosting stages to be run
+		('subsample' subsample=DOUBLE (',')?)? // The fraction of samples to be used for fitting the individual base learners
+		('criterion' criterion=STRING (',')?)? // The function to measure the quality of a split
+		('min_samples_split' min_samples_split=IntegerLiteral (',')?)? // The minimum number of samples required to split an internal node
+		('min_samples_leaf' min_samples_leaf=IntegerLiteral (',')?)? // The minimum number of samples required to be at a leaf node
+		('min_weight_fraction_leaf' min_weight_fraction_leaf=DOUBLE (',')?)? // The minimum weighted fraction of the sum total of weights required to be at a leaf node
+		('max_depth' max_depth=IntegerLiteral (',')?)? // The maximum depth of the tree
+		('min_impurity_decrease' min_impurity_decrease=DOUBLE (',')?)? // A node will be split if this split induces a decrease of the impurity greater than or equal to this value
+		('init' init=STRING (',')?)? // An estimator object that is used to compute the initial predictions
+		('random_state' random_state=IntegerLiteral (',')?)? // Controls the random seed given at each `base_estimator` at each boosting iteration
+		('max_features' max_features=STRING (',')?)? // The number of features to consider when looking for the best split
+		('alpha' alpha=DOUBLE (',')?)? // The alpha-quantile of the huber loss function and the quantile loss function
+		('verbose' verbose=BooleanLiteral (',')?)? // Enable verbose output
+		('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)? // Grow trees with `max_leaf_nodes` in best-first fashion
+		('warm_start' warm_start=BooleanLiteral (',')?)? // When set to `True`, reuse the solution of the previous call to fit and add more estimators to the ensemble
+		('presort' presort=BooleanLiteral (',')?)? // Whether to presort the data to speed up the finding of best splits
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+
+XGBoost returns XGBoost:
+    'XGBoost' name=ID
+    '('
+        ('max_depth' max_depth=IntegerLiteral (',')?)?
+        ('learning_rate' learning_rate=FLOAT (',')?)?
+        ('n_estimators' n_estimators=IntegerLiteral (',')?)?
+        ('objective' objective=STRING (',')?)?
+        ('booster' booster=STRING (',')?)?
+        ('gamma' gamma=FLOAT (',')?)?
+        ('min_child_weight' min_child_weight=FLOAT (',')?)?
+        ('subsample' subsample=FLOAT (',')?)?
+        ('colsample_bytree' colsample_bytree=FLOAT (',')?)?
+        ('colsample_bylevel' colsample_bylevel=FLOAT (',')?)?
+        ('colsample_bynode' colsample_bynode=FLOAT (',')?)?
+        ('reg_alpha' reg_alpha=FLOAT (',')?)?
+        ('reg_lambda' reg_lambda=FLOAT (',')?)?
+        ('scale_pos_weight' scale_pos_weight=FLOAT (',')?)?
+        ('base_score' base_score=FLOAT (',')?)?
+        ('random_state' random_state=IntegerLiteral (',')?)?
+        ('missing' missing=FLOAT (',')?)?
+        ('importance_type' importance_type=STRING (',')?)?
+        ('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+    ')';
+
+
+
+ARIMA_GARCH returns ARIMA_GARCH:
+	'ARIMA_GARCH' name=ID
+	'('
+		('p' p=IntegerLiteral (',')?)?
+		('d' d=IntegerLiteral (',')?)?
+		('q' q=IntegerLiteral (',')?)?
+		('seasonal_order' seasonal_order='(' (seasonal_params+=IntegerLiteral ("," seasonal_params+=IntegerLiteral)* )? ')' (',')?)?
+		('trend' trend=STRING (',')?)?
+		('garch_order' garch_order='(' (garch_params+=IntegerLiteral ("," garch_params+=IntegerLiteral)* )? ')' (',')?)?
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+		
+	')';
+	
+
+Prophet returns Prophet:
+	'Prophet' name=ID
+	'('
+		('growth' growth=STRING (',')?)?
+		('seasonality_mode' seasonality_mode=STRING (',')?)?
+		('seasonality_prior_scale' seasonality_prior_scale=FLOAT (',')?)?
+		('holidays_prior_scale' holidays_prior_scale=FLOAT (',')?)?
+		('changepoint_prior_scale' changepoint_prior_scale=FLOAT (',')?)?
+		('interval_width' interval_width=FLOAT (',')?)?
+		('forecasting_plots' forecasting_plots=ForecastingPlots(',')?)?
+	')';
+
+
+
+// Define Optimizer options
+enum Penalty:
+	NOT_SET='NOT_SET' | L1="'l1'" | L2="'l2'" | ELASTICNET="'elasticnet'" | NONE="'none'"
+;
+
+// Optimizer a.k.a. Solver
+enum Optimizer:
+	NOT_SET='NOT_SET' | NEWTON_CG='newton-cg' | LBFGS='lbfgs' | LIBLINEAR='liblinear' | SAG='sag' | SAGA='saga' | SGD='sgd' | ADAM='adam' | RMSPROP='RMSprop' | ADADELTA='Adadelta' | ADAGRAD='Adagrad' | ADAMAX='Adamax' | NADAM='Nadam' | FTRL='Ftrl'
+;
+
+// Define Rate options for learning rate or decay rate
+enum Rate:
+    NOT_SET='NOT_SET' | CONSTANT="'constant'" | TIME_BASED="'time_based'" | STEP="'step'" | EXPONENTIAL="'exponential'";
+
+
+
+// Define EarlyStopping options for enabling/disabling
+enum EarlyStopping:
+    NOT_SET='NOT_SET' | ENABLE="'enable'" | DISABLE="'disable'";
+
+
+
+enum Regularization:
+	NOT_SET='NOT_SET' | L1="'l1'" | L2="'l2'" | L1_L2="'l1_l2'"
+;
+
+enum Metrics:
+    NOT_SET='NOT_SET' | MSE="'MSE'" | MAE="'MAE'"
+    | ACCURACY="'ACCURACY'" | PRECISION="'PRECISION'"
+    | RECALL="'RECALL'" | F1_SCORE="'F1_SCORE'";
+	
+	
+	
+	
+// ML2 models and algorithms
+// TODO To be extended
+
+
+// The PMML Standard (see http://dmg.org/pmml/v4-4/GeneralStructure.html)
+//TODO To be supported
+PMML_ModelAlgorithm returns PMML_ModelAlgorithm:
+	'pmml' name=ID
+	'('
+	('path' pmml_path=STRING)
+	')'
+;
+// The PFA Standard (see http://dmg.org/pfa/)
+//TODO To be supported
+PFA_ModelAlgorithm returns PFA_ModelAlgorithm:
+	'pfa' name=ID
+	'('
+	('path' pfa_path=STRING)
+	')'
+;
+ClassifierWithPredictionCertaintyProbabilities returns ClassifierWithPredictionCertaintyProbabilities:
+	LinearClassifierLogisticRegression | NaiveBayesGaussian | NaiveBayesMultinomial | NaiveBayesComplement | NaiveBayesBernoulli | NaiveBayesCategorical |
+	DecisionTreeClassifier | NN_MultilayerPerceptron
+;
+LinearRegression returns LinearRegression: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html
+	'linear_regression' name=ID
+	'('
+	('fit_intercept' fit_intercept=BooleanLiteral (',')?)?
+	('normalize' normalize=BooleanLiteral (',')?)?
+	('copy_X' copy_X=BooleanLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('positive' positive=BooleanLiteral (',')?)?
+	('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+	
+;
+LinearClassifierLogisticRegression returns LinearClassifierLogisticRegression: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html
+	'linear_classifier_logistic_regression' name=ID
+	'('
+	('penalty' penalty=Penalty (',')?)?
+	('dual' dual=BooleanLiteral (',')?)?
+	('tol' tol=DoubleLiteral (',')?)?
+	('C' c=DoubleLiteral (',')?)?
+	('fit_intercept' fit_intercept=BooleanLiteral (',')?)?
+	('intercept_scaling' intercept_scaling=DoubleLiteral (',')?)?
+	('class_weight' class_weight=STRING (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('solver' optimizer=Optimizer (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('multi_class' multi_class=Multi_class (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('warm_start' warm_start=BooleanLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('l1_ratio' l1_ratio=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+NaiveBayesGaussian returns NaiveBayesGaussian: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.GaussianNB.html
+	'naive_bayes_gaussian' name=ID
+	'('
+	('priors' priors=STRING	(',')?)?
+	('var_smoothing' var_smoothing=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+NaiveBayesMultinomial returns NaiveBayesMultinomial: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.MultinomialNB.html
+	'naive_bayes_multinomial' name=ID
+	'('
+	('alpha' alpha=DoubleLiteral (',')?)?
+	('fit_prior' fit_prior=BooleanLiteral (',')?)?
+	('class_prior' class_prior=STRING (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+NaiveBayesComplement returns NaiveBayesComplement: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.ComplementNB.html
+	'naive_bayes_complement' name=ID
+	'('
+	('alpha' alpha=DoubleLiteral (',')?)?
+	('fit_prior' fit_prior=BooleanLiteral (',')?)?
+	('class_prior' class_prior=STRING (',')?)?
+	('norm' norm=BooleanLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+NaiveBayesBernoulli returns NaiveBayesBernoulli: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.BernoulliNB.html
+	'naive_bayes_bernoulli' name=ID
+	'('
+	('alpha' alpha=DoubleLiteral (',')?)?
+	('binarize' binarize=DoubleLiteral (',')?)?
+	('fit_prior' fit_prior=BooleanLiteral (',')?)?
+	('class_prior' class_prior=STRING (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+NaiveBayesCategorical returns NaiveBayesCategorical: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.naive_bayes.CategoricalNB.html
+	'naive_bayes_categorical' name=ID
+	'('
+	('alpha' alpha=DoubleLiteral (',')?)?
+	('fit_prior' fit_prior=BooleanLiteral (',')?)?
+	('class_prior' class_prior=STRING (',')?)?
+	('min_categories' min_categories=STRING	(',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+DecisionTreeRegressor returns DecisionTreeRegressor: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html
+	'decision_tree_regressor' name=ID
+	'('
+	('criterion' decisionTreeRegressorCriterion=DecisionTreeRegressorCriterion (',')?)?
+	('splitter' decisionTreeSplitter=DecisionTreeSplitter (',')?)?
+	('max_depth' max_depth=IntegerLiteral (',')?)?
+	('min_samples_split' min_samples_split=DoubleLiteral (',')?)?
+	('min_samples_leaf' min_samples_leaf=DoubleLiteral (',')?)?
+	('min_weight_fraction_leaf' min_weight_fraction_leaf=DoubleLiteral (',')?)?
+	(('max_features' max_features_numeric=DoubleLiteral) |
+	(('max_features' max_features_enum=Max_features_enum)) (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)?
+	('min_impurity_decrease' min_impurity_decrease=DoubleLiteral (',')?)?
+	('min_impurity_split' min_impurity_split=DoubleLiteral (',')?)?
+	('ccp_alpha' ccp_alpha=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+DecisionTreeClassifier returns DecisionTreeClassifier: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+	'decision_tree_classifier' name=ID
+	'('
+	('criterion' decisionTreeClassifierCriterion=DecisionTreeClassifierCriterion (',')?)?
+	('splitter' decisionTreeSplitter=DecisionTreeSplitter (',')?)?
+	('max_depth' max_depth=IntegerLiteral (',')?)?
+	('min_samples_split' min_samples_split=DoubleLiteral (',')?)?
+	('min_samples_leaf' min_samples_leaf=DoubleLiteral (',')?)?
+	('min_weight_fraction_leaf' min_weight_fraction_leaf=DoubleLiteral (',')?)?
+	(('max_features' max_features_numeric=DoubleLiteral) |
+	(('max_features' max_features_enum=Max_features_enum)) (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)?
+	('min_impurity_decrease' min_impurity_decrease=DoubleLiteral (',')?)?
+	('min_impurity_split' min_impurity_split=DoubleLiteral (',')?)?
+	('class_weight' class_weight=STRING (',')?)?
+	('ccp_alpha' ccp_alpha=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+RandomForestRegressor returns RandomForestRegressor: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html
+	'random_forest_regressor' name=ID
+	'('
+	('n_estimators' n_estimators=IntegerLiteral (',')?)?
+	('criterion' randomForestRegressorCriterion=RandomForestRegressorCriterion (',')?)?
+	('max_depth' max_depth=IntegerLiteral (',')?)?
+	('min_samples_split' min_samples_split=DoubleLiteral (',')?)?
+	('min_samples_leaf' min_samples_leaf=DoubleLiteral (',')?)?
+	('min_weight_fraction_leaf' min_weight_fraction_leaf=DoubleLiteral (',')?)?
+	(('max_features' max_features_numeric=DoubleLiteral) |
+	(('max_features' max_features_enum=Max_features_enum)) (',')?)?
+	('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)?
+	('min_impurity_decrease' min_impurity_decrease=DoubleLiteral (',')?)?
+	('min_impurity_split' min_impurity_split=DoubleLiteral (',')?)?
+	('bootstrap' bootstrap=BooleanLiteral (',')?)?
+	('oob_score' oob_score=BooleanLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('warm_start' warm_start=BooleanLiteral (',')?)?
+	('ccp_alpha' ccp_alpha=DoubleLiteral (',')?)?
+	('max_samples' max_samples=DoubleLiteral(',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+RandomForestClassifier returns RandomForestClassifier: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
+	'random_forest_classifier' name=ID
+	'('
+	('n_estimators' n_estimators=IntegerLiteral (',')?)?
+	('criterion' randomForestClassifierCriterion=RandomForestClassifierCriterion (',')?)?
+	('max_depth' max_depth=IntegerLiteral (',')?)?
+	('min_samples_split' min_samples_split=DoubleLiteral (',')?)?
+	('min_samples_leaf' min_samples_leaf=DoubleLiteral (',')?)?
+	('min_weight_fraction_leaf' min_weight_fraction_leaf=DoubleLiteral (',')?)?
+	(('max_features' max_features_numeric=DoubleLiteral) |
+	(('max_features' max_features_enum=Max_features_enum)) (',')?)?
+	('max_leaf_nodes' max_leaf_nodes=IntegerLiteral (',')?)?
+	('min_impurity_decrease' min_impurity_decrease=DoubleLiteral (',')?)?
+	('min_impurity_split' min_impurity_split=DoubleLiteral (',')?)?
+	('bootstrap' bootstrap=BooleanLiteral (',')?)?
+	('oob_score' oob_score=BooleanLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('warm_start' warm_start=BooleanLiteral (',')?)?
+	('class_weight' class_weight=STRING (',')?)?
+	('ccp_alpha' ccp_alpha=DoubleLiteral (',')?)?
+	('max_samples' max_samples=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+// NN_MultilayerPerceptron: scikit-learn & keras
+// scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html#sklearn.neural_network.MLPClassifier
+// scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
+// keras, https://keras.io/guides/sequential_model/
+NN_MultilayerPerceptron returns NN_MultilayerPerceptron:
+	'nn_multilayer_perceptron' name=ID
+	'('
+	('hidden_layer_sizes' hidden_layer_sizes='(' (hidden_layers+=IntegerLiteral ("," hidden_layers+=IntegerLiteral)* )? ')' (',')?)? // scikit-learn v0.24.1 & keras
+	('activation' activation=Activation (',')?)? // scikit-learn v0.24.1 & keras
+	('hidden_layers_activation_functions' hidden_layers_activation_functions='(' (activations+=Activation ("," activations+=Activation)* )? ')' (',')?)? // Specific to keras
+	('optimizer' optimizer=Optimizer (',')?)? // i.e., "solver" in scikit-learn // scikit-learn v0.24.1 & keras
+	('alpha' alpha=DoubleLiteral (',')?)? // i.e., kernel_regularizer in keras // scikit-learn v0.24.1 & keras
+	('batch_size' batch_size=IntegerLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('learning_rate_mode' learning_rate_mode=Learning_rate_mode (',')?)? // i.e., "learning rate" in scikit-learn v0.24.1 & "lr_schedule" in keras
+	('learning_rate_init' learning_rate_init=STRING (',')?)? // i.e., "initial_learning_rate" in keras // scikit-learn v0.24.1 & keras
+	('power' power=DoubleLiteral (',')?)? // specific to keras
+	('power_t' power_t=DoubleLiteral (',')?)? // specific to scikit-learn
+	('max_iter' max_iter=IntegerLiteral (',')?)? // specific to scikit-learn; equiv. to epochs in keras-tensorflow.
+	('shuffle' shuffle=BooleanLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)? // i.e., numpy seed & tensorflow set_random_seed for keras // scikit-learn v0.24.1 & keras
+	('tol' tol=DoubleLiteral (',')?)? // scikit-learn v0.24.1 & keras // Called "min_delta" for early stopping in keras
+	('verbose' verbose=BooleanLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('warm_start' warm_start=BooleanLiteral (',')?)? // specific to scikit-learn
+	('momentum' momentum=DoubleLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('nesterovs_momentum' nesterovs_momentum=BooleanLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('early_stopping' early_stopping=BooleanLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('validation_fraction' validation_fraction=DoubleLiteral (',')?)? // specific to scikit-learn
+	('beta_1' beta_1=DoubleLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('beta_2' beta_2=DoubleLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('epsilon' epsilon=DoubleLiteral (',')?)? // scikit-learn v0.24.1 & keras
+	('n_iter_no_change' n_iter_no_change=IntegerLiteral (',')?)? // scikit-learn v0.24.1 & keras // Called "patience" for early stopping in keras
+	('max_fun' max_fun=IntegerLiteral (',')?)?
+	('loss' loss=Loss (',')?)? 	 // specific to keras-tensorflow (https://keras.io/guides/sequential_model/)
+	('epochs' epochs=IntegerLiteral (',')?)? 
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+		 // specific to keras-tensorflow (https://keras.io/guides/sequential_model/); equiv. to max_iter in scikit-learn.
+	')'
+;
+KMeans returns KMeans: // scikit-learn v0.24.1, https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+	'k_means' name=ID
+	'('
+	('n_clusters' n_clusters=IntegerLiteral (',')?)?
+	('init' (init_enum=KMeans_init_enum) | (init_str=STRING) (',')?)?
+	('n_init' n_init=IntegerLiteral (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('tol' tol=DoubleLiteral (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('copy_x' copy_x=BooleanLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('algorithm' algorithm=KMeans_algorithm_enum (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+MiniBatchKMeans returns MiniBatchKMeans: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.cluster.MiniBatchKMeans.html#sklearn.cluster.MiniBatchKMeans
+	'mini_batch_k_means' name=ID
+	'('
+	('n_clusters' n_clusters=IntegerLiteral (',')?)?
+	('init' (init_enum=KMeans_init_enum) | (init_str=STRING) (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('batch_size' batch_size=IntegerLiteral (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('compute_labels' compute_labels=BooleanLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?	
+	('tol' tol=DoubleLiteral (',')?)?
+	('max_no_improvement' max_no_improvement=IntegerLiteral (',')?)?
+	('init_size' init_size=IntegerLiteral (',')?)?
+	('n_init' n_init=IntegerLiteral (',')?)?
+	('reassignment_ratio' reassignment_ratio=DoubleLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+DBSCAN returns DBSCAN: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html
+	'dbscan' name=ID
+	'('
+	('eps' eps=DoubleLiteral (',')?)?
+	('min_samples' min_samples=IntegerLiteral (',')?)?
+	('metric' metric=STRING (',')?)?
+	('metric_params' metric_params=STRING (',')?)?
+	('algorithm' algorithm=KNN_Algorithms (',')?)?
+	('leaf_size' leaf_size=IntegerLiteral (',')?)?	
+	('p' p=DoubleLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+SpectralClustering returns SpectralClustering: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.cluster.SpectralClustering.html
+	'spectral_clustering' name=ID
+	'('
+	('n_clusters' n_clusters=IntegerLiteral (',')?)?
+	('eigen_solver' eigen_solver=Eigen_Solver (',')?)?
+	('n_components' n_components=IntegerLiteral (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('n_init' n_init=IntegerLiteral (',')?)?
+	('gamma' gamma=DoubleLiteral (',')?)?	
+	('affinity' affinity=STRING (',')?)?
+	('n_neighbors' n_neighbors=IntegerLiteral (',')?)?
+	('eigen_tol' eigen_tol=DoubleLiteral (',')?)?
+	('assign_labels' assign_labels=Laplacian_Embedding_Label_Assign_Strategy (',')?)?
+	('degree' degree=DoubleLiteral (',')?)?
+	('coef0' coef0=DoubleLiteral (',')?)?
+	('kernel_params' kernel_params=STRING (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+	('verbose' verbose=BooleanLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+GaussianMixture returns GaussianMixture: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html
+	'gaussian_mixture' name=ID
+	'('
+	('n_components' n_components=IntegerLiteral (',')?)?
+	('covariance_type' covariance_type=Covariance_Type (',')?)?
+	('tol' tol=DoubleLiteral (',')?)?
+	('reg_covar' reg_covar=DoubleLiteral (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('n_init' n_init=IntegerLiteral (',')?)?	
+	('init_params' init_params=Init_Params_Methods (',')?)?
+	('weights_init' weights_init=STRING (',')?)?
+	('means_init' means_init=STRING (',')?)?
+	('precisions_init' precisions_init=STRING (',')?)?
+	('random_state' random_state=IntegerLiteral (',')?)?
+	('warm_start' warm_start=BooleanLiteral (',')?)?
+	('verbose' verbose=IntegerLiteral (',')?)?
+	('verbose_interval' verbose_interval=IntegerLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+SelfTrainingClassifier returns SelfTrainingClassifier: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.semi_supervised.SelfTrainingClassifier.html#sklearn.semi_supervised.SelfTrainingClassifier
+	'self_training_classifier' name=ID
+	'('
+	('base_estimator' base_estimator=ClassifierWithPredictionCertaintyProbabilities (',')?)?
+	('threshold' threshold=DoubleLiteral (',')?)?
+	('criterion' criterion=Self_Training_Criterion (',')?)?
+	('k_best' k_best=IntegerLiteral (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('verbose' verbose=BooleanLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+LabelPropagation returns LabelPropagation: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.semi_supervised.LabelPropagation.html
+	'label_propagation' name=ID
+	'('
+	('kernel' kernel=Label_Propagation_Kernel (',')?)?
+	('gamma' gamma=DoubleLiteral (',')?)?
+	('n_neighbors' n_neighbors=IntegerLiteral (',')?)?
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('tol' tol=DoubleLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+LabelSpreading returns LabelSpreading: // scikit-learn v0.24.2, https://scikit-learn.org/stable/modules/generated/sklearn.semi_supervised.LabelSpreading.html
+	'label_spreading' name=ID
+	'('
+	('kernel' kernel=Label_Propagation_Kernel (',')?)?
+	('gamma' gamma=DoubleLiteral (',')?)?
+	('n_neighbors' n_neighbors=IntegerLiteral (',')?)?
+	('alpha' alpha=DoubleLiteral (',')?)?	
+	('max_iter' max_iter=IntegerLiteral (',')?)?
+	('tol' tol=DoubleLiteral (',')?)?
+	('n_jobs' n_jobs=IntegerLiteral (',')?)?
+		('prediction_plots' prediction_plots=PredictionPlots(',')?)?
+	
+	')'
+;
+enum Label_Propagation_Kernel:
+	NOT_SET='NOT_SET' | KNN="'knn'" | RBF="'rbf'"
+;
+enum Self_Training_Criterion:
+	NOT_SET='NOT_SET' | THRESHOLD="'threshold'" | KBEST="'k_best'"
+;
+enum Init_Params_Methods:
+	NOT_SET='NOT_SET' | KMEANS="'kmeans'" | RANDOM="'random'"
+;
+enum Covariance_Type:
+	NOT_SET='NOT_SET' | FULL="'full'" | TIED="'tied'" | DIAG="'diag'" | SPHERICAL="'spherical'"
+;
+enum Laplacian_Embedding_Label_Assign_Strategy:
+	NOT_SET='NOT_SET' | KMEANS="'kmeans'" | DISCRETIZE="'discretize'"
+;
+enum Eigen_Solver:
+	NOT_SET='NOT_SET' | AUTO="'auto'" | ARPACK="'arpack'" | LOBPCG="'lobpcg'" | AMG="'amg'"
+;
+enum KNN_Algorithms:
+	NOT_SET='NOT_SET' | AUTO="'auto'" | BALL_TREE="'ball_tree'" | KD_TREE="'kd_tree'" | BRUTE="'brute'"
+;
+enum KMeans_init_enum:
+	NOT_SET='NOT_SET' | KMEANS_PLUS_PLUS="'k-means++'" | RANDOM="'random'"
+;
+enum KMeans_algorithm_enum:
+	NOT_SET='NOT_SET' | AUTO="'auto'" | FULL="'full'" | ELKAN="'elkan'"
+;
+
+
+// Optimizer a.k.a. Solver
+
+enum Multi_class:
+	NOT_SET='NOT_SET' | AUTO="'auto'"| OVR="'ovr'" | MULTINOMIAL="'multinomial'"
+;
+enum DecisionTreeRegressorCriterion:
+	NOT_SET='NOT_SET' | MSE="'mse'" | FRIEDMAN_MSE="'friedman_mse'" | MAE="'mae'" | POISSON="'poisson'"
+;
+enum DecisionTreeClassifierCriterion:
+	NOT_SET='NOT_SET' | GINI="'gini'" | ENTROPY="'entropy'"
+;
+enum DecisionTreeSplitter:
+	NOT_SET='NOT_SET' | BEST="'best'" | RANDOM="'random'"
+;
+enum Max_features_enum:
+	NOT_SET='NOT_SET' | AUTO="'auto'" | SQRT="'sqrt'" | LOG2="'log2'"
+;
+enum RandomForestRegressorCriterion:
+	NOT_SET='NOT_SET' | MSE="'mse'" | MAE="'mae'"
+;
+enum RandomForestClassifierCriterion:
+	NOT_SET='NOT_SET' | GINI="'gini'" | ENTROPY="'entropy'"
+;
+enum Activation:
+    NOT_SET='NOT_SET' 
+    | RELU='relu' 
+    | SIGMOID='sigmoid' 
+    | SOFTMAX='softmax' 
+    | SOFTPLUS='softplus' 
+    | SOFTSIGN='softsign' 
+    | TANH='tanh' 
+    | SELU='selu' 
+    | ELU='elu' 
+    | EXPONENTIAL='exponential' 
+    | IDENTITY='identity' 
+    | LOGISTIC='logistic' 
+    | LINEAR='linear'; // Added LINEAR option
+
+enum Learning_rate_mode returns Learning_rate_mode:
+	NOT_SET='NOT_SET' | CONSTANT="'constant'" | INVSCALING="'invscaling'" | ADAPTIVE="'adaptive'" | EXPONENTIAL_DECAY='ExponentialDecay' | PIECEWISE_CONSTANT_DECAY='PiecewiseConstantDecay' | POLYNOMIAL_DECAY='PolynomialDecay' | INVERSE_TIME_DECAY='InverseTimeDecay'
+;
+enum Loss:
+	NOT_SET='NOT_SET' | SPARSE_CATEGORICAL_CROSSENTROPY='SparseCategoricalCrossentropy' | CATEGORICAL_CROSSENTROPY='CategoricalCrossentropy' | MEAN_SQUARED_ERROR='MeanSquaredError'
+;
+/*****************************************************************************
+* EVENTS *
+*****************************************************************************/
+Event:
+	ReceiveMessage;
+ReceiveMessage returns ReceiveMessage:
+	(name=ID ":")? port=[Port|ID]'?'message=[Message|ID];
+
+/*****************************************************************************
+* ACTIONS *
+*****************************************************************************/
+Action returns Action:
+    ActionBlock | ExternStatement | SendAction | VariableAssignment | Increment | Decrement | LoopAction | ForAction |
+    ConditionalAction | ReturnAction | PrintAction | ErrorAction | StartSession | FunctionCallStatement | LocalVariable |
+    DASaveAction | DAPreprocessAction | DATrainAction | DAPredictAction | DAPreTrainedPredictAction | DAForecastAction; //ML2
+ActionBlock returns ActionBlock:
+    {ActionBlock}
+    'do' (actions+=Action)* 'end';
+ExternStatement returns ExternStatement:
+    statement=EXTERN ('&' segments+=Expression)*;
+    
+LocalVariable returns LocalVariable:
+    (readonly?='readonly')? 'var' name=ID ':' typeRef=TypeRef ( '=' init=Expression)? ( annotations+=PlatformAnnotation )*
+;
+SendAction returns SendAction:
+    port=[Port|ID] '!' message=[Message|ID] '(' (parameters+=Expression ( "," parameters+=Expression)*)? ')';
+VariableAssignment returns VariableAssignment:
+    property=[Variable|ID] (=>'[' index=Expression ']')? '=' expression=Expression;
+Increment returns Increment:
+    var=[Variable|ID] '++';
+Decrement returns Decrement:
+    var=[Variable|ID] '--';
+ForAction returns ForAction:
+    'for' '(' variable=Parameter (',' index=Parameter)? 'in' array=PropertyReference ')' action=Action;
+LoopAction returns LoopAction:
+    'while' '(' condition=Expression ')' action=Action;
+ConditionalAction returns ConditionalAction:
+    'if' '(' condition=Expression ')' action=Action (=>'else' elseAction=Action)?;
+ReturnAction returns ReturnAction:
+    {ReturnAction} 'return' ( => exp=Expression )?;
+PrintAction returns PrintAction:
+    ('print' | line ?= 'println') msg+=Expression (',' msg+=Expression)*;
+ErrorAction returns ErrorAction:
+    ('error' | line ?= 'errorln') msg+=Expression (',' msg+=Expression)*;
+StartSession returns StartSession:
+    'fork' session=[Session|ID] ;
+FunctionCallStatement returns FunctionCallStatement:
+    function=[Function|ID] '(' (parameters+=Expression ( "," parameters+=Expression)*)? ')';
+//ML2 Actions
+DASaveAction returns DASaveAction:
+    'da_save' dataAnalytics=[DataAnalytics|ID];
+DAPreprocessAction returns DAPreprocessAction:
+    'da_preprocess' dataAnalytics=[DataAnalytics|ID];
+DATrainAction returns DATrainAction:
+    'da_train' dataAnalytics=[DataAnalytics|ID];
+DAPredictAction returns DAPredictAction:
+    'da_predict' dataAnalytics=[DataAnalytics|ID] '(' features+=[Property|ID] ( "," features+=[Property|ID])* ')';
+DAPreTrainedPredictAction returns DAPreTrainedPredictAction:
+    'da_pre_trained_predict' dataAnalytics=[DataAnalytics|ID] '(' features+=[Property|ID] ( "," features+=[Property|ID])* ')';
+DAForecastAction returns DAForecastAction:
+    'da_forecast' dataAnalytics=[DataAnalytics|ID] '(' features+=[Property|ID] ( "," features+=[Property|ID])* ')';
+
+/*****************************************************************************
+* EXPRESSIONS *
+*****************************************************************************/
+	//ExternExpression | EnumLiteralRef | IntegerLiteral | BooleanLiteral | StringLiteral | DoubleLiteral | NotExpression | UnaryMinus |
+	//PlusExpression | MinusExpression | TimesExpression | DivExpression | ModExpression | EqualsExpression | NotEqualsExpression | GreaterExpression |
+	//LowerExpression | GreaterOrEqualExpression | LowerOrEqualExpression | AndExpression | OrExpression | PropertyReference | ArrayIndex |
+	//ExpressionGroup | FunctionCallExpression | MessageParameter | Reference;
+Expression: OrExpression;
+OrExpression returns Expression:
+	AndExpression ({OrExpression.lhs=current} "or" rhs=AndExpression)*
+;
+AndExpression returns Expression:
+	Equality ({AndExpression.lhs=current} "and" rhs=Equality)*
+;
+Equality returns Expression:
+	Comparaison (
+	( {EqualsExpression.lhs=current} "==" rhs=Comparaison ) |
+	( {NotEqualsExpression.lhs=current} "!=" rhs=Comparaison )
+	)*	
+;
+Comparaison returns Expression:
+	Addition (
+	( {GreaterExpression.lhs=current} ">" rhs=Addition ) |
+	( {LowerExpression.lhs=current} "<" rhs=Addition ) |
+	( {GreaterOrEqualExpression.lhs=current} ">=" rhs=Addition ) |
+	( {LowerOrEqualExpression.lhs=current} "<=" rhs=Addition )
+	)*
+;
+Addition returns Expression:
+	Multiplication (
+	( {PlusExpression.lhs=current} "+" rhs=Multiplication ) |
+	( {MinusExpression.lhs=current} "-" rhs=Multiplication )
+	)*	
+;
+Multiplication returns Expression:
+	CastExpression (
+	( {TimesExpression.lhs=current} "*" rhs=CastExpression ) |
+	( {DivExpression.lhs=current} "/" rhs=CastExpression ) |
+	( {ModExpression.lhs=current} "%" rhs=CastExpression)
+	)*	
+;
+CastExpression returns Expression:
+	Primary ({CastExpression.term=current} "as" type=[Type|ID] (^isArray?='['']')?)?
+;
+Primary returns Expression:
+	{ExpressionGroup} '(' term=Expression ')' |
+	{NotExpression} "not" term=Primary |
+	{UnaryMinus} '-' term=Primary
+	| ArrayIndexPostfix
+;
+ArrayIndexPostfix returns Expression:
+	AtomicExpression ( {ArrayIndex.array=current} '[' index=Expression ']')?
+;
+AtomicExpression returns Expression:
+	ExternExpression | Literal | ArrayInit | PropertyReference | FunctionCallExpression
+	 | EventReference
+;
+ExternExpression returns ExternExpression:
+	expression=EXTERN ('&' segments+=Expression)*;
+	
+Literal returns Literal:
+	EnumLiteralRef | ByteLiteral | CharLiteral | IntegerLiteral | BooleanLiteral | StringLiteral | DoubleLiteral
+;
+ArrayInit returns ArrayInit:
+	'{' values+=(Expression) (',' values+=(Expression))* '}'
+;
+	
+EnumLiteralRef returns EnumLiteralRef:
+	^enum=[Enumeration|ID] ':' literal=[EnumerationLiteral|ID];
+	
+ByteLiteral returns ByteLiteral:
+	byteValue=BYTE;
+	
+CharLiteral returns CharLiteral:
+	charValue=CHAR;
+IntegerLiteral returns IntegerLiteral:
+	intValue=INT;
+BooleanLiteral returns BooleanLiteral:
+	(boolValue?='true') | {BooleanLiteral} 'false'
+	;
+StringLiteral returns StringLiteral:
+	stringValue=STRING;
+DoubleLiteral returns DoubleLiteral:
+	doubleValue = FLOAT;
+PropertyReference returns PropertyReference:
+	property=[Variable|ID]
+;
+EventReference returns EventReference:
+	receiveMsg=[Event|ID] "." parameter=[Parameter|ID]
+;
+FunctionCallExpression returns FunctionCallExpression:
+	function=[Function|ID]'('
+		( parameters+=Expression ( "," parameters+=Expression )* )?
+	')';
+/*****************************************************************************
+* CONFIGURATIONS *
+*****************************************************************************/
+Configuration returns Configuration:
+	'configuration' name=ID ( annotations+=PlatformAnnotation )* '{'
+	(instances+=Instance | connectors+=AbstractConnector | propassigns+=ConfigPropertyAssign)*
+	'}';
+Instance returns Instance:
+	'instance' name=ID ':' type=[Thing|ID] ( annotations+=PlatformAnnotation )*;
+ConfigPropertyAssign returns ConfigPropertyAssign:
+	'set' instance=[Instance|ID] '.' property=[Property|ID] (=>'[' index=Expression ']')? '=' init=Expression ( annotations+=PlatformAnnotation )*;
+AbstractConnector:
+	Connector | ExternalConnector;
+	
+Connector returns Connector:
+	'connector'	(name=ID)? cli=[Instance|ID] '.' required=[RequiredPort|ID] '=>' srv=[Instance|ID] '.' provided=[ProvidedPort|ID] ( annotations+=PlatformAnnotation )*;
+ExternalConnector returns ExternalConnector:
+	'connector'	(name=ID)? inst=[Instance|ID] '.' port=[Port|ID] 'over' protocol=[Protocol|ID] ( annotations+=PlatformAnnotation )*;
+/*
+InstanceRef returns InstanceRef:
+	instance=[Instance|ID];
+*/
+/*****************************************************************************
+* TERMINALS *
+*****************************************************************************/
+/*****************************************************************************
+ * TERMINALS *
+ *****************************************************************************/
+
+terminal ID:
+    '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+;
+
+
+
+terminal BYTE returns ecore::EByte:
+    "0x" ('0'..'9'|'a'..'f'|'A'..'F') ('0'..'9'|'a'..'f'|'A'..'F')
+;
+
+terminal CHAR returns ecore::EByte:
+    "'" ('\\0'|'\\t'|'\\n'|'\\r'|' '..'&'|'\\\''|'('..'['|'\\\\'|']'..'~') "'"
+;
+
+terminal FLOAT returns ecore::EDouble:
+      ('0'..'9')+ '.' ('0'..'9')* (('e'|'E') ('+'|'-')? ('0'..'9')+)?
+    | '.' ('0'..'9')+ (('e'|'E') ('+'|'-')? ('0'..'9')+)?
+    | ('0'..'9')+ ('e'|'E') ('+'|'-')? ('0'..'9')+
+;
+
+terminal INT returns ecore::ELong: ('0'..'9')+;
+
+terminal DOUBLE returns ecore::EDouble:
+    '-'? INT '.' INT (('e'|'E') ('+'|'-')? INT)?
+;
+
+terminal ANNOTATION_ID:
+    "@" ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*
+;
+
+terminal STRING:
+    '"' ( '\\' . | !('\\'|'"') )* '"'
+;
+
+terminal EXTERN:
+    '`' ( '\\' . | !('\\'|'`') )* '`'
+;
+
+terminal ML_COMMENT:
+    '/*' -> '*/'
+;
+
+terminal SL_COMMENT:
+    '//' !('\n'|'\r')* ('\r'? '\n')
+;
+
+terminal WS:
+    (' ' | '\t' | '\r' | '\n')+
+;
+
+terminal ANY_OTHER:
+    .
+;
+
+
+
+	

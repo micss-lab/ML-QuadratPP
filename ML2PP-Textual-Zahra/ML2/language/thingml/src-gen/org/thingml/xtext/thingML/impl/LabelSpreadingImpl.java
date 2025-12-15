@@ -1,0 +1,649 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.thingml.xtext.thingML.DoubleLiteral;
+import org.thingml.xtext.thingML.IntegerLiteral;
+import org.thingml.xtext.thingML.LabelSpreading;
+import org.thingml.xtext.thingML.Label_Propagation_Kernel;
+import org.thingml.xtext.thingML.ThingMLPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Label Spreading</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getKernel <em>Kernel</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getGamma <em>Gamma</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getN_neighbors <em>Nneighbors</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getAlpha <em>Alpha</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getMax_iter <em>Max iter</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getTol <em>Tol</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LabelSpreadingImpl#getN_jobs <em>Njobs</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class LabelSpreadingImpl extends ML2_ModelAlgorithmImpl implements LabelSpreading
+{
+  /**
+   * The default value of the '{@link #getKernel() <em>Kernel</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKernel()
+   * @generated
+   * @ordered
+   */
+  protected static final Label_Propagation_Kernel KERNEL_EDEFAULT = Label_Propagation_Kernel.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getKernel() <em>Kernel</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKernel()
+   * @generated
+   * @ordered
+   */
+  protected Label_Propagation_Kernel kernel = KERNEL_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getGamma() <em>Gamma</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGamma()
+   * @generated
+   * @ordered
+   */
+  protected DoubleLiteral gamma;
+
+  /**
+   * The cached value of the '{@link #getN_neighbors() <em>Nneighbors</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getN_neighbors()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral n_neighbors;
+
+  /**
+   * The cached value of the '{@link #getAlpha() <em>Alpha</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlpha()
+   * @generated
+   * @ordered
+   */
+  protected DoubleLiteral alpha;
+
+  /**
+   * The cached value of the '{@link #getMax_iter() <em>Max iter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMax_iter()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral max_iter;
+
+  /**
+   * The cached value of the '{@link #getTol() <em>Tol</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTol()
+   * @generated
+   * @ordered
+   */
+  protected DoubleLiteral tol;
+
+  /**
+   * The cached value of the '{@link #getN_jobs() <em>Njobs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getN_jobs()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral n_jobs;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LabelSpreadingImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return ThingMLPackage.eINSTANCE.getLabelSpreading();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Label_Propagation_Kernel getKernel()
+  {
+    return kernel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setKernel(Label_Propagation_Kernel newKernel)
+  {
+    Label_Propagation_Kernel oldKernel = kernel;
+    kernel = newKernel == null ? KERNEL_EDEFAULT : newKernel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__KERNEL, oldKernel, kernel));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoubleLiteral getGamma()
+  {
+    return gamma;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetGamma(DoubleLiteral newGamma, NotificationChain msgs)
+  {
+    DoubleLiteral oldGamma = gamma;
+    gamma = newGamma;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__GAMMA, oldGamma, newGamma);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setGamma(DoubleLiteral newGamma)
+  {
+    if (newGamma != gamma)
+    {
+      NotificationChain msgs = null;
+      if (gamma != null)
+        msgs = ((InternalEObject)gamma).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__GAMMA, null, msgs);
+      if (newGamma != null)
+        msgs = ((InternalEObject)newGamma).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__GAMMA, null, msgs);
+      msgs = basicSetGamma(newGamma, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__GAMMA, newGamma, newGamma));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getN_neighbors()
+  {
+    return n_neighbors;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetN_neighbors(IntegerLiteral newN_neighbors, NotificationChain msgs)
+  {
+    IntegerLiteral oldN_neighbors = n_neighbors;
+    n_neighbors = newN_neighbors;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__NNEIGHBORS, oldN_neighbors, newN_neighbors);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setN_neighbors(IntegerLiteral newN_neighbors)
+  {
+    if (newN_neighbors != n_neighbors)
+    {
+      NotificationChain msgs = null;
+      if (n_neighbors != null)
+        msgs = ((InternalEObject)n_neighbors).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__NNEIGHBORS, null, msgs);
+      if (newN_neighbors != null)
+        msgs = ((InternalEObject)newN_neighbors).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__NNEIGHBORS, null, msgs);
+      msgs = basicSetN_neighbors(newN_neighbors, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__NNEIGHBORS, newN_neighbors, newN_neighbors));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoubleLiteral getAlpha()
+  {
+    return alpha;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetAlpha(DoubleLiteral newAlpha, NotificationChain msgs)
+  {
+    DoubleLiteral oldAlpha = alpha;
+    alpha = newAlpha;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__ALPHA, oldAlpha, newAlpha);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setAlpha(DoubleLiteral newAlpha)
+  {
+    if (newAlpha != alpha)
+    {
+      NotificationChain msgs = null;
+      if (alpha != null)
+        msgs = ((InternalEObject)alpha).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__ALPHA, null, msgs);
+      if (newAlpha != null)
+        msgs = ((InternalEObject)newAlpha).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__ALPHA, null, msgs);
+      msgs = basicSetAlpha(newAlpha, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__ALPHA, newAlpha, newAlpha));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getMax_iter()
+  {
+    return max_iter;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMax_iter(IntegerLiteral newMax_iter, NotificationChain msgs)
+  {
+    IntegerLiteral oldMax_iter = max_iter;
+    max_iter = newMax_iter;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__MAX_ITER, oldMax_iter, newMax_iter);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMax_iter(IntegerLiteral newMax_iter)
+  {
+    if (newMax_iter != max_iter)
+    {
+      NotificationChain msgs = null;
+      if (max_iter != null)
+        msgs = ((InternalEObject)max_iter).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__MAX_ITER, null, msgs);
+      if (newMax_iter != null)
+        msgs = ((InternalEObject)newMax_iter).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__MAX_ITER, null, msgs);
+      msgs = basicSetMax_iter(newMax_iter, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__MAX_ITER, newMax_iter, newMax_iter));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public DoubleLiteral getTol()
+  {
+    return tol;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetTol(DoubleLiteral newTol, NotificationChain msgs)
+  {
+    DoubleLiteral oldTol = tol;
+    tol = newTol;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__TOL, oldTol, newTol);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTol(DoubleLiteral newTol)
+  {
+    if (newTol != tol)
+    {
+      NotificationChain msgs = null;
+      if (tol != null)
+        msgs = ((InternalEObject)tol).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__TOL, null, msgs);
+      if (newTol != null)
+        msgs = ((InternalEObject)newTol).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__TOL, null, msgs);
+      msgs = basicSetTol(newTol, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__TOL, newTol, newTol));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getN_jobs()
+  {
+    return n_jobs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetN_jobs(IntegerLiteral newN_jobs, NotificationChain msgs)
+  {
+    IntegerLiteral oldN_jobs = n_jobs;
+    n_jobs = newN_jobs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__NJOBS, oldN_jobs, newN_jobs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setN_jobs(IntegerLiteral newN_jobs)
+  {
+    if (newN_jobs != n_jobs)
+    {
+      NotificationChain msgs = null;
+      if (n_jobs != null)
+        msgs = ((InternalEObject)n_jobs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__NJOBS, null, msgs);
+      if (newN_jobs != null)
+        msgs = ((InternalEObject)newN_jobs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LABEL_SPREADING__NJOBS, null, msgs);
+      msgs = basicSetN_jobs(newN_jobs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LABEL_SPREADING__NJOBS, newN_jobs, newN_jobs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LABEL_SPREADING__GAMMA:
+        return basicSetGamma(null, msgs);
+      case ThingMLPackage.LABEL_SPREADING__NNEIGHBORS:
+        return basicSetN_neighbors(null, msgs);
+      case ThingMLPackage.LABEL_SPREADING__ALPHA:
+        return basicSetAlpha(null, msgs);
+      case ThingMLPackage.LABEL_SPREADING__MAX_ITER:
+        return basicSetMax_iter(null, msgs);
+      case ThingMLPackage.LABEL_SPREADING__TOL:
+        return basicSetTol(null, msgs);
+      case ThingMLPackage.LABEL_SPREADING__NJOBS:
+        return basicSetN_jobs(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LABEL_SPREADING__KERNEL:
+        return getKernel();
+      case ThingMLPackage.LABEL_SPREADING__GAMMA:
+        return getGamma();
+      case ThingMLPackage.LABEL_SPREADING__NNEIGHBORS:
+        return getN_neighbors();
+      case ThingMLPackage.LABEL_SPREADING__ALPHA:
+        return getAlpha();
+      case ThingMLPackage.LABEL_SPREADING__MAX_ITER:
+        return getMax_iter();
+      case ThingMLPackage.LABEL_SPREADING__TOL:
+        return getTol();
+      case ThingMLPackage.LABEL_SPREADING__NJOBS:
+        return getN_jobs();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LABEL_SPREADING__KERNEL:
+        setKernel((Label_Propagation_Kernel)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__GAMMA:
+        setGamma((DoubleLiteral)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__NNEIGHBORS:
+        setN_neighbors((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__ALPHA:
+        setAlpha((DoubleLiteral)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__MAX_ITER:
+        setMax_iter((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__TOL:
+        setTol((DoubleLiteral)newValue);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__NJOBS:
+        setN_jobs((IntegerLiteral)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LABEL_SPREADING__KERNEL:
+        setKernel(KERNEL_EDEFAULT);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__GAMMA:
+        setGamma((DoubleLiteral)null);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__NNEIGHBORS:
+        setN_neighbors((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__ALPHA:
+        setAlpha((DoubleLiteral)null);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__MAX_ITER:
+        setMax_iter((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__TOL:
+        setTol((DoubleLiteral)null);
+        return;
+      case ThingMLPackage.LABEL_SPREADING__NJOBS:
+        setN_jobs((IntegerLiteral)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LABEL_SPREADING__KERNEL:
+        return kernel != KERNEL_EDEFAULT;
+      case ThingMLPackage.LABEL_SPREADING__GAMMA:
+        return gamma != null;
+      case ThingMLPackage.LABEL_SPREADING__NNEIGHBORS:
+        return n_neighbors != null;
+      case ThingMLPackage.LABEL_SPREADING__ALPHA:
+        return alpha != null;
+      case ThingMLPackage.LABEL_SPREADING__MAX_ITER:
+        return max_iter != null;
+      case ThingMLPackage.LABEL_SPREADING__TOL:
+        return tol != null;
+      case ThingMLPackage.LABEL_SPREADING__NJOBS:
+        return n_jobs != null;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (kernel: ");
+    result.append(kernel);
+    result.append(')');
+    return result.toString();
+  }
+
+} //LabelSpreadingImpl

@@ -1,0 +1,296 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>KMeans</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getN_clusters <em>Nclusters</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getInit_enum <em>Init enum</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getInit_str <em>Init str</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getN_init <em>Ninit</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getMax_iter <em>Max iter</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getTol <em>Tol</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getVerbose <em>Verbose</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getRandom_state <em>Random state</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getCopy_x <em>Copy x</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getN_jobs <em>Njobs</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.KMeans#getAlgorithm <em>Algorithm</em>}</li>
+ * </ul>
+ *
+ * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans()
+ * @model
+ * @generated
+ */
+public interface KMeans extends ML2_ModelAlgorithm
+{
+  /**
+   * Returns the value of the '<em><b>Nclusters</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Nclusters</em>' containment reference.
+   * @see #setN_clusters(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_N_clusters()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_clusters();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getN_clusters <em>Nclusters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Nclusters</em>' containment reference.
+   * @see #getN_clusters()
+   * @generated
+   */
+  void setN_clusters(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Init enum</b></em>' attribute.
+   * The literals are from the enumeration {@link org.thingml.xtext.thingML.KMeans_init_enum}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Init enum</em>' attribute.
+   * @see org.thingml.xtext.thingML.KMeans_init_enum
+   * @see #setInit_enum(KMeans_init_enum)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Init_enum()
+   * @model
+   * @generated
+   */
+  KMeans_init_enum getInit_enum();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getInit_enum <em>Init enum</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Init enum</em>' attribute.
+   * @see org.thingml.xtext.thingML.KMeans_init_enum
+   * @see #getInit_enum()
+   * @generated
+   */
+  void setInit_enum(KMeans_init_enum value);
+
+  /**
+   * Returns the value of the '<em><b>Init str</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Init str</em>' attribute.
+   * @see #setInit_str(String)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Init_str()
+   * @model
+   * @generated
+   */
+  String getInit_str();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getInit_str <em>Init str</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Init str</em>' attribute.
+   * @see #getInit_str()
+   * @generated
+   */
+  void setInit_str(String value);
+
+  /**
+   * Returns the value of the '<em><b>Ninit</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Ninit</em>' containment reference.
+   * @see #setN_init(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_N_init()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_init();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getN_init <em>Ninit</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Ninit</em>' containment reference.
+   * @see #getN_init()
+   * @generated
+   */
+  void setN_init(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Max iter</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Max iter</em>' containment reference.
+   * @see #setMax_iter(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Max_iter()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMax_iter();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getMax_iter <em>Max iter</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Max iter</em>' containment reference.
+   * @see #getMax_iter()
+   * @generated
+   */
+  void setMax_iter(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Tol</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tol</em>' containment reference.
+   * @see #setTol(DoubleLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Tol()
+   * @model containment="true"
+   * @generated
+   */
+  DoubleLiteral getTol();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getTol <em>Tol</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tol</em>' containment reference.
+   * @see #getTol()
+   * @generated
+   */
+  void setTol(DoubleLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Verbose</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Verbose</em>' containment reference.
+   * @see #setVerbose(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Verbose()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getVerbose();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getVerbose <em>Verbose</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Verbose</em>' containment reference.
+   * @see #getVerbose()
+   * @generated
+   */
+  void setVerbose(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Random state</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Random state</em>' containment reference.
+   * @see #setRandom_state(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Random_state()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getRandom_state();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getRandom_state <em>Random state</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Random state</em>' containment reference.
+   * @see #getRandom_state()
+   * @generated
+   */
+  void setRandom_state(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Copy x</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Copy x</em>' containment reference.
+   * @see #setCopy_x(BooleanLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Copy_x()
+   * @model containment="true"
+   * @generated
+   */
+  BooleanLiteral getCopy_x();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getCopy_x <em>Copy x</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Copy x</em>' containment reference.
+   * @see #getCopy_x()
+   * @generated
+   */
+  void setCopy_x(BooleanLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Njobs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Njobs</em>' containment reference.
+   * @see #setN_jobs(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_N_jobs()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_jobs();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getN_jobs <em>Njobs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Njobs</em>' containment reference.
+   * @see #getN_jobs()
+   * @generated
+   */
+  void setN_jobs(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Algorithm</b></em>' attribute.
+   * The literals are from the enumeration {@link org.thingml.xtext.thingML.KMeans_algorithm_enum}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Algorithm</em>' attribute.
+   * @see org.thingml.xtext.thingML.KMeans_algorithm_enum
+   * @see #setAlgorithm(KMeans_algorithm_enum)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getKMeans_Algorithm()
+   * @model
+   * @generated
+   */
+  KMeans_algorithm_enum getAlgorithm();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.KMeans#getAlgorithm <em>Algorithm</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Algorithm</em>' attribute.
+   * @see org.thingml.xtext.thingML.KMeans_algorithm_enum
+   * @see #getAlgorithm()
+   * @generated
+   */
+  void setAlgorithm(KMeans_algorithm_enum value);
+
+} // KMeans

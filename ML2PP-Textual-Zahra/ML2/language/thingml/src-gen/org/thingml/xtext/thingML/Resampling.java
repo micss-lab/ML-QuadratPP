@@ -1,0 +1,353 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.common.util.Enumerator;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the literals of the enumeration '<em><b>Resampling</b></em>',
+ * and utility methods for working with them.
+ * <!-- end-user-doc -->
+ * @see org.thingml.xtext.thingML.ThingMLPackage#getResampling()
+ * @model
+ * @generated
+ */
+public enum Resampling implements Enumerator
+{
+  /**
+   * The '<em><b>NOT SET</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #NOT_SET_VALUE
+   * @generated
+   * @ordered
+   */
+  NOT_SET(0, "NOT_SET", "NOT_SET"),
+
+  /**
+   * The '<em><b>MINUTELY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MINUTELY_VALUE
+   * @generated
+   * @ordered
+   */
+  MINUTELY(1, "MINUTELY", "MINUTELY"),
+
+  /**
+   * The '<em><b>HOURLY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #HOURLY_VALUE
+   * @generated
+   * @ordered
+   */
+  HOURLY(2, "HOURLY", "HOURLY"),
+
+  /**
+   * The '<em><b>DAILY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #DAILY_VALUE
+   * @generated
+   * @ordered
+   */
+  DAILY(3, "DAILY", "DAILY"),
+
+  /**
+   * The '<em><b>WEEKLY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #WEEKLY_VALUE
+   * @generated
+   * @ordered
+   */
+  WEEKLY(4, "WEEKLY", "WEEKLY"),
+
+  /**
+   * The '<em><b>MONTHLY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MONTHLY_VALUE
+   * @generated
+   * @ordered
+   */
+  MONTHLY(5, "MONTHLY", "MONTHLY"),
+
+  /**
+   * The '<em><b>YEARLY</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #YEARLY_VALUE
+   * @generated
+   * @ordered
+   */
+  YEARLY(6, "YEARLY", "YEARLY");
+
+  /**
+   * The '<em><b>NOT SET</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #NOT_SET
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int NOT_SET_VALUE = 0;
+
+  /**
+   * The '<em><b>MINUTELY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MINUTELY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int MINUTELY_VALUE = 1;
+
+  /**
+   * The '<em><b>HOURLY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #HOURLY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int HOURLY_VALUE = 2;
+
+  /**
+   * The '<em><b>DAILY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #DAILY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int DAILY_VALUE = 3;
+
+  /**
+   * The '<em><b>WEEKLY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #WEEKLY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int WEEKLY_VALUE = 4;
+
+  /**
+   * The '<em><b>MONTHLY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #MONTHLY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int MONTHLY_VALUE = 5;
+
+  /**
+   * The '<em><b>YEARLY</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #YEARLY
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int YEARLY_VALUE = 6;
+
+  /**
+   * An array of all the '<em><b>Resampling</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static final Resampling[] VALUES_ARRAY =
+    new Resampling[]
+    {
+      NOT_SET,
+      MINUTELY,
+      HOURLY,
+      DAILY,
+      WEEKLY,
+      MONTHLY,
+      YEARLY,
+    };
+
+  /**
+   * A public read-only list of all the '<em><b>Resampling</b></em>' enumerators.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public static final List<Resampling> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+
+  /**
+   * Returns the '<em><b>Resampling</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Resampling get(String literal)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Resampling result = VALUES_ARRAY[i];
+      if (result.toString().equals(literal))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Resampling</b></em>' literal with the specified name.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Resampling getByName(String name)
+  {
+    for (int i = 0; i < VALUES_ARRAY.length; ++i)
+    {
+      Resampling result = VALUES_ARRAY[i];
+      if (result.getName().equals(name))
+      {
+        return result;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Returns the '<em><b>Resampling</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
+   * @generated
+   */
+  public static Resampling get(int value)
+  {
+    switch (value)
+    {
+      case NOT_SET_VALUE: return NOT_SET;
+      case MINUTELY_VALUE: return MINUTELY;
+      case HOURLY_VALUE: return HOURLY;
+      case DAILY_VALUE: return DAILY;
+      case WEEKLY_VALUE: return WEEKLY;
+      case MONTHLY_VALUE: return MONTHLY;
+      case YEARLY_VALUE: return YEARLY;
+    }
+    return null;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final int value;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String name;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private final String literal;
+
+  /**
+   * Only this class can construct instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private Resampling(int value, String name, String literal)
+  {
+    this.value = value;
+    this.name = name;
+    this.literal = literal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int getValue()
+  {
+    return value;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getLiteral()
+  {
+    return literal;
+  }
+
+  /**
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    return literal;
+  }
+  
+} //Resampling

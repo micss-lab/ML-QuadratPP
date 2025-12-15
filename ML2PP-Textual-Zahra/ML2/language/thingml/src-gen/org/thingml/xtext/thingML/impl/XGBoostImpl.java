@@ -1,0 +1,1240 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.thingml.xtext.thingML.IntegerLiteral;
+import org.thingml.xtext.thingML.ThingMLPackage;
+import org.thingml.xtext.thingML.XGBoost;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>XG Boost</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getMax_depth <em>Max depth</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getLearning_rate <em>Learning rate</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getN_estimators <em>Nestimators</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getObjective <em>Objective</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getBooster <em>Booster</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getGamma <em>Gamma</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getMin_child_weight <em>Min child weight</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getSubsample <em>Subsample</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getColsample_bytree <em>Colsample bytree</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getColsample_bylevel <em>Colsample bylevel</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getColsample_bynode <em>Colsample bynode</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getReg_alpha <em>Reg alpha</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getReg_lambda <em>Reg lambda</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getScale_pos_weight <em>Scale pos weight</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getBase_score <em>Base score</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getRandom_state <em>Random state</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getMissing <em>Missing</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.XGBoostImpl#getImportance_type <em>Importance type</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class XGBoostImpl extends machine_learning_ModelAlgorithmImpl implements XGBoost
+{
+  /**
+   * The cached value of the '{@link #getMax_depth() <em>Max depth</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMax_depth()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral max_depth;
+
+  /**
+   * The default value of the '{@link #getLearning_rate() <em>Learning rate</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLearning_rate()
+   * @generated
+   * @ordered
+   */
+  protected static final double LEARNING_RATE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getLearning_rate() <em>Learning rate</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLearning_rate()
+   * @generated
+   * @ordered
+   */
+  protected double learning_rate = LEARNING_RATE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getN_estimators() <em>Nestimators</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getN_estimators()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral n_estimators;
+
+  /**
+   * The default value of the '{@link #getObjective() <em>Objective</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getObjective()
+   * @generated
+   * @ordered
+   */
+  protected static final String OBJECTIVE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getObjective() <em>Objective</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getObjective()
+   * @generated
+   * @ordered
+   */
+  protected String objective = OBJECTIVE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getBooster() <em>Booster</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBooster()
+   * @generated
+   * @ordered
+   */
+  protected static final String BOOSTER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getBooster() <em>Booster</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBooster()
+   * @generated
+   * @ordered
+   */
+  protected String booster = BOOSTER_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getGamma() <em>Gamma</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGamma()
+   * @generated
+   * @ordered
+   */
+  protected static final double GAMMA_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getGamma() <em>Gamma</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGamma()
+   * @generated
+   * @ordered
+   */
+  protected double gamma = GAMMA_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getMin_child_weight() <em>Min child weight</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMin_child_weight()
+   * @generated
+   * @ordered
+   */
+  protected static final double MIN_CHILD_WEIGHT_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getMin_child_weight() <em>Min child weight</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMin_child_weight()
+   * @generated
+   * @ordered
+   */
+  protected double min_child_weight = MIN_CHILD_WEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getSubsample() <em>Subsample</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSubsample()
+   * @generated
+   * @ordered
+   */
+  protected static final double SUBSAMPLE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getSubsample() <em>Subsample</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSubsample()
+   * @generated
+   * @ordered
+   */
+  protected double subsample = SUBSAMPLE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getColsample_bytree() <em>Colsample bytree</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bytree()
+   * @generated
+   * @ordered
+   */
+  protected static final double COLSAMPLE_BYTREE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getColsample_bytree() <em>Colsample bytree</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bytree()
+   * @generated
+   * @ordered
+   */
+  protected double colsample_bytree = COLSAMPLE_BYTREE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getColsample_bylevel() <em>Colsample bylevel</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bylevel()
+   * @generated
+   * @ordered
+   */
+  protected static final double COLSAMPLE_BYLEVEL_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getColsample_bylevel() <em>Colsample bylevel</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bylevel()
+   * @generated
+   * @ordered
+   */
+  protected double colsample_bylevel = COLSAMPLE_BYLEVEL_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getColsample_bynode() <em>Colsample bynode</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bynode()
+   * @generated
+   * @ordered
+   */
+  protected static final double COLSAMPLE_BYNODE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getColsample_bynode() <em>Colsample bynode</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColsample_bynode()
+   * @generated
+   * @ordered
+   */
+  protected double colsample_bynode = COLSAMPLE_BYNODE_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getReg_alpha() <em>Reg alpha</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReg_alpha()
+   * @generated
+   * @ordered
+   */
+  protected static final double REG_ALPHA_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getReg_alpha() <em>Reg alpha</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReg_alpha()
+   * @generated
+   * @ordered
+   */
+  protected double reg_alpha = REG_ALPHA_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getReg_lambda() <em>Reg lambda</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReg_lambda()
+   * @generated
+   * @ordered
+   */
+  protected static final double REG_LAMBDA_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getReg_lambda() <em>Reg lambda</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReg_lambda()
+   * @generated
+   * @ordered
+   */
+  protected double reg_lambda = REG_LAMBDA_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getScale_pos_weight() <em>Scale pos weight</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getScale_pos_weight()
+   * @generated
+   * @ordered
+   */
+  protected static final double SCALE_POS_WEIGHT_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getScale_pos_weight() <em>Scale pos weight</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getScale_pos_weight()
+   * @generated
+   * @ordered
+   */
+  protected double scale_pos_weight = SCALE_POS_WEIGHT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getBase_score() <em>Base score</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBase_score()
+   * @generated
+   * @ordered
+   */
+  protected static final double BASE_SCORE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getBase_score() <em>Base score</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBase_score()
+   * @generated
+   * @ordered
+   */
+  protected double base_score = BASE_SCORE_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getRandom_state() <em>Random state</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRandom_state()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral random_state;
+
+  /**
+   * The default value of the '{@link #getMissing() <em>Missing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMissing()
+   * @generated
+   * @ordered
+   */
+  protected static final double MISSING_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getMissing() <em>Missing</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMissing()
+   * @generated
+   * @ordered
+   */
+  protected double missing = MISSING_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getImportance_type() <em>Importance type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportance_type()
+   * @generated
+   * @ordered
+   */
+  protected static final String IMPORTANCE_TYPE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getImportance_type() <em>Importance type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getImportance_type()
+   * @generated
+   * @ordered
+   */
+  protected String importance_type = IMPORTANCE_TYPE_EDEFAULT;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected XGBoostImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return ThingMLPackage.eINSTANCE.getXGBoost();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getMax_depth()
+  {
+    return max_depth;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetMax_depth(IntegerLiteral newMax_depth, NotificationChain msgs)
+  {
+    IntegerLiteral oldMax_depth = max_depth;
+    max_depth = newMax_depth;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__MAX_DEPTH, oldMax_depth, newMax_depth);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMax_depth(IntegerLiteral newMax_depth)
+  {
+    if (newMax_depth != max_depth)
+    {
+      NotificationChain msgs = null;
+      if (max_depth != null)
+        msgs = ((InternalEObject)max_depth).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__MAX_DEPTH, null, msgs);
+      if (newMax_depth != null)
+        msgs = ((InternalEObject)newMax_depth).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__MAX_DEPTH, null, msgs);
+      msgs = basicSetMax_depth(newMax_depth, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__MAX_DEPTH, newMax_depth, newMax_depth));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getLearning_rate()
+  {
+    return learning_rate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setLearning_rate(double newLearning_rate)
+  {
+    double oldLearning_rate = learning_rate;
+    learning_rate = newLearning_rate;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__LEARNING_RATE, oldLearning_rate, learning_rate));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getN_estimators()
+  {
+    return n_estimators;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetN_estimators(IntegerLiteral newN_estimators, NotificationChain msgs)
+  {
+    IntegerLiteral oldN_estimators = n_estimators;
+    n_estimators = newN_estimators;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__NESTIMATORS, oldN_estimators, newN_estimators);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setN_estimators(IntegerLiteral newN_estimators)
+  {
+    if (newN_estimators != n_estimators)
+    {
+      NotificationChain msgs = null;
+      if (n_estimators != null)
+        msgs = ((InternalEObject)n_estimators).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__NESTIMATORS, null, msgs);
+      if (newN_estimators != null)
+        msgs = ((InternalEObject)newN_estimators).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__NESTIMATORS, null, msgs);
+      msgs = basicSetN_estimators(newN_estimators, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__NESTIMATORS, newN_estimators, newN_estimators));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getObjective()
+  {
+    return objective;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setObjective(String newObjective)
+  {
+    String oldObjective = objective;
+    objective = newObjective;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__OBJECTIVE, oldObjective, objective));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getBooster()
+  {
+    return booster;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setBooster(String newBooster)
+  {
+    String oldBooster = booster;
+    booster = newBooster;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__BOOSTER, oldBooster, booster));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getGamma()
+  {
+    return gamma;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setGamma(double newGamma)
+  {
+    double oldGamma = gamma;
+    gamma = newGamma;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__GAMMA, oldGamma, gamma));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getMin_child_weight()
+  {
+    return min_child_weight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMin_child_weight(double newMin_child_weight)
+  {
+    double oldMin_child_weight = min_child_weight;
+    min_child_weight = newMin_child_weight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__MIN_CHILD_WEIGHT, oldMin_child_weight, min_child_weight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getSubsample()
+  {
+    return subsample;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSubsample(double newSubsample)
+  {
+    double oldSubsample = subsample;
+    subsample = newSubsample;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__SUBSAMPLE, oldSubsample, subsample));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getColsample_bytree()
+  {
+    return colsample_bytree;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setColsample_bytree(double newColsample_bytree)
+  {
+    double oldColsample_bytree = colsample_bytree;
+    colsample_bytree = newColsample_bytree;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__COLSAMPLE_BYTREE, oldColsample_bytree, colsample_bytree));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getColsample_bylevel()
+  {
+    return colsample_bylevel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setColsample_bylevel(double newColsample_bylevel)
+  {
+    double oldColsample_bylevel = colsample_bylevel;
+    colsample_bylevel = newColsample_bylevel;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__COLSAMPLE_BYLEVEL, oldColsample_bylevel, colsample_bylevel));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getColsample_bynode()
+  {
+    return colsample_bynode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setColsample_bynode(double newColsample_bynode)
+  {
+    double oldColsample_bynode = colsample_bynode;
+    colsample_bynode = newColsample_bynode;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__COLSAMPLE_BYNODE, oldColsample_bynode, colsample_bynode));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getReg_alpha()
+  {
+    return reg_alpha;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReg_alpha(double newReg_alpha)
+  {
+    double oldReg_alpha = reg_alpha;
+    reg_alpha = newReg_alpha;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__REG_ALPHA, oldReg_alpha, reg_alpha));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getReg_lambda()
+  {
+    return reg_lambda;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReg_lambda(double newReg_lambda)
+  {
+    double oldReg_lambda = reg_lambda;
+    reg_lambda = newReg_lambda;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__REG_LAMBDA, oldReg_lambda, reg_lambda));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getScale_pos_weight()
+  {
+    return scale_pos_weight;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setScale_pos_weight(double newScale_pos_weight)
+  {
+    double oldScale_pos_weight = scale_pos_weight;
+    scale_pos_weight = newScale_pos_weight;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__SCALE_POS_WEIGHT, oldScale_pos_weight, scale_pos_weight));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getBase_score()
+  {
+    return base_score;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setBase_score(double newBase_score)
+  {
+    double oldBase_score = base_score;
+    base_score = newBase_score;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__BASE_SCORE, oldBase_score, base_score));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getRandom_state()
+  {
+    return random_state;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRandom_state(IntegerLiteral newRandom_state, NotificationChain msgs)
+  {
+    IntegerLiteral oldRandom_state = random_state;
+    random_state = newRandom_state;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__RANDOM_STATE, oldRandom_state, newRandom_state);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRandom_state(IntegerLiteral newRandom_state)
+  {
+    if (newRandom_state != random_state)
+    {
+      NotificationChain msgs = null;
+      if (random_state != null)
+        msgs = ((InternalEObject)random_state).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__RANDOM_STATE, null, msgs);
+      if (newRandom_state != null)
+        msgs = ((InternalEObject)newRandom_state).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.XG_BOOST__RANDOM_STATE, null, msgs);
+      msgs = basicSetRandom_state(newRandom_state, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__RANDOM_STATE, newRandom_state, newRandom_state));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getMissing()
+  {
+    return missing;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMissing(double newMissing)
+  {
+    double oldMissing = missing;
+    missing = newMissing;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__MISSING, oldMissing, missing));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getImportance_type()
+  {
+    return importance_type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setImportance_type(String newImportance_type)
+  {
+    String oldImportance_type = importance_type;
+    importance_type = newImportance_type;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.XG_BOOST__IMPORTANCE_TYPE, oldImportance_type, importance_type));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.XG_BOOST__MAX_DEPTH:
+        return basicSetMax_depth(null, msgs);
+      case ThingMLPackage.XG_BOOST__NESTIMATORS:
+        return basicSetN_estimators(null, msgs);
+      case ThingMLPackage.XG_BOOST__RANDOM_STATE:
+        return basicSetRandom_state(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.XG_BOOST__MAX_DEPTH:
+        return getMax_depth();
+      case ThingMLPackage.XG_BOOST__LEARNING_RATE:
+        return getLearning_rate();
+      case ThingMLPackage.XG_BOOST__NESTIMATORS:
+        return getN_estimators();
+      case ThingMLPackage.XG_BOOST__OBJECTIVE:
+        return getObjective();
+      case ThingMLPackage.XG_BOOST__BOOSTER:
+        return getBooster();
+      case ThingMLPackage.XG_BOOST__GAMMA:
+        return getGamma();
+      case ThingMLPackage.XG_BOOST__MIN_CHILD_WEIGHT:
+        return getMin_child_weight();
+      case ThingMLPackage.XG_BOOST__SUBSAMPLE:
+        return getSubsample();
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYTREE:
+        return getColsample_bytree();
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYLEVEL:
+        return getColsample_bylevel();
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYNODE:
+        return getColsample_bynode();
+      case ThingMLPackage.XG_BOOST__REG_ALPHA:
+        return getReg_alpha();
+      case ThingMLPackage.XG_BOOST__REG_LAMBDA:
+        return getReg_lambda();
+      case ThingMLPackage.XG_BOOST__SCALE_POS_WEIGHT:
+        return getScale_pos_weight();
+      case ThingMLPackage.XG_BOOST__BASE_SCORE:
+        return getBase_score();
+      case ThingMLPackage.XG_BOOST__RANDOM_STATE:
+        return getRandom_state();
+      case ThingMLPackage.XG_BOOST__MISSING:
+        return getMissing();
+      case ThingMLPackage.XG_BOOST__IMPORTANCE_TYPE:
+        return getImportance_type();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.XG_BOOST__MAX_DEPTH:
+        setMax_depth((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__LEARNING_RATE:
+        setLearning_rate((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__NESTIMATORS:
+        setN_estimators((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__OBJECTIVE:
+        setObjective((String)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__BOOSTER:
+        setBooster((String)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__GAMMA:
+        setGamma((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__MIN_CHILD_WEIGHT:
+        setMin_child_weight((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__SUBSAMPLE:
+        setSubsample((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYTREE:
+        setColsample_bytree((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYLEVEL:
+        setColsample_bylevel((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYNODE:
+        setColsample_bynode((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__REG_ALPHA:
+        setReg_alpha((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__REG_LAMBDA:
+        setReg_lambda((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__SCALE_POS_WEIGHT:
+        setScale_pos_weight((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__BASE_SCORE:
+        setBase_score((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__RANDOM_STATE:
+        setRandom_state((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__MISSING:
+        setMissing((Double)newValue);
+        return;
+      case ThingMLPackage.XG_BOOST__IMPORTANCE_TYPE:
+        setImportance_type((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.XG_BOOST__MAX_DEPTH:
+        setMax_depth((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.XG_BOOST__LEARNING_RATE:
+        setLearning_rate(LEARNING_RATE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__NESTIMATORS:
+        setN_estimators((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.XG_BOOST__OBJECTIVE:
+        setObjective(OBJECTIVE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__BOOSTER:
+        setBooster(BOOSTER_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__GAMMA:
+        setGamma(GAMMA_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__MIN_CHILD_WEIGHT:
+        setMin_child_weight(MIN_CHILD_WEIGHT_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__SUBSAMPLE:
+        setSubsample(SUBSAMPLE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYTREE:
+        setColsample_bytree(COLSAMPLE_BYTREE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYLEVEL:
+        setColsample_bylevel(COLSAMPLE_BYLEVEL_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYNODE:
+        setColsample_bynode(COLSAMPLE_BYNODE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__REG_ALPHA:
+        setReg_alpha(REG_ALPHA_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__REG_LAMBDA:
+        setReg_lambda(REG_LAMBDA_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__SCALE_POS_WEIGHT:
+        setScale_pos_weight(SCALE_POS_WEIGHT_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__BASE_SCORE:
+        setBase_score(BASE_SCORE_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__RANDOM_STATE:
+        setRandom_state((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.XG_BOOST__MISSING:
+        setMissing(MISSING_EDEFAULT);
+        return;
+      case ThingMLPackage.XG_BOOST__IMPORTANCE_TYPE:
+        setImportance_type(IMPORTANCE_TYPE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.XG_BOOST__MAX_DEPTH:
+        return max_depth != null;
+      case ThingMLPackage.XG_BOOST__LEARNING_RATE:
+        return learning_rate != LEARNING_RATE_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__NESTIMATORS:
+        return n_estimators != null;
+      case ThingMLPackage.XG_BOOST__OBJECTIVE:
+        return OBJECTIVE_EDEFAULT == null ? objective != null : !OBJECTIVE_EDEFAULT.equals(objective);
+      case ThingMLPackage.XG_BOOST__BOOSTER:
+        return BOOSTER_EDEFAULT == null ? booster != null : !BOOSTER_EDEFAULT.equals(booster);
+      case ThingMLPackage.XG_BOOST__GAMMA:
+        return gamma != GAMMA_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__MIN_CHILD_WEIGHT:
+        return min_child_weight != MIN_CHILD_WEIGHT_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__SUBSAMPLE:
+        return subsample != SUBSAMPLE_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYTREE:
+        return colsample_bytree != COLSAMPLE_BYTREE_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYLEVEL:
+        return colsample_bylevel != COLSAMPLE_BYLEVEL_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__COLSAMPLE_BYNODE:
+        return colsample_bynode != COLSAMPLE_BYNODE_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__REG_ALPHA:
+        return reg_alpha != REG_ALPHA_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__REG_LAMBDA:
+        return reg_lambda != REG_LAMBDA_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__SCALE_POS_WEIGHT:
+        return scale_pos_weight != SCALE_POS_WEIGHT_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__BASE_SCORE:
+        return base_score != BASE_SCORE_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__RANDOM_STATE:
+        return random_state != null;
+      case ThingMLPackage.XG_BOOST__MISSING:
+        return missing != MISSING_EDEFAULT;
+      case ThingMLPackage.XG_BOOST__IMPORTANCE_TYPE:
+        return IMPORTANCE_TYPE_EDEFAULT == null ? importance_type != null : !IMPORTANCE_TYPE_EDEFAULT.equals(importance_type);
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (learning_rate: ");
+    result.append(learning_rate);
+    result.append(", objective: ");
+    result.append(objective);
+    result.append(", booster: ");
+    result.append(booster);
+    result.append(", gamma: ");
+    result.append(gamma);
+    result.append(", min_child_weight: ");
+    result.append(min_child_weight);
+    result.append(", subsample: ");
+    result.append(subsample);
+    result.append(", colsample_bytree: ");
+    result.append(colsample_bytree);
+    result.append(", colsample_bylevel: ");
+    result.append(colsample_bylevel);
+    result.append(", colsample_bynode: ");
+    result.append(colsample_bynode);
+    result.append(", reg_alpha: ");
+    result.append(reg_alpha);
+    result.append(", reg_lambda: ");
+    result.append(reg_lambda);
+    result.append(", scale_pos_weight: ");
+    result.append(scale_pos_weight);
+    result.append(", base_score: ");
+    result.append(base_score);
+    result.append(", missing: ");
+    result.append(missing);
+    result.append(", importance_type: ");
+    result.append(importance_type);
+    result.append(')');
+    return result.toString();
+  }
+
+} //XGBoostImpl

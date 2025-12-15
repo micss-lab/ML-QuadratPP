@@ -1,0 +1,194 @@
+// -----------------------------------------------------------------------------
+// Simple XGBoost-Only ThingML Model for Solar Energy (C_power)
+// -----------------------------------------------------------------------------
+
+// Datatype Definitions
+datatype String<256>
+    @type_checker `String`
+    @c_type `char *`
+    @java_type `String`
+    @js_type `String`
+;
+
+datatype Boolean<1>
+    @type_checker `Boolean`
+    @c_type `uint8_t`
+    @java_type `boolean`
+    @js_type `boolean`
+;
+
+datatype Int32<4>
+    @type_checker `Integer`
+    @c_type `int32_t`
+    @java_type `int`
+    @js_type `int`
+;
+
+// Message Fragment for Single‑Feature SolarEnergy Use Case
+thing fragment FlowMsgs {
+    message sensor_data(C_power: Int32)
+    message ack()
+    message query(C_power: Int32)
+    message alert()
+    message safe()
+}
+
+// Sensor Client: Sends the current solar power reading
+thing SensorClient includes FlowMsgs {
+    required port data_service {
+        sends sensor_data
+        receives ack
+    }
+    property my_C_power : Int32 = 0
+
+    statechart SensorClientBehavior init SendData {
+        on entry print "SensorClient: starting, sending C_power = ", my_C_power, "\n"
+        state SendData {
+            on entry do
+                data_service!sensor_data(my_C_power)
+            end
+            transition -> ReceiveAck
+            event data_service?ack
+        }
+        state ReceiveAck {
+            on entry print "SensorClient: ack received\n"
+            transition -> SendData
+        }
+    }
+}
+
+// Flow Server: Forwards readings to analytics
+thing FlowServer includes FlowMsgs {
+    provided port data_service {
+        receives sensor_data
+        sends ack
+    }
+    required port fa_service {
+        sends query
+        receives alert
+        receives safe
+    }
+
+    property C_power : Int32
+
+    statechart FlowServerBehavior init GetData {
+        state GetData {
+            internal event e : data_service?sensor_data
+            action do
+                C_power = e.C_power
+                fa_service!query(C_power)
+            end
+            transition -> Ack   event fa_service?safe
+            transition -> Alert event fa_service?alert
+        }
+        state Ack {
+            on entry do
+                data_service!ack()
+            end
+            transition -> GetData
+        }
+        state Alert {
+            on entry do
+                data_service!ack()
+            end
+            transition -> GetData
+        }
+    }
+}
+
+// Analytics: XGBoost Forecasting on C_power
+thing FlowAnalytics includes FlowMsgs {
+    provided port fa_service {
+        receives query
+        sends alert
+        sends safe
+    }
+
+    property C_power       : Int32
+    property prediction1   : Int32
+    property prediction2   : Int32
+    property prediction3   : Int32
+
+    data_analytics da1 @dalib `xgboost` {
+        data {
+            dataset "/home/zahra/test/SolarC_power.csv"
+            labels ON
+            features C_power
+            output_features C_power
+            timestamps ON
+        }
+        preprocessing { resample ON }
+        time_series {
+            sequential TRUE
+            steps 3
+            lag 20
+            multivariate ON
+            supervised_learning ON
+        }
+        model {
+            autoML OFF
+            algorithm XGBoost xgb1(
+                max_depth 5,
+                learning_rate 0.1,
+                n_estimators 100
+            )
+            training_results "data/training.txt"
+        }
+        evaluation {
+            prediction_results prediction1, prediction2, prediction3
+            metrics MSE
+        }
+        visualization {
+            plots LINE_PLOT
+        }
+    }
+
+    statechart FlowAnalyticsBehavior init Preprocess {
+        state Preprocess {
+            on entry do
+                da_preprocess da1
+            end
+            transition -> Train
+        }
+        state Train {
+            on entry do
+                da_train da1
+            end
+            transition -> Ready
+        }
+        state Ready {
+            transition -> Predict event m : fa_service?query
+            action do
+                C_power = m.C_power
+            end
+        }
+        state Predict {
+            on entry do
+                da_predict da1(C_power)
+            end
+            on exit da_save da1
+            transition -> Decide
+        }
+        state Decide {
+            on entry do
+                if (prediction1 >= 80 or prediction2 >= 80 or prediction3 >= 80)
+                    fa_service!alert()
+                else
+                    fa_service!safe()
+                end
+            end
+            transition -> Ready
+        }
+    }
+}
+
+// System Configuration
+configuration SolarEnergyCfg @compiler `python_java` {
+    instance sensorClient  : SensorClient
+    instance flowServer    : FlowServer
+    instance flowAnalytics : FlowAnalytics
+
+    connector sensorClient.data_service => flowServer.data_service
+    connector flowServer.fa_service   => flowAnalytics.fa_service
+}
+
