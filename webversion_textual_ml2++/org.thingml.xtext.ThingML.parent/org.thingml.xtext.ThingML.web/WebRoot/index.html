@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ML2+ Quick-Start Editor</title>
+
+  <link rel="stylesheet" href="xtext/2.38.0/xtext-ace.css" />
+  <script src="webjars/requirejs/2.3.7/require.min.js"></script>
+
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:#f4f4f4;margin:0;padding:0}
+    .container{width:80%;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+    .header{background:#007bff;color:#fff;padding:15px;text-align:center;font-size:22px;border-radius:8px 8px 0 0}
+
+    /* Optional login bar (keeps compatibility; remove if you don't need it) */
+    .loginbar{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center; justify-content:space-between;
+      padding:12px; margin:12px 0 16px 0; border:1px solid #e6e6e6; border-radius:10px;
+      background:#fbfbfb;
+    }
+    .login-left{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .login-left input{padding:8px 10px;border:1px solid #ccc;border-radius:6px;min-width:220px}
+    .status{font-family:monospace;font-size:12px;color:#333;padding:6px 10px;border-radius:999px;border:1px solid #ddd;background:#fff}
+    .status.ok{border-color:#b9e5c9;background:#effaf3}
+    .status.bad{border-color:#f2b8b5;background:#fff1f1}
+    .smallbtn{padding:8px 12px;font-size:14px;margin:0;border-radius:6px}
+
+    #xtext-editor{height:420px;border:1px solid #ccc;border-radius:5px;margin-bottom:16px}
+    .actions{text-align:center;margin-top:12px}
+    button{background:#007bff;color:#fff;border:none;padding:10px 18px;margin:8px;border-radius:5px;font-size:16px;cursor:pointer}
+    button:hover{background:#0056b3}
+    button:disabled{background:#ccc;cursor:not-allowed}
+
+    .row{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap}
+    .panel{flex:1;min-width:320px}
+    .panel h3{margin:10px 0 8px 0;font-size:16px}
+    .hint{color:#666;font-size:12px;margin:0 0 6px 0}
+
+    #output{margin-top:14px;padding:10px;background:#f9f9f9;border:1px solid #ccc;height:180px;overflow-y:auto;border-radius:5px;font-family:monospace;font-size:13px}
+
+    .plotContainer{
+      margin-top:10px;padding:10px;display:flex;flex-wrap:wrap;gap:10px;background:#f9f9f9;
+      border:1px solid #ccc;border-radius:5px;min-height:220px;justify-content:center
+    }
+
+    .plot-box{border:1px solid #ccc;border-radius:5px;padding:8px;background:#fff;max-width:520px}
+    .plot-title{font-size:12px;color:#333;margin-bottom:6px;font-family:monospace}
+    .plot-error{white-space:pre-wrap;color:#b00020;font-family:monospace;font-size:12px}
+    img{max-width:100%;height:auto;border-radius:4px}
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">ML2+ Quick-Start Editor</div>
+
+    <!-- OPTIONAL LOGIN UI -->
+    <div class="loginbar">
+      <div class="login-left">
+        <input id="loginUser" type="text" placeholder="Username / Email" autocomplete="username" />
+        <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password" />
+        <button id="loginBtn" class="smallbtn">Login</button>
+        <button id="logoutBtn" class="smallbtn" disabled>Logout</button>
+      </div>
+      <div>
+        <span id="loginStatus" class="status bad">Not logged in</span>
+      </div>
+    </div>
+
+    <div id="xtext-editor" data-editor-xtext-lang="thingml"></div>
+
+    <div class="actions">
+      <button id="saveModelButton" disabled>Save Model</button>
+      <button id="showPreprocessingPlotButton" disabled>Show Preprocessing Plot</button>
+      <button id="generateCodeButton" disabled>Generate Code</button>
+      <button id="downloadCodeButton" disabled>Download Code</button>
+      <button id="runCodeButton" disabled>Run Code</button>
+      <button id="showForecastingPlotButton" disabled>Show Forecasting Plots</button>
+    </div>
+
+    <div id="output"></div>
+
+    <div class="row">
+      <div class="panel">
+        <h3>Preprocessing plots</h3>
+        <p class="hint">Requests ONLY preprocessing plots. (LINE_PLOT, HISTOGRAM, ...)</p>
+        <div id="prePlotContainer" class="plotContainer"></div>
+      </div>
+
+      <div class="panel">
+        <h3>Forecasting plots</h3>
+        <p class="hint">Loaded from generated PNG files after you run code.</p>
+        <div id="fcPlotContainer" class="plotContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      console.log("▶ DOMContentLoaded");
+
+      const baseUrl = window.location.pathname.replace("index.html", "");
+
+      require.config({
+        baseUrl,
+        paths: {
+          jquery: "webjars/jquery/3.6.0/jquery.min",
+          "ace/ext/language_tools": "webjars/ace/1.3.3/src/ext-language_tools",
+          "xtext/xtext-ace": "xtext/2.38.0/xtext-ace"
+        }
+      });
+
+      // -----------------------------
+      // Helpers
+      // -----------------------------
+      const qs = id => document.getElementById(id);
+
+      const outDiv = qs("output");
+      const preDiv = qs("prePlotContainer");
+      const fcDiv  = qs("fcPlotContainer");
+
+      const btnSave  = qs("saveModelButton");
+      const btnPre   = qs("showPreprocessingPlotButton");
+      const btnGen   = qs("generateCodeButton");
+      const btnDown  = qs("downloadCodeButton");
+      const btnRun   = qs("runCodeButton");
+      const btnFPlot = qs("showForecastingPlotButton");
+
+      const loginUser = qs("loginUser");
+      const loginPass = qs("loginPass");
+      const loginBtn  = qs("loginBtn");
+      const logoutBtn = qs("logoutBtn");
+      const loginStatus = qs("loginStatus");
+
+      function logLine(msg) {
+        const line = document.createElement("div");
+        line.textContent = msg;
+        outDiv.appendChild(line);
+        outDiv.scrollTop = outDiv.scrollHeight;
+      }
+
+      function setLoginUI(isLoggedIn, userID) {
+        if (isLoggedIn) {
+          loginStatus.textContent = "Logged in" + (userID ? (" | userID=" + userID) : "");
+          loginStatus.classList.remove("bad");
+          loginStatus.classList.add("ok");
+          logoutBtn.disabled = false;
+
+          btnSave.disabled  = false;
+          btnPre.disabled   = true;   // enable after save
+          btnGen.disabled   = true;   // enable after save
+          btnDown.disabled  = true;   // enable after generate
+          btnRun.disabled   = true;   // enable after download
+          btnFPlot.disabled = false;  // can click; still checks runDone
+        } else {
+          loginStatus.textContent = "Not logged in";
+          loginStatus.classList.remove("ok");
+          loginStatus.classList.add("bad");
+          logoutBtn.disabled = true;
+
+          btnSave.disabled  = true;
+          btnPre.disabled   = true;
+          btnGen.disabled   = true;
+          btnDown.disabled  = true;
+          btnRun.disabled   = true;
+          btnFPlot.disabled = true;
+        }
+      }
+
+      function parseDataset(txt) {
+        return (txt.match(/dataset\s+"([^"]+)"/i) || [])[1] || null;
+      }
+
+      function parsePlots(txt) {
+        // looks for: plots LINE_PLOT, HISTOGRAM ...
+        // if not found, defaults to LINE_PLOT
+        const raw = ((txt.match(/plots\s+([A-Z0-9_\s,\n]+)/i) || [])[1] || "LINE_PLOT");
+        return String(raw).split(/[\s,]+/).filter(Boolean);
+      }
+
+      function createPlotBox(container, titleText) {
+        const box = document.createElement("div");
+        box.className = "plot-box";
+
+        const title = document.createElement("div");
+        title.className = "plot-title";
+        title.textContent = titleText;
+
+        box.appendChild(title);
+        container.appendChild(box);
+        return box;
+      }
+
+      // avoid blob URL leaks
+      let preBlobUrls = [];
+      function clearPre() {
+        preDiv.innerHTML = "";
+        preBlobUrls.forEach(u => { try { URL.revokeObjectURL(u); } catch(e){} });
+        preBlobUrls = [];
+      }
+
+      let runDone = false;
+
+      // -----------------------------
+      // LOGIN / LOGOUT (optional)
+      // Requires backend endpoints:
+      //   POST /login  -> {success:true, userID:"..."} and sets session userID
+      //   POST /logout -> clears session
+      // If you don't have them, you can remove login UI and just call setLoginUI(true) directly.
+      // -----------------------------
+      async function doLogin() {
+        const u = loginUser.value.trim();
+        const p = loginPass.value;
+        if (!u || !p) return alert("Enter username/email and password.");
+
+        const res = await fetch("/login", {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({ username: u, password: p }),
+          cache: "no-store",
+          credentials: "same-origin"
+        });
+
+        const ct = (res.headers.get("content-type") || "").toLowerCase();
+        const data = ct.includes("application/json") ? await res.json() : { success: false, message: await res.text() };
+
+        if (!res.ok || data.success === false) {
+          throw new Error(data.message || ("HTTP " + res.status));
+        }
+
+        if (data.userID) sessionStorage.setItem("userID", String(data.userID));
+        setLoginUI(true, data.userID ? String(data.userID) : null);
+        loginPass.value = "";
+        logLine("✅ Logged in");
+      }
+
+      async function doLogout() {
+        try { await fetch("/logout", { method: "POST", cache: "no-store", credentials: "same-origin" }); } catch(e) {}
+        sessionStorage.removeItem("userID");
+        setLoginUI(false, null);
+        clearPre();
+        fcDiv.innerHTML = "";
+        logLine("✅ Logged out");
+      }
+
+      loginBtn.onclick = () => doLogin().catch(err => alert("Login failed: " + err.message));
+      logoutBtn.onclick = () => doLogout().catch(err => alert("Logout failed: " + err.message));
+
+      // default logged out
+      setLoginUI(false, null);
+
+      // If you already have a userID cached, enable UI (UX only)
+      const cachedUserID = sessionStorage.getItem("userID");
+      if (cachedUserID) setLoginUI(true, cachedUserID);
+
+      // -----------------------------
+      // Xtext editor init
+      // -----------------------------
+      require(["webjars/ace/1.3.3/src/ace"], () => {
+        require(["xtext/xtext-ace"], xtext => {
+          console.log("🖋️ Initializing XText editor");
+
+          const editor = xtext.createEditor({
+            baseUrl,
+            syntaxDefinition: "xtext-resources/generated/mode-thingml",
+            parent: "xtext-editor",
+            sendFullText: true
+          });
+
+          editor.setValue(`/**
+ * Example ThingML Template for Data Analytics
+ * dataset "usecase1.csv"
+ * plots LINE_PLOT, HISTOGRAM
+ */`, -1);
+
+          // Save Model
+          btnSave.onclick = () => {
+            logLine("💾 SaveModel clicked");
+            const modelTxt = editor.getValue();
+
+            if (!modelTxt.trim()) return alert("Model cannot be empty");
+            if (editor.getSession().getAnnotations().some(a => a.type === "error"))
+              return alert("Fix model errors first");
+
+            fetch("/save-model", {
+              method: "POST",
+              headers: {"Content-Type":"application/json"},
+              body: JSON.stringify({ modelContent: modelTxt }),
+              cache: "no-store",
+              credentials: "same-origin"
+            })
+            .then(r => r.ok ? r.json() : r.text().then(t => { throw new Error(t || ("HTTP "+r.status)); }))
+            .then(d => {
+              logLine("📥 /save-model: " + JSON.stringify(d));
+              if (d.success) {
+                alert("Model saved");
+                btnPre.disabled = false;
+                btnGen.disabled = false;
+
+                // If backend returns userID, store it (some deployments do)
+                if (d.userID) {
+                  sessionStorage.setItem("userID", String(d.userID));
+                  setLoginUI(true, String(d.userID));
+                }
+              } else {
+                alert("Save failed: " + (d.message || "unknown error"));
+              }
+            })
+            .catch(err => {
+              console.error(err);
+              alert("Save failed: " + err.message);
+            });
+          };
+
+          // Preprocessing Plot ✅ (robust)  <-- your requested block
+          btnPre.onclick = () => {
+            console.log("📊 ShowPreprocessingPlot clicked");
+
+            const ds = parseDataset(editor.getValue());
+            if (!ds) return alert('No dataset found. Add: dataset "usecase1.csv"');
+
+            const plots = parsePlots(editor.getValue());
+            clearPre();
+
+            plots.forEach(ptRaw => {
+              const pt = String(ptRaw).trim().toUpperCase();
+              console.log("   fetch plot", pt);
+
+              const box = createPlotBox(preDiv, `[PRE] ${pt} | dataset=${ds}`);
+
+              // ✅ send BOTH keys so it works with OLD + NEW servlet versions
+              const payload = {
+                dataset: ds,
+                plotType: pt,
+                Preprocessing_Plots: pt,
+                timestamp: "ON"
+              };
+
+              fetch("/generate-preprocessing-plot", {
+                method: "POST",
+                headers: {"Content-Type":"application/json"},
+                body: JSON.stringify(payload),
+                cache: "no-store",
+                credentials: "same-origin"
+              })
+              .then(async r => {
+                const ct = (r.headers.get("content-type") || "").toLowerCase();
+
+                if (!r.ok) {
+                  const t = await r.text();
+                  throw new Error(t || ("HTTP " + r.status));
+                }
+
+                if (!ct.includes("image/png")) {
+                  const t = await r.text();
+                  throw new Error(t || "Response is not PNG.");
+                }
+
+                return r.blob();
+              })
+              .then(blob => {
+                const url = URL.createObjectURL(blob);
+                preBlobUrls.push(url);
+
+                const img = new Image();
+                img.src = url;
+                box.appendChild(img);
+              })
+              .catch(err => {
+                console.error("❌ PreprocessingPlot error", err);
+                const errDiv = document.createElement("div");
+                errDiv.className = "plot-error";
+                errDiv.textContent = "❌ " + err.message;
+                box.appendChild(errDiv);
+              });
+            });
+          };
+
+          // Generate Code (SSE)
+          btnGen.onclick = () => {
+            logLine("💻 GenerateCode clicked");
+            outDiv.innerHTML = "";
+
+            const es = new EventSource("/generate-code");
+            es.onmessage = e => {
+              if (e.data.trim() === "DONE") {
+                es.close();
+                btnDown.disabled = false;
+                logLine("✅ Code generation DONE");
+              } else {
+                logLine(e.data);
+              }
+            };
+            es.onerror = () => {
+              logLine("❌ generate-code SSE error");
+              es.close();
+            };
+          };
+
+          // Download Code
+          btnDown.onclick = () => {
+            logLine("📥 DownloadCode clicked");
+            window.location.href = "/download-code";
+            btnRun.disabled = false;
+          };
+
+          // Run Code (SSE)
+          btnRun.onclick = () => {
+            logLine("🏃 RunCode clicked");
+            outDiv.innerHTML = "";
+            runDone = false;
+
+            const es = new EventSource("/run-code");
+            es.onmessage = e => {
+              if (e.data.trim() === "DONE") {
+                es.close();
+                runDone = true;
+                logLine("✅ Run DONE");
+              } else {
+                logLine(e.data);
+              }
+            };
+            es.onerror = () => {
+              logLine("❌ run-code SSE error");
+              es.close();
+            };
+          };
+
+          // Forecasting Plot (files-based)
+          btnFPlot.onclick = () => {
+            logLine("📈 ShowForecastingPlot clicked");
+            if (!runDone && !confirm("Did you run the code already?")) return;
+
+            fcDiv.innerHTML = "";
+
+            const userID = sessionStorage.getItem("userID");
+            logLine("   sessionStorage userID = " + userID);
+
+            if (!userID) {
+              alert("User ID missing in sessionStorage.");
+              return;
+            }
+
+            fetch(`/get-forecasting-plot-files?userID=${encodeURIComponent(userID)}`, { cache: "no-store" })
+              .then(r => r.ok ? r.json() : r.text().then(t => { throw new Error(t || ("HTTP "+r.status)); }))
+              .then(arr => {
+                if (!arr.length) {
+                  fcDiv.textContent = "No forecasting plots available.";
+                  return;
+                }
+
+                arr.forEach(f => {
+                  const box = createPlotBox(fcDiv, `[FC] ${f}`);
+                  const img = new Image();
+                  img.src = `/show-forecasting-plot?userID=${encodeURIComponent(userID)}&plots=${encodeURIComponent(f)}`;
+                  box.appendChild(img);
+                });
+              })
+              .catch(err => {
+                console.error("❌ ForecastingPlot error", err);
+                fcDiv.textContent = "❌ " + err.message;
+              });
+          };
+
+        });
+      });
+    });
+  </script>
+</body>
+</html>

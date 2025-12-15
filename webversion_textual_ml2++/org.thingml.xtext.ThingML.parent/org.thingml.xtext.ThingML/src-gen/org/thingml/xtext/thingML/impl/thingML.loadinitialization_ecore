@@ -1,0 +1,1616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="thingML" nsURI="http://www.thingml.org/xtext/ThingML" nsPrefix="thingML">
+  <eClassifiers xsi:type="ecore:EClass" name="ThingMLModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//Import" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="types" upperBound="-1"
+        eType="#//Type" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protocols" upperBound="-1"
+        eType="#//Protocol" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configs" upperBound="-1"
+        eType="#//Configuration" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Import">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlatformAnnotation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//PlatformAnnotation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Variable" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeRef" eType="#//TypeRef"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TypeRef">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cardinality" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" eSuperTypes="#//NamedElement #//AnnotatedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ByteSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObjectType" eSuperTypes="#//Type"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Enumeration" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeRef" eType="#//TypeRef"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" upperBound="-1"
+        eType="#//EnumerationLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumerationLiteral" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Literal"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Thing" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fragment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includes" unique="false"
+        upperBound="-1" eType="#//Thing"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="messages" upperBound="-1"
+        eType="#//Message" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" upperBound="-1"
+        eType="#//Port" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functions" upperBound="-1"
+        eType="#//Function" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assign" upperBound="-1"
+        eType="#//PropertyAssign" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" upperBound="-1"
+        eType="#//DataAnalytics" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviour" eType="#//CompositeState"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyAssign" eSuperTypes="#//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Protocol" eSuperTypes="#//NamedElement #//AnnotatedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typeRef" eType="#//TypeRef"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="abstract" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Property" eSuperTypes="#//Variable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readonly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Message" eSuperTypes="#//NamedElement #//AnnotatedElement #//MessageParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Parameter" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Parameter" eSuperTypes="#//NamedElement #//AnnotatedElement #//Variable #//MessageParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Port" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sends" unique="false" upperBound="-1"
+        eType="#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receives" unique="false"
+        upperBound="-1" eType="#//Message"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RequiredPort" eSuperTypes="#//Port">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ProvidedPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalPort" eSuperTypes="#//Port"/>
+  <eClassifiers xsi:type="ecore:EClass" name="State" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entry" eType="#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exit" eType="#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internal" upperBound="-1"
+        eType="#//InternalTransition" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outgoing" upperBound="-1"
+        eType="#//Transition" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Handler" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="event" eType="#//Event"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="guard" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//Handler">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//State"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalTransition" eSuperTypes="#//Handler"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CompositeState" eSuperTypes="#//State #//StateContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="region" upperBound="-1"
+        eType="#//Region" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="session" upperBound="-1"
+        eType="#//Session" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Session" eSuperTypes="#//StateContainer">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxInstances" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Region" eSuperTypes="#//StateContainer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FinalState" eSuperTypes="#//State"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StateContainer" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="initial" eType="#//State"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="history" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="substate" upperBound="-1"
+        eType="#//State" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MessageParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAnalytics" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labels" eType="#//Labels"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="input_features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="output_features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamps" eType="#//Timestamps"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="combine_threshold" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preprocess_feature_scaler"
+        eType="#//Preprocess_feature_scaler"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="preprocess_sample_normalizer"
+        eType="#//Preprocess_sample_normalizer"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fill_missing_value" eType="#//FillingMissingValue"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remove_outliers" eType="#//RemoveOutliers"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="advanced_imputation" eType="#//AdvancedImputation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lagged_features" eType="#//LaggedFeatures"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rolling_window_features"
+        eType="#//RollingWindowFeatures"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="resampling" eType="#//Resampling"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transformations" unique="false"
+        upperBound="-1" eType="#//DataTransformation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sequential" eType="#//Sequential"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="steps" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lag" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multivariate" eType="#//Multivariate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stationary" eType="#//Stationary"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonality_detection"
+        eType="#//SeasonalityDetection"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="supervised_learning" eType="#//SupervisedLearning"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="create_lagged_features"
+        eType="#//CreateLaggedFeatures"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sliding_window" eType="#//SlidingWindow"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoML" eType="#//AutoML"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="modelAlgorithm" eType="#//DataAnalyticsModelAlgorithm"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blackbox_ml" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blackbox_ml_model" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blackbox_import_algorithm"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="blackbox_label_encoder"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trainingResults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hyperparameter_tuning"
+        eType="#//HyperparameterTuning"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ensemble_methods" eType="#//EnsembleMethods"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="predictionResults" unique="false"
+        upperBound="-1" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="model_evaluation" eType="#//ModelEvaluation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outlier_detection" eType="#//OutlierDetection"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time_series_clustering"
+        eType="#//TimeSeriesClustering"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contextArea" eType="#//ContextArea"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="plots" unique="false" upperBound="-1"
+        eType="#//PreprocessingPlots"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Labels">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+    <eLiterals name="SEMI" value="3" literal="SEMI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="FillingMissingValue">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+    <eLiterals name="FF" value="3" literal="FF"/>
+    <eLiterals name="BF" value="4" literal="BF"/>
+    <eLiterals name="INTERPOLATION" value="5" literal="INTERPOLATION"/>
+    <eLiterals name="MEAN" value="6" literal="MEAN"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Resampling">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="MINUTELY" value="1" literal="MINUTELY"/>
+    <eLiterals name="HOURLY" value="2" literal="HOURLY"/>
+    <eLiterals name="DAILY" value="3" literal="DAILY"/>
+    <eLiterals name="WEEKLY" value="4" literal="WEEKLY"/>
+    <eLiterals name="MONTHLY" value="5" literal="MONTHLY"/>
+    <eLiterals name="YEARLY" value="6" literal="YEARLY"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Multivariate">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Stationary">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SeasonalityDetection">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+    <eLiterals name="FOURIER" value="3" literal="FOURIER"/>
+    <eLiterals name="MOVING_AVERAGE" value="4" literal="MOVING_AVERAGE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RemoveOutliers">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ContextArea">
+    <eLiterals name="RiverFlow" literal="RiverFlow"/>
+    <eLiterals name="ServerMonitoring" value="1" literal="ServerMonitoring"/>
+    <eLiterals name="IoTDataCenter" value="2" literal="IoTDataCenter"/>
+    <eLiterals name="Other" value="3" literal="Other"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="LaggedFeatures">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="ON" value="1" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RollingWindowFeatures">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="ON" value="1" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AdvancedImputation">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="ON" value="1" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OutlierDetection">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="ON" value="1" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TimeSeriesClustering">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="ON" value="1" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HyperparameterTuning">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="GRID_SEARCH" value="1" literal="GRID_SEARCH"/>
+    <eLiterals name="RANDOM_SEARCH" value="2" literal="RANDOM_SEARCH"/>
+    <eLiterals name="BAYESIAN_OPTIMIZATION" value="3" literal="BAYESIAN_OPTIMIZATION"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ModelEvaluation">
+    <eLiterals name="RMSE" literal="RMSE"/>
+    <eLiterals name="MAE" value="1" literal="MAE"/>
+    <eLiterals name="MSE" value="2" literal="MSE"/>
+    <eLiterals name="R_SQUARED" value="3" literal="R_SQUARED"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EnsembleMethods">
+    <eLiterals name="OFF" literal="OFF"/>
+    <eLiterals name="BAGGING" value="1" literal="BAGGING"/>
+    <eLiterals name="BOOSTING" value="2" literal="BOOSTING"/>
+    <eLiterals name="STACKING" value="3" literal="STACKING"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AutoML">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Sequential">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="FALSE" value="1" literal="FALSE"/>
+    <eLiterals name="TRUE" value="2" literal="TRUE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Timestamps">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Preprocess_feature_scaler">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="STANDARD_SCALER" value="2" literal="StandardScaler"/>
+    <eLiterals name="MIN_MAX_SCALER" value="3" literal="MinMaxScaler"/>
+    <eLiterals name="ROBUST_SCALER" value="4" literal="RobustScaler"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Preprocess_sample_normalizer">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="NORMALIZER_L2_NORM" value="2" literal="NORMALIZER_L2_NORM"/>
+    <eLiterals name="NORMALIZER_L1_NORM" value="3" literal="NORMALIZER_L1_NORM"/>
+    <eLiterals name="NORMALIZER_MAX_NORM" value="4" literal="NORMALIZER_MAX_NORM"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PreprocessingPlots">
+    <eLiterals name="LINE_PLOT" literal="LINE_PLOT"/>
+    <eLiterals name="HISTOGRAM" value="1" literal="HISTOGRAM"/>
+    <eLiterals name="BOX_PLOT" value="2" literal="BOX_PLOT"/>
+    <eLiterals name="SCATTER_PLOT" value="3" literal="SCATTER_PLOT"/>
+    <eLiterals name="HEAT_MAP" value="4" literal="HEAT_MAP"/>
+    <eLiterals name="AUTOCORRELATION_PLOT" value="5" literal="AUTOCORRELATION_PLOT"/>
+    <eLiterals name="LAG_PLOT" value="6" literal="LAG_PLOT"/>
+    <eLiterals name="VIOLIN_PLOT" value="7" literal="VIOLIN_PLOT"/>
+    <eLiterals name="CORRELATION_MATRIX_PLOT" value="8" literal="CORRELATION_MATRIX_PLOT"/>
+    <eLiterals name="PAIR_PLOT" value="9" literal="PAIR_PLOT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="PredictionPlots">
+    <eLiterals name="PREDICTION_VS_ACTUAL" literal="PREDICTION_VS_ACTUAL"/>
+    <eLiterals name="RESIDUALS_PLOT" value="1" literal="RESIDUALS_PLOT"/>
+    <eLiterals name="ERROR_DISTRIBUTION" value="2" literal="ERROR_DISTRIBUTION"/>
+    <eLiterals name="CONFIDENCE_INTERVALS" value="3" literal="CONFIDENCE_INTERVALS"/>
+    <eLiterals name="CONFUSION_MATRIX" value="4" literal="CONFUSION_MATRIX"/>
+    <eLiterals name="ROC_CURVE" value="5" literal="ROC_CURVE"/>
+    <eLiterals name="PR_CURVE" value="6" literal="PR_CURVE"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ForecastingPlots">
+    <eLiterals name="FORECAST_VS_ACTUAL" literal="FORECAST_VS_ACTUAL"/>
+    <eLiterals name="FORECAST_ERROR" value="1" literal="FORECAST_ERROR"/>
+    <eLiterals name="FORECAST_INTERVALS" value="2" literal="FORECAST_INTERVALS"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OverfittingPlots">
+    <eLiterals name="TRAINING_LOSS" literal="TRAINING_LOSS"/>
+    <eLiterals name="VALIDATION_LOSS" value="1" literal="VALIDATION_LOSS"/>
+    <eLiterals name="LEARNING_CURVE" value="2" literal="LEARNING_CURVE"/>
+    <eLiterals name="BIAS_VARIANCE_TRADEOFF" value="3" literal="BIAS_VARIANCE_TRADEOFF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SupervisedLearning">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CreateLaggedFeatures">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SlidingWindow">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="OFF" value="1" literal="OFF"/>
+    <eLiterals name="ON" value="2" literal="ON"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DataTransformation">
+    <eLiterals name="LOG_TRANSFORMATION" literal="LogTransformation"/>
+    <eLiterals name="DIFFERENCING" value="1" literal="Differencing"/>
+    <eLiterals name="NORMALIZATION" value="2" literal="Normalization"/>
+    <eLiterals name="STANDARDIZATION" value="3" literal="Standardization"/>
+    <eLiterals name="SCALING" value="4" literal="Scaling"/>
+    <eLiterals name="SMOOTHING" value="5" literal="Smoothing"/>
+    <eLiterals name="AGGREGATION" value="6" literal="Aggregation"/>
+    <eLiterals name="DOWNSAMPLING" value="7" literal="Downsampling"/>
+    <eLiterals name="UPSAMPLING" value="8" literal="Upsampling"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DataAnalyticsModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Time_series_ModelAlgorithm" eSuperTypes="#//DataAnalyticsModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forecasting_plots" eType="#//ForecastingPlots"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Deep_learning_ModelAlgorithm" eSuperTypes="#//Time_series_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//Optimizer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batch_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="epochs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metrics" eType="#//Metrics"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="early_stopping" eType="#//EarlyStopping"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="overfitting_Plots" eType="#//OverfittingPlots"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="statistical_ModelAlgorithm" eSuperTypes="#//Time_series_ModelAlgorithm"/>
+  <eClassifiers xsi:type="ecore:EClass" name="machine_learning_ModelAlgorithm" eSuperTypes="#//Time_series_ModelAlgorithm"/>
+  <eClassifiers xsi:type="ecore:EClass" name="hybrid_ModelAlgorithm" eSuperTypes="#//Time_series_ModelAlgorithm"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MLP" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regularization" eType="#//Regularization"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GRU" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="return_sequences" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regularization" eType="#//Regularization"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CNN" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regularization" eType="#//Regularization"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LSTM" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="return_sequences" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="input_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="output_activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regularization" eType="#//Regularization"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RNN" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="return_sequences" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regularization" eType="#//Regularization"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TCN" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nb_filters" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kernel_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dilations" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nb_stacks" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loss" eType="#//Loss"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dense_layers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="neurons" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transformer" eSuperTypes="#//Deep_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="units" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="num_layers" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="d_model" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="num_heads" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dff" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dropout_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loss" eType="#//Loss"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dense_layers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="neurons" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ARIMA" eSuperTypes="#//statistical_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="differencing" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="q" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalP" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalD" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalQ" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonality" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SARIMA" eSuperTypes="#//statistical_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="differencing" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="q" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalP" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalD" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonalQ" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonality" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="start_params" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="method" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transparams" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="solver" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="maxiter" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HWES" eSuperTypes="#//statistical_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="damped" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonal_periods" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialization_method"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="use_boxcox" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="remove_bias" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimized" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ETS" eSuperTypes="#//statistical_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="error" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="damped" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonal_periods" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initialization_method"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="use_boxcox" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="remove_bias" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="optimized" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StateSpaceModel" eSuperTypes="#//statistical_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="transition_matrix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selection_matrix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state_cov" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obs_cov" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_state_mean" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_state_cov" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obs_intercept" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state_intercept" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="obs_offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SVR" eSuperTypes="#//machine_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kernel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="degree" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gamma" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="coef0" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="C" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="epsilon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shrinking" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cache_size" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RFR" eSuperTypes="#//machine_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_estimators" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criterion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_weight_fraction_leaf"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_impurity_decrease"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bootstrap" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oob_score" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GBM" eSuperTypes="#//machine_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loss" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_estimators" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subsample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criterion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_weight_fraction_leaf"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_impurity_decrease"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alpha" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="presort" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="XGBoost" eSuperTypes="#//machine_learning_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_estimators" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="objective" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="booster" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gamma" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_child_weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subsample" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colsample_bytree" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colsample_bylevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="colsample_bynode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reg_alpha" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="reg_lambda" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="scale_pos_weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="base_score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="missing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="importance_type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ARIMA_GARCH" eSuperTypes="#//hybrid_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="d" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="q" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonal_order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="seasonal_params" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="trend" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="garch_order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="garch_params" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Prophet" eSuperTypes="#//hybrid_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="growth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonality_mode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seasonality_prior_scale"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="holidays_prior_scale" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changepoint_prior_scale"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="interval_width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Penalty">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="L1" value="1" literal="'l1'"/>
+    <eLiterals name="L2" value="2" literal="'l2'"/>
+    <eLiterals name="ELASTICNET" value="3" literal="'elasticnet'"/>
+    <eLiterals name="NONE" value="4" literal="'none'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Optimizer">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="NEWTON_CG" value="1" literal="newton-cg"/>
+    <eLiterals name="LBFGS" value="2" literal="lbfgs"/>
+    <eLiterals name="LIBLINEAR" value="3" literal="liblinear"/>
+    <eLiterals name="SAG" value="4" literal="sag"/>
+    <eLiterals name="SAGA" value="5" literal="saga"/>
+    <eLiterals name="SGD" value="6" literal="sgd"/>
+    <eLiterals name="ADAM" value="7" literal="adam"/>
+    <eLiterals name="RMSPROP" value="8" literal="RMSprop"/>
+    <eLiterals name="ADADELTA" value="9" literal="Adadelta"/>
+    <eLiterals name="ADAGRAD" value="10" literal="Adagrad"/>
+    <eLiterals name="ADAMAX" value="11" literal="Adamax"/>
+    <eLiterals name="NADAM" value="12" literal="Nadam"/>
+    <eLiterals name="FTRL" value="13" literal="Ftrl"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Rate">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="CONSTANT" value="1" literal="'constant'"/>
+    <eLiterals name="TIME_BASED" value="2" literal="'time_based'"/>
+    <eLiterals name="STEP" value="3" literal="'step'"/>
+    <eLiterals name="EXPONENTIAL" value="4" literal="'exponential'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="EarlyStopping">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="ENABLE" value="1" literal="'enable'"/>
+    <eLiterals name="DISABLE" value="2" literal="'disable'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Regularization">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="L1" value="1" literal="'l1'"/>
+    <eLiterals name="L2" value="2" literal="'l2'"/>
+    <eLiterals name="L1_L2" value="3" literal="'l1_l2'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Metrics">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="MSE" value="1" literal="'MSE'"/>
+    <eLiterals name="MAE" value="2" literal="'MAE'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ML2_ModelAlgorithm" eSuperTypes="#//DataAnalyticsModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="prediction_plots" eType="#//PredictionPlots"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PMML_ModelAlgorithm" eSuperTypes="#//DataAnalyticsModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pmml_path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PFA_ModelAlgorithm" eSuperTypes="#//DataAnalyticsModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pfa_path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ClassifierWithPredictionCertaintyProbabilities"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearRegression" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_intercept" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="normalize" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copy_X" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="positive" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LinearClassifierLogisticRegression"
+      eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="penalty" eType="#//Penalty"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dual" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="c" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_intercept" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="intercept_scaling" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//Optimizer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multi_class" eType="#//Multi_class"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="l1_ratio" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NaiveBayesGaussian" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priors" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var_smoothing" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NaiveBayesMultinomial" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_prior" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_prior" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NaiveBayesComplement" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_prior" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_prior" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="norm" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NaiveBayesBernoulli" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="binarize" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_prior" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_prior" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NaiveBayesCategorical" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fit_prior" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_prior" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="min_categories" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeRegressor" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decisionTreeRegressorCriterion"
+        eType="#//DecisionTreeRegressorCriterion"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decisionTreeSplitter" eType="#//DecisionTreeSplitter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_weight_fraction_leaf"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_features_numeric" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features_enum" eType="#//Max_features_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_decrease"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ccp_alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeClassifier" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decisionTreeClassifierCriterion"
+        eType="#//DecisionTreeClassifierCriterion"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="decisionTreeSplitter" eType="#//DecisionTreeSplitter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_weight_fraction_leaf"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_features_numeric" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features_enum" eType="#//Max_features_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_decrease"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ccp_alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RandomForestRegressor" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_estimators" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomForestRegressorCriterion"
+        eType="#//RandomForestRegressorCriterion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_weight_fraction_leaf"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_features_numeric" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features_enum" eType="#//Max_features_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_decrease"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bootstrap" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oob_score" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ccp_alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_samples" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RandomForestClassifier" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_estimators" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="randomForestClassifierCriterion"
+        eType="#//RandomForestClassifierCriterion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_depth" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples_leaf" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_weight_fraction_leaf"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_features_numeric" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="max_features_enum" eType="#//Max_features_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_leaf_nodes" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_decrease"
+        eType="#//DoubleLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_impurity_split" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="bootstrap" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="oob_score" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class_weight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ccp_alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_samples" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NN_MultilayerPerceptron" eSuperTypes="#//ML2_ModelAlgorithm #//ClassifierWithPredictionCertaintyProbabilities">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layer_sizes" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hidden_layers" upperBound="-1"
+        eType="#//IntegerLiteral" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activation" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hidden_layers_activation_functions"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="activations" unique="false"
+        upperBound="-1" eType="#//Activation"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optimizer" eType="#//Optimizer"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batch_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate_mode" eType="#//Learning_rate_mode"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="learning_rate_init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="power_t" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shuffle" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="momentum" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="nesterovs_momentum" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="early_stopping" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="validation_fraction" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beta_1" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beta_2" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="epsilon" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_iter_no_change" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_fun" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="loss" eType="#//Loss"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="epochs" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="KMeans" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_clusters" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_enum" eType="#//KMeans_init_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_str" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_init" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copy_x" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithm" eType="#//KMeans_algorithm_enum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MiniBatchKMeans" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_clusters" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_enum" eType="#//KMeans_init_enum"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_str" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="batch_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compute_labels" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_no_improvement" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_init" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reassignment_ratio" eType="#//DoubleLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DBSCAN" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eps" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="min_samples" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric_params" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="algorithm" eType="#//KNN_Algorithms"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="leaf_size" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="p" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpectralClustering" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_clusters" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eigen_solver" eType="#//Eigen_Solver"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_components" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_init" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gamma" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="affinity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_neighbors" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="eigen_tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assign_labels" eType="#//Laplacian_Embedding_Label_Assign_Strategy"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="degree" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="coef0" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kernel_params" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GaussianMixture" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_components" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="covariance_type" eType="#//Covariance_Type"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="reg_covar" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_init" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_params" eType="#//Init_Params_Methods"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weights_init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="means_init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="precisions_init" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="random_state" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="warm_start" eType="#//BooleanLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose_interval" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SelfTrainingClassifier" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="base_estimator" eType="#//ClassifierWithPredictionCertaintyProbabilities"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="threshold" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criterion" eType="#//Self_Training_Criterion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="k_best" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="verbose" eType="#//BooleanLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelPropagation" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kernel" eType="#//Label_Propagation_Kernel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gamma" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_neighbors" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LabelSpreading" eSuperTypes="#//ML2_ModelAlgorithm">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kernel" eType="#//Label_Propagation_Kernel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gamma" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_neighbors" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alpha" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="max_iter" eType="#//IntegerLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tol" eType="#//DoubleLiteral"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="n_jobs" eType="#//IntegerLiteral"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Label_Propagation_Kernel">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="KNN" value="1" literal="'knn'"/>
+    <eLiterals name="RBF" value="2" literal="'rbf'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Self_Training_Criterion">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="THRESHOLD" value="1" literal="'threshold'"/>
+    <eLiterals name="KBEST" value="2" literal="'k_best'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Init_Params_Methods">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="KMEANS" value="1" literal="'kmeans'"/>
+    <eLiterals name="RANDOM" value="2" literal="'random'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Covariance_Type">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="FULL" value="1" literal="'full'"/>
+    <eLiterals name="TIED" value="2" literal="'tied'"/>
+    <eLiterals name="DIAG" value="3" literal="'diag'"/>
+    <eLiterals name="SPHERICAL" value="4" literal="'spherical'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Laplacian_Embedding_Label_Assign_Strategy">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="KMEANS" value="1" literal="'kmeans'"/>
+    <eLiterals name="DISCRETIZE" value="2" literal="'discretize'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Eigen_Solver">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="AUTO" value="1" literal="'auto'"/>
+    <eLiterals name="ARPACK" value="2" literal="'arpack'"/>
+    <eLiterals name="LOBPCG" value="3" literal="'lobpcg'"/>
+    <eLiterals name="AMG" value="4" literal="'amg'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="KNN_Algorithms">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="AUTO" value="1" literal="'auto'"/>
+    <eLiterals name="BALL_TREE" value="2" literal="'ball_tree'"/>
+    <eLiterals name="KD_TREE" value="3" literal="'kd_tree'"/>
+    <eLiterals name="BRUTE" value="4" literal="'brute'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="KMeans_init_enum">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="KMEANS_PLUS_PLUS" value="1" literal="'k-means++'"/>
+    <eLiterals name="RANDOM" value="2" literal="'random'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="KMeans_algorithm_enum">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="AUTO" value="1" literal="'auto'"/>
+    <eLiterals name="FULL" value="2" literal="'full'"/>
+    <eLiterals name="ELKAN" value="3" literal="'elkan'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Multi_class">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="AUTO" value="1" literal="'auto'"/>
+    <eLiterals name="OVR" value="2" literal="'ovr'"/>
+    <eLiterals name="MULTINOMIAL" value="3" literal="'multinomial'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DecisionTreeRegressorCriterion">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="MSE" value="1" literal="'mse'"/>
+    <eLiterals name="FRIEDMAN_MSE" value="2" literal="'friedman_mse'"/>
+    <eLiterals name="MAE" value="3" literal="'mae'"/>
+    <eLiterals name="POISSON" value="4" literal="'poisson'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DecisionTreeClassifierCriterion">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="GINI" value="1" literal="'gini'"/>
+    <eLiterals name="ENTROPY" value="2" literal="'entropy'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="DecisionTreeSplitter">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="BEST" value="1" literal="'best'"/>
+    <eLiterals name="RANDOM" value="2" literal="'random'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Max_features_enum">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="AUTO" value="1" literal="'auto'"/>
+    <eLiterals name="SQRT" value="2" literal="'sqrt'"/>
+    <eLiterals name="LOG2" value="3" literal="'log2'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RandomForestRegressorCriterion">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="MSE" value="1" literal="'mse'"/>
+    <eLiterals name="MAE" value="2" literal="'mae'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RandomForestClassifierCriterion">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="GINI" value="1" literal="'gini'"/>
+    <eLiterals name="ENTROPY" value="2" literal="'entropy'"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Activation">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="RELU" value="1" literal="relu"/>
+    <eLiterals name="SIGMOID" value="2" literal="sigmoid"/>
+    <eLiterals name="SOFTMAX" value="3" literal="softmax"/>
+    <eLiterals name="SOFTPLUS" value="4" literal="softplus"/>
+    <eLiterals name="SOFTSIGN" value="5" literal="softsign"/>
+    <eLiterals name="TANH" value="6" literal="tanh"/>
+    <eLiterals name="SELU" value="7" literal="selu"/>
+    <eLiterals name="ELU" value="8" literal="elu"/>
+    <eLiterals name="EXPONENTIAL" value="9" literal="exponential"/>
+    <eLiterals name="IDENTITY" value="10" literal="identity"/>
+    <eLiterals name="LOGISTIC" value="11" literal="logistic"/>
+    <eLiterals name="LINEAR" value="12" literal="linear"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Learning_rate_mode">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="CONSTANT" value="1" literal="'constant'"/>
+    <eLiterals name="INVSCALING" value="2" literal="'invscaling'"/>
+    <eLiterals name="ADAPTIVE" value="3" literal="'adaptive'"/>
+    <eLiterals name="EXPONENTIAL_DECAY" value="4" literal="ExponentialDecay"/>
+    <eLiterals name="PIECEWISE_CONSTANT_DECAY" value="5" literal="PiecewiseConstantDecay"/>
+    <eLiterals name="POLYNOMIAL_DECAY" value="6" literal="PolynomialDecay"/>
+    <eLiterals name="INVERSE_TIME_DECAY" value="7" literal="InverseTimeDecay"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Loss">
+    <eLiterals name="NOT_SET" literal="NOT_SET"/>
+    <eLiterals name="SPARSE_CATEGORICAL_CROSSENTROPY" value="1" literal="SparseCategoricalCrossentropy"/>
+    <eLiterals name="CATEGORICAL_CROSSENTROPY" value="2" literal="CategoricalCrossentropy"/>
+    <eLiterals name="MEAN_SQUARED_ERROR" value="3" literal="MeanSquaredError"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" eSuperTypes="#//NamedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReceiveMessage" eSuperTypes="#//Event">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//Message"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ActionBlock" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternStatement" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="segments" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LocalVariable" eSuperTypes="#//Variable #//Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="readonly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SendAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//Message"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariableAssignment" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Increment" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Decrement" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="var" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ForAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Parameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//Parameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="array" eType="#//PropertyReference"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LoopAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionalAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="action" eType="#//Action"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elseAction" eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReturnAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exp" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrintAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="line" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="msg" upperBound="-1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ErrorAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="line" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="msg" upperBound="-1" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StartSession" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="session" eType="#//Session"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionCallStatement" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//Function"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DASaveAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAPreprocessAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DATrainAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAPredictAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAPreTrainedPredictAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DAForecastAction" eSuperTypes="#//Action">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dataAnalytics" eType="#//DataAnalytics"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" unique="false"
+        upperBound="-1" eType="#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expression" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="segments" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Literal" eSuperTypes="#//Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrayInit" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="values" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EnumLiteralRef" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enum" eType="#//Enumeration"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literal" eType="#//EnumerationLiteral"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ByteLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="byteValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CharLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="charValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EByte"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntegerLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="boolValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stringValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DoubleLiteral" eSuperTypes="#//Literal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="doubleValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyReference" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Variable"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EventReference" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="receiveMsg" eType="#//Event"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" eType="#//Parameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionCallExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//Function"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Configuration" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instances" upperBound="-1"
+        eType="#//Instance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//AbstractConnector" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propassigns" upperBound="-1"
+        eType="#//ConfigPropertyAssign" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instance" eSuperTypes="#//NamedElement #//AnnotatedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Thing"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConfigPropertyAssign">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instance" eType="#//Instance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" eType="#//Property"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="init" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" upperBound="-1"
+        eType="#//PlatformAnnotation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AbstractConnector" eSuperTypes="#//NamedElement #//AnnotatedElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Connector" eSuperTypes="#//AbstractConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cli" eType="#//Instance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="required" eType="#//RequiredPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="srv" eType="#//Instance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provided" eType="#//ProvidedPort"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExternalConnector" eSuperTypes="#//AbstractConnector">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inst" eType="#//Instance"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="port" eType="#//Port"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="protocol" eType="#//Protocol"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OrExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AndExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EqualsExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotEqualsExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LowerExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GreaterOrEqualExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LowerOrEqualExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PlusExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MinusExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimesExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DivExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ModExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lhs" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rhs" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CastExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="term" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isArray" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ExpressionGroup" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="term" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NotExpression" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="term" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="UnaryMinus" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="term" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArrayIndex" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="array" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="index" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Instance Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .thing-section {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+        .diagram {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .diagram img {
+            width: 150px;
+            margin: 0 20px;
+        }
+        .line {
+            position: absolute;
+            height: 2px;
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Model Instance Generator</h1>
+    <p>Fill out the form below to generate a ThingML model instance.</p>
+    <form id="modelForm">
+        <div id="thingsContainer">
+            <!-- Server Section -->
+            <div class="thing-section" id="thing0">
+                <h2>Thing 1: Server</h2>
+                <label for="thingName0">Thing Name:</label>
+                <input type="text" id="thingName0" name="thingName0" value="Server" readonly required>
+
+                <label for="properties0">Properties (name:type):</label>
+                <input type="text" id="properties0" name="properties0" placeholder="e.g., client_ip_address:String, client_code:Int32, malicious_client:Boolean" required>
+
+                <label for="messages0">Messages (name:parameters):</label>
+                <input type="text" id="messages0" name="messages0" placeholder="e.g., ping(ip:String, code:Int32), pong()" required>
+
+                <label for="statechart0">Statechart (define states and transitions):</label>
+                <textarea id="statechart0" name="statechart0" rows="5" placeholder="Define your statechart here" required></textarea>
+            </div>
+            <!-- DataAnalyticsServer Section -->
+            <div class="thing-section" id="thing1">
+                <h2>Thing 2: DataAnalyticsServer</h2>
+                <label for="thingName1">Thing Name:</label>
+                <input type="text" id="thingName1" name="thingName1" value="DataAnalyticsServer" readonly required>
+
+                <label for="properties1">Properties (name:type):</label>
+                <input type="text" id="properties1" name="properties1" placeholder="e.g., client_ip_address:String, client_code:Int32, prediction:Boolean" required>
+
+                <label for="messages1">Messages (name:parameters):</label>
+                <input type="text" id="messages1" name="messages1" placeholder="e.g., query(client_ip:String, client_code:Int32), prediction_positive()" required>
+
+                <label for="statechart1">Statechart (define states and transitions):</label>
+                <textarea id="statechart1" name="statechart1" rows="10" placeholder="state Preprocess {\n    on entry do\n        print \"Ping Pong Data Analytics: Data Preprocessing\\n\"\n        da_preprocess da1\n    end\n    transition -> Train\n}\n\nstate Train {\n    on entry do\n        print \"Ping Pong Data Analytics: Training\\n\"\n        da_train da1\n    end\n    transition -> Ready\n}\n\nstate Ready {\n    on entry do\n        print \"Ping Pong Data Analytics: Ready for Prediction\\n\"\n    end\n    transition -> Predict\n    event m: da_service?query\n    action do\n        client_ip_address = m.client_ip\n        client_code = m.client_code\n    end\n}\n\nstate Predict {\n    on entry do\n        print \"Ping Pong Data Analytics: Predicting\\n\"\n        da_predict da1(client_ip_address, client_code)\n        if(prediction==false)\n            da_service!prediction_negative()\n        else\n            da_service!prediction_positive()\n    end\n    transition -> Ready\n    on exit da_save da1\n}" required></textarea>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSensor()">Add Sensor</button>
+        <h2>Connections</h2>
+        <label for="connections">Connections (fromThing.port => toThing.port):</label>
+        <input type="text" id="connections" name="connections" placeholder="e.g., Sensor1.port1 => Server.port1" required>
+
+        <button type="button" onclick="generateModel()">Generate Model</button>
+    </form>
+    <h2>Generated ThingML Code:</h2>
+    <pre id="generatedCode"></pre>
+    <div class="diagram" id="diagram">
+        <h2>Communication Diagram</h2>
+        <!-- This will be populated with the diagram -->
+    </div>
+</div>
+
+<script>
+    let thingCount = 2;
+
+    function addSensor() {
+        const container = document.getElementById('thingsContainer');
+        const newSensor = document.createElement('div');
+        newSensor.className = 'thing-section';
+        newSensor.id = `thing${thingCount}`;
+        newSensor.innerHTML = `
+            <h2>Thing ${thingCount + 1}: Sensor ${thingCount - 1}</h2>
+            <label for="thingName${thingCount}">Thing Name:</label>
+            <input type="text" id="thingName${thingCount}" name="thingName${thingCount}" value="Sensor${thingCount - 1}" readonly required>
+            
+            <label for="properties${thingCount}">Properties (name:type):</label>
+            <input type="text" id="properties${thingCount}" name="properties${thingCount}" placeholder="e.g., sensor_data:Float, timestamp:String" required>
+            
+            <label for="messages${thingCount}">Messages (name:parameters):</label>
+            <input type="text" id="messages${thingCount}" name="messages${thingCount}" placeholder="e.g., data(sensor_data:Float, timestamp:String)" required>
+            
+            <label for="statechart${thingCount}">Statechart (define states and transitions):</label>
+            <textarea id="statechart${thingCount}" name="statechart${thingCount}" rows="5" placeholder="Define your statechart here" required></textarea>
+        `;
+        container.appendChild(newSensor);
+        thingCount++;
+    }
+
+    function generateModel() {
+        let code = `
+object String
+    @type_checker "String"
+    @c_type "char *"
+    @java_type "String"
+    @js_type "String";
+    
+datatype Boolean<1>
+    @type_checker "Boolean"
+    @c_type "uint8_t"
+    @java_type "boolean"
+    @js_type "boolean";
+    
+datatype Int32<4>
+    @type_checker "Integer"
+    @c_type "int32_t"
+    @java_type "int"
+    @js_type "int";
+`;
+
+        for (let i = 0; i < thingCount; i++) {
+            const thingName = document.getElementById(`thingName${i}`).value;
+            const properties = document.getElementById(`properties${i}`).value.split(',').map(p => p.trim());
+            const messages = document.getElementById(`messages${i}`).value.split(',').map(m => m.trim());
+            const statechart = document.getElementById(`statechart${i}`).value;
+
+            code += `
+thing ${thingName} {
+    // Define properties
+`;
+            properties.forEach(property => {
+                code += `    property ${property};\n`;
+            });
+
+            code += `
+    // Define messages
+`;
+            messages.forEach(message => {
+                code += `    message ${message};\n`;
+            });
+
+            code += `
+    // Define statechart
+    statechart ${thingName}Behavior init State1 {
+        ${statechart.replace(/\n/g, '\n        ')}
+    }
+}
+`;
+        }
+
+        const connections = document.getElementById('connections').value.split(',').map(c => c.trim());
+        code += `
+configuration MyModelConfiguration {
+`;
+        for (let i = 0; i < thingCount; i++) {
+            const thingName = document.getElementById(`thingName${i}`).value;
+            code += `    instance ${thingName.toLowerCase()} : ${thingName}\n`;
+        }
+        connections.forEach(connection => {
+            code += `    connector ${connection}\n`;
+        });
+
+        code += `}`;
+
+        // Display the generated code
+        document.getElementById('generatedCode').innerText = code;
+
+        // Generate the communication diagram
+        generateDiagram();
+    }
+
+    function generateDiagram() {
+        const diagram = document.getElementById('diagram');
+        diagram.innerHTML = '<h2>Communication Diagram</h2>';
+
+        let serverImage = '<img id="server" src="https://via.placeholder.com/150?text=Server" alt="Server">';
+        let dataAnalyticsServerImage = '<img id="dataAnalyticsServer" src="https://via.placeholder.com/150?text=DataAnalyticsServer" alt="Data Analytics Server">';
+        let sensorImages = '';
+
+        for (let i = 2; i < thingCount; i++) {
+            sensorImages += `<img id="sensor${i - 1}" src="https://via.placeholder.com/150?text=Sensor${i - 1}" alt="Sensor ${i - 1}">`;
+        }
+
+        diagram.innerHTML += `
+            <div>
+                ${sensorImages}
+            </div>
+            <div>
+                ${serverImage}
+                ${dataAnalyticsServerImage}
+            </div>
+        `;
+
+        // Add communication lines
+        for (let i = 2; i < thingCount; i++) {
+            addLine(`sensor${i - 1}`, 'server');
+            addLine('server', 'dataAnalyticsServer');
+        }
+    }
+
+    function addLine(element1Id, element2Id) {
+        const element1 = document.getElementById(element1Id);
+        const element2 = document.getElementById(element2Id);
+
+        const rect1 = element1.getBoundingClientRect();
+        const rect2 = element2.getBoundingClientRect();
+
+        const line = document.createElement('div');
+        line.className = 'line';
+        line.style.left = `${rect1.right + (rect1.width / 2)}px`;
+        line.style.top = `${rect1.top + (rect1.height / 2)}px`;
+        line.style.width = `${rect2.left - rect1.right}px`;
+        line.style.transform = `translateY(${(rect2.top - rect1.top) / 2}px)`;
+
+        document.body.appendChild(line);
+    }
+</script>
+</body>
+</html>

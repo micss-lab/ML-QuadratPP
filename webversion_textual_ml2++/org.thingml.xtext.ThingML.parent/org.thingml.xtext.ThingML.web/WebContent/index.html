@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ML2+ Quick-Start Editor</title>
+  <link rel="stylesheet" href="xtext/2.38.0/xtext-ace.css" />
+  <script src="webjars/requirejs/2.3.7/require.min.js"></script>
+  <style>
+    :root{
+      --brand:#0a66ff; --brand-700:#0751c6; --muted:#6b7280; --bg:#f4f6fb; --panel:#ffffff;
+      --border: #e5e7eb; --shadow: 0 4px 20px rgba(0,0,0,.06);
+    }
+    *{box-sizing:border-box}
+    body { font-family: Inter, Arial, Helvetica, sans-serif; background:var(--bg); margin:0; }
+    /* Topbar */
+    .topbar { position:sticky; top:0; z-index:30; background:var(--panel); border-bottom:1px solid var(--border); box-shadow: var(--shadow); }
+    .topbar-inner { max-width:1200px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:700; color:#0f172a; }
+    .brand .logo { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg, var(--brand), #7aa9ff); display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:16px; }
+    .account { display:flex; align-items:center; gap:8px; }
+    .btn { background:var(--brand); color:#fff; border:none; padding:9px 14px; border-radius:10px; font-size:14px; cursor:pointer; box-shadow:0 2px 8px rgba(10,102,255,.25); transition:transform .03s ease, background .15s ease; }
+    .btn:hover{ background:var(--brand-700); }
+    .btn:active{ transform:translateY(1px); }
+    .btn.secondary{ background:#eef2ff; color:#26304a; box-shadow:none; border:1px solid #dbe3ff; }
+    .btn.secondary:hover{ background:#e3e9ff; }
+    .btn.ghost{ background:transparent; color:#0f172a; border:1px solid var(--border); box-shadow:none; }
+    .btn.small{ padding:6px 10px; font-size:13px; border-radius:8px; }
+    .user-pill{ padding:6px 10px; border-radius:999px; border:1px solid var(--border); background:#fff; font-size:13px; color:#0f172a; }
+
+    /* Container */
+    .container { width:min(1200px, 92%); margin:18px auto 40px; background:var(--panel); padding:0; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; }
+    .header { background:linear-gradient(135deg, var(--brand), #7aa9ff); color:#fff; padding:18px 22px; font-size:20px; font-weight:700; letter-spacing:.2px; display:flex; align-items:center; justify-content:space-between; }
+    .header small{ font-weight:500; opacity:.95 }
+
+    .content { padding:18px; }
+    .section { margin-top:14px; }
+    .section-title { margin:0 0 6px; font-weight:700; color:#0f172a; font-size:16px; display:flex; align-items:center; justify-content:space-between; }
+    .section-help { margin:0 0 12px; color:var(--muted); font-size:13px; }
+
+    #xtext-editor { height:420px; border:1px solid var(--border); border-radius:12px; margin-bottom:8px; }
+
+    .actions { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 0; }
+    .actions .btn[disabled]{ background:#d1d5db; border-color:#d1d5db; color:#fff; cursor:not-allowed; box-shadow:none; }
+
+    #output { margin-top:10px; padding:10px; background:#f9fafb; border:1px solid var(--border); height:190px; overflow-y:auto; border-radius:12px; font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:12.5px; }
+    #plotContainer { margin-top:10px; padding:12px; display:flex; flex-wrap:wrap; gap:12px; background:#f9fafb; border:1px solid var(--border); border-radius:12px; min-height:250px; justify-content:center; }
+    .plot-box { border:1px solid var(--border); border-radius:10px; padding:6px; background:#fff; max-width: 540px; }
+    img { max-width:100%; height:auto; display:block; }
+
+    .notice { background:#fef9c3; border:1px solid #fde68a; color:#854d0e; padding:10px 12px; border-radius:10px; font-size:13px; }
+
+    /* Modal */
+    .modal { position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(2,6,23,.5); z-index:50; }
+    .modal.show{ display:flex; }
+    .modal-card{ width:min(520px, 92%); background:#fff; border-radius:16px; box-shadow:var(--shadow); overflow:hidden; }
+    .modal-head{ padding:14px 16px; border-bottom:1px solid var(--border); font-weight:700; font-size:16px; }
+    .modal-body{ padding:14px 16px; display:grid; gap:10px; }
+    .form-row{ display:grid; gap:6px; }
+    label{ font-size:13px; color:#0f172a; font-weight:600; }
+    input[type="text"], input[type="email"], input[type="password"]{ width:100%; padding:10px 12px; border:1px solid var(--border); border-radius:10px; font-size:14px; }
+    .modal-foot{ padding:14px 16px; display:flex; justify-content:space-between; gap:8px; background:#f9fafb; border-top:1px solid var(--border); }
+    .error-text{ color:#b91c1c; font-size:12px; }
+
+    /* Spinner */
+    .spinner{ width:18px; height:18px; border-radius:50%; border:3px solid #e5e7eb; border-top-color:var(--brand); animation:spin .8s linear infinite; display:inline-block; vertical-align:middle; }
+    @keyframes spin{ to{ transform:rotate(360deg);} }
+  </style>
+</head>
+<body>
+  <!-- Topbar with Login/Signup -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><span class="logo">ML</span> <span>ML2+ Quick‑Start Editor</span></div>
+      <div class="account" id="accountArea">
+        <button class="btn small secondary" id="btnOpenLogin">Log in</button>
+        <button class="btn small" id="btnOpenSignup">Sign up</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="header">
+      <div>Workspace</div>
+      <small id="authStateLabel" title="Authentication status">Checking sign‑in…</small>
+    </div>
+
+    <div class="content">
+      <div class="section">
+        <h3 class="section-title">Model Editor <span class="notice" id="loginNotice" style="display:none">Please log in to enable Save/Generate/Run.</span></h3>
+        <p class="section-help">Write your <strong>ML2+/ThingML</strong> model here. Need a starting point? The template is pre‑filled. Dataset name and plot directives in your model will be used by the plotting actions.</p>
+        <label for="xtext-editor" class="sr-only" aria-hidden="false">ML2+/ThingML Editor</label>
+        <div id="xtext-editor" data-editor-xtext-lang="thingml" aria-label="ML2+/ThingML editor" title="Type or paste your ML2+/ThingML model here"></div>
+        <div class="actions" aria-label="Editor actions">
+          <button class="btn" id="saveModelButton" title="Save the current model to your workspace" disabled>Save Model</button>
+          <button class="btn secondary" id="showPreprocessingPlotButton" title="Generate and preview preprocessing plots (requires dataset in model)" disabled>Show Preprocessing Plot</button>
+          <button class="btn" id="generateCodeButton" title="Generate code via the server (streams logs)" disabled>Generate Code</button>
+          <button class="btn ghost" id="downloadCodeButton" title="Download the generated code as an archive" disabled>Download Code</button>
+          <button class="btn" id="runCodeButton" title="Run the generated code on the server (streams logs)" disabled>Run Code</button>
+          <button class="btn secondary" id="showForecastingPlotButton" title="Fetch and display forecasting plots saved for your account" disabled>Show Forecasting Plots</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Console Output</h3>
+        <p class="section-help">Live logs from <em>Generate Code</em> and <em>Run Code</em>. This region is announced to screen readers.</p>
+        <div id="output" role="log" aria-live="polite" aria-relevant="additions" aria-atomic="false"></div>
+      </div>
+
+      <div class="section">
+        <h3 class="section-title">Plot Gallery</h3>
+        <p class="section-help">Preprocessing and forecasting images will appear below as they are produced.</p>
+        <div id="plotContainer"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal" aria-hidden="true" aria-labelledby="loginTitle" role="dialog">
+    <div class="modal-card">
+      <div class="modal-head" id="loginTitle">Log in</div>
+      <form class="modal-body" id="loginForm">
+        <div class="form-row">
+          <label for="login-username">Username</label>
+          <input id="login-username" name="username" type="text" autocomplete="username" required />
+        </div>
+        <div class="form-row">
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <div class="error-text" id="loginError" aria-live="polite"></div>
+      </form>
+      <div class="modal-foot">
+        <button class="btn ghost" type="button" data-close="loginModal">Cancel</button>
+        <button class="btn" id="btnLoginSubmit" form="loginForm" type="submit">Log in</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Signup Modal -->
+  <div class="modal" id="signupModal" aria-hidden="true" aria-labelledby="signupTitle" role="dialog">
+    <div class="modal-card">
+      <div class="modal-head" id="signupTitle">Create your account</div>
+      <form class="modal-body" id="signupForm">
+        <div class="form-row">
+          <label for="signup-username">Username</label>
+          <input id="signup-username" name="username" type="text" autocomplete="username" required />
+        </div>
+        <div class="form-row">
+          <label for="signup-email">Email (optional)</label>
+          <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-row">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" name="password" type="password" autocomplete="new-password" minlength="6" required />
+        </div>
+        <div class="error-text" id="signupError" aria-live="polite"></div>
+      </form>
+      <div class="modal-foot">
+        <button class="btn ghost" type="button" data-close="signupModal">Cancel</button>
+        <button class="btn" id="btnSignupSubmit" form="signupForm" type="submit">Sign up</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const $ = (id) => document.getElementById(id);
+      const accountArea = $("accountArea");
+      const authStateLabel = $("authStateLabel");
+      const loginNotice = $("loginNotice");
+
+      const btnOpenLogin = $("btnOpenLogin");
+      const btnOpenSignup = $("btnOpenSignup");
+
+      const loginModal = $("loginModal");
+      const signupModal = $("signupModal");
+
+      const loginForm = $("loginForm");
+      const signupForm = $("signupForm");
+      const loginError = $("loginError");
+      const signupError = $("signupError");
+
+      const btnSave = $("saveModelButton");
+      const btnPre  = $("showPreprocessingPlotButton");
+      const btnGen  = $("generateCodeButton");
+      const btnDown = $("downloadCodeButton");
+      const btnRun  = $("runCodeButton");
+      const btnFPlot= $("showForecastingPlotButton");
+      const outDiv  = $("output");
+      const plotDiv = $("plotContainer");
+
+      let runDone = false;
+      let editor;
+
+      function openModal(m){ m.classList.add('show'); m.setAttribute('aria-hidden','false'); (m.querySelector('input')||{}).focus?.(); }
+      function closeModal(m){ m.classList.remove('show'); m.setAttribute('aria-hidden','true'); }
+      document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', e=> closeModal($(e.currentTarget.getAttribute('data-close')))));
+      btnOpenLogin.addEventListener('click', ()=> openModal(loginModal));
+      btnOpenSignup.addEventListener('click', ()=> openModal(signupModal));
+      [loginModal, signupModal].forEach(m => m.addEventListener('click', e=> { if(e.target===m) closeModal(m); }));
+
+      function setButtonsEnabled(isLogged){
+        [btnSave, btnPre, btnGen, btnDown, btnRun, btnFPlot].forEach(b=> b.disabled = !isLogged);
+        loginNotice.style.display = isLogged ? 'none' : 'inline-block';
+      }
+
+      function updateAuthUI(userID){
+        if(userID){
+          sessionStorage.setItem('userID', userID);
+          authStateLabel.textContent = 'Signed in as ' + userID;
+          accountArea.innerHTML = `<span class="user-pill">${userID}</span><button class="btn small ghost" id="btnLogout">Log out</button>`;
+          $("btnLogout").addEventListener('click', async ()=>{
+            try{ await fetch('/logout', { method:'POST' }); }catch(_){}
+            sessionStorage.removeItem('userID');
+            updateAuthUI(null);
+            setButtonsEnabled(false);
+          });
+          setButtonsEnabled(true);
+        } else {
+          sessionStorage.removeItem('userID');
+          authStateLabel.textContent = 'Not signed in';
+          accountArea.innerHTML = '';
+          const loginBtn = document.createElement('button');
+          loginBtn.className = 'btn small secondary';
+          loginBtn.id = 'btnOpenLogin';
+          loginBtn.textContent = 'Log in';
+          loginBtn.addEventListener('click', ()=> openModal(loginModal));
+          const signupBtn = document.createElement('button');
+          signupBtn.className = 'btn small';
+          signupBtn.id = 'btnOpenSignup';
+          signupBtn.textContent = 'Sign up';
+          signupBtn.addEventListener('click', ()=> openModal(signupModal));
+          accountArea.append(loginBtn, signupBtn);
+          setButtonsEnabled(false);
+        }
+      }
+
+      function requireLogin(){
+        const uid = sessionStorage.getItem('userID');
+        if(!uid){ openModal(loginModal); return false; }
+        return true;
+      }
+
+      // On load, check session
+      (async function initAuth(){
+        authStateLabel.textContent = 'Checking sign‑in…';
+        try{
+          const resp = await fetch('/whoami');
+          const data = await resp.json();
+          updateAuthUI(data && data.userID ? data.userID : null);
+        }catch(e){
+          authStateLabel.textContent = 'Unable to verify sign‑in';
+          updateAuthUI(null);
+        }
+      })();
+
+      // Configure RequireJS and initialize Xtext AFTER auth check starts
+      (function initRequire(){
+        const baseUrl = window.location.pathname.replace('index.html', '');
+        require.config({
+          baseUrl: baseUrl,
+          paths: {
+            jquery: 'webjars/jquery/3.6.0/jquery.min',
+            'ace/ext/language_tools': 'webjars/ace/1.3.3/src/ext-language_tools',
+            'xtext/xtext-ace': 'xtext/2.38.0/xtext-ace'
+          }
+        });
+
+        // load ACE then Xtext
+        require(['webjars/ace/1.3.3/src/ace'], function(){
+          require(['xtext/xtext-ace'], function(xtext){
+            editor = xtext.createEditor({
+              baseUrl: baseUrl,
+              syntaxDefinition: 'xtext-resources/generated/mode-thingml',
+              parent: 'xtext-editor',
+              sendFullText: true
+            });
+            editor.setValue(`/**\n * Example ThingML Template for Data Analytics\n * - Set dataset name: dataset \"my_dataset.csv\"\n * - Optional plots:\n *     plots LINE_PLOT, FORECAST_PLOT\n */\n`, -1);
+
+            // Helpers
+            function parseDataset(txt) {
+              const m = txt.match(/dataset\s+\"([^\"]+)\"/);
+              return m ? m[1] : null;
+            }
+            function parsePlots(txt) {
+              const m = txt.match(/plots\s+([A-Z_ ,\n]+)/);
+              return (m ? m[1] : 'LINE_PLOT').split(/[\s,]+/).filter(Boolean);
+            }
+
+            // Actions
+            btnSave.onclick = async function(){
+              if(!requireLogin()) return;
+              const modelTxt = editor.getValue();
+              if (!modelTxt.trim()) return alert('Model is empty.');
+              if (editor.getSession().getAnnotations().some(a=>a.type==='error'))
+                return alert('Fix syntax errors first.');
+              const resp = await fetch('/save-model', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ modelContent: modelTxt }) });
+              const d = await resp.json();
+              if(d.success){
+                alert('Model saved.');
+                btnPre.disabled = false; btnGen.disabled = false; btnFPlot.disabled = false;
+              } else alert('Save failed: ' + (d.message||'unknown error'));
+            };
+
+            btnPre.onclick = async function(){
+              if(!requireLogin()) return;
+              const ds = parseDataset(editor.getValue());
+              if (!ds) return alert('No dataset found in model (e.g., dataset "file.csv").');
+              const plots = parsePlots(editor.getValue());
+              plotDiv.innerHTML = '';
+              for(const pt of plots){
+                const box = document.createElement('div'); box.className = 'plot-box'; plotDiv.appendChild(box);
+                try{
+                  const r = await fetch('/generate-preprocessing-plot', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ dataset: ds, Preprocessing_Plots: pt }) });
+                  if(!r.ok) throw new Error(await r.text());
+                  const blob = await r.blob();
+                  const img = new Image(); img.src = URL.createObjectURL(blob); box.appendChild(img);
+                }catch(err){
+                  box.textContent = '❌ ' + err.message;
+                }
+              }
+            };
+
+            btnGen.onclick = function(){
+              if(!requireLogin()) return;
+              outDiv.innerHTML = '';
+              const es = new EventSource('/generate-code');
+              es.onmessage = (e)=>{
+                if((e.data||'').trim()==='DONE'){ es.close(); btnDown.disabled = false; }
+                else { outDiv.innerHTML += e.data + '<br>'; outDiv.scrollTop = outDiv.scrollHeight; }
+              };
+              es.onerror = ()=>{ outDiv.innerHTML += '<br><strong>Error during code generation.</strong>'; es.close(); };
+            };
+
+            btnDown.onclick = function(){
+              if(!requireLogin()) return;
+              window.location.href = '/download-code';
+              btnRun.disabled = false;
+            };
+
+            btnRun.onclick = function(){
+              if(!requireLogin()) return;
+              outDiv.innerHTML = '';
+              runDone = false;
+              const es = new EventSource('/run-code');
+              es.onmessage = (e)=>{
+                if((e.data||'').trim()==='DONE'){ es.close(); runDone = true; }
+                else { outDiv.innerHTML += e.data + '<br>'; outDiv.scrollTop = outDiv.scrollHeight; }
+              };
+              es.onerror = ()=>{ outDiv.innerHTML += '<br><strong>Error during execution.</strong>'; es.close(); };
+            };
+
+            btnFPlot.onclick = async function(){
+              if(!requireLogin()) return;
+              if(!runDone && !confirm('Did you run the code already?')) return;
+              plotDiv.innerHTML = '';
+              const uid = sessionStorage.getItem('userID');
+              try{
+                const r = await fetch('/get-forecasting-plot-files?userID=' + encodeURIComponent(uid));
+                if(!r.ok) throw new Error('Status ' + r.status);
+                const files = await r.json();
+                if(!files.length){ plotDiv.textContent = 'No forecasting plots available.'; return; }
+                files.forEach(f=>{
+                  const img = new Image();
+                  img.src = '/show-forecasting-plot?userID='+encodeURIComponent(uid)+'&plots='+encodeURIComponent(f);
+                  const box = document.createElement('div'); box.className = 'plot-box'; box.appendChild(img); plotDiv.appendChild(box);
+                });
+              }catch(err){ plotDiv.textContent = '❌ ' + err.message; }
+            };
+          });
+        });
+      })();
+
+      // Auth forms
+      loginForm.addEventListener('submit', async function(e){
+        e.preventDefault(); loginError.textContent=''; const btn = $('btnLoginSubmit'); const label = btn.textContent; btn.innerHTML = '<span class="spinner"></span> Logging in…'; btn.disabled = true;
+        try{
+          const payload = { username: loginForm.username.value.trim(), password: loginForm.password.value };
+          const r = await fetch('/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+          const d = await r.json();
+          if(!d.success) throw new Error(d.message||'Invalid credentials');
+          updateAuthUI(d.userID || payload.username);
+          closeModal(loginModal);
+          loginForm.reset();
+        }catch(err){ loginError.textContent = err.message; }
+        finally{ btn.textContent = label; btn.disabled = false; }
+      });
+
+      signupForm.addEventListener('submit', async function(e){
+        e.preventDefault(); signupError.textContent=''; const btn = $('btnSignupSubmit'); const label = btn.textContent; btn.innerHTML = '<span class="spinner"></span> Creating…'; btn.disabled = true;
+        try{
+          const payload = { username: signupForm.username.value.trim(), email: signupForm.email.value.trim()||undefined, password: signupForm.password.value };
+          const r = await fetch('/signup', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+          const d = await r.json();
+          if(!d.success) throw new Error(d.message||'Sign‑up failed');
+          updateAuthUI(d.userID || payload.username);
+          closeModal(signupModal);
+          signupForm.reset();
+        }catch(err){ signupError.textContent = err.message; }
+        finally{ btn.textContent = label; btn.disabled = false; }
+      });
+
+    }); // DOMContentLoaded
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+                
+    
+    
+    <wb-module deploy-name="org.thingml.xtext.ThingML.web-1.0.0-SNAPSHOT">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src-gen"/>
+                        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/xtend-gen"/>
+                        
+        
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+                        
+        
+        <wb-resource deploy-path="/" source-path="/data"/>
+                        
+        
+        <wb-resource deploy-path="/" source-path="/target"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/WebRoot"/>
+                
+        <dependent-module archiveName="org.thingml.xtext.ThingML-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.thingml.xtext.ThingML/org.thingml.xtext.ThingML">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                
+        <dependent-module archiveName="org.thingml.xtext.ThingML.ide-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.thingml.xtext.ThingML.ide/org.thingml.xtext.ThingML.ide">
+                        
+            <dependency-type>uses</dependency-type>
+                    
+        </dependent-module>
+                                
+        
+        
+        <property name="context-root" value="org.thingml.xtext.ThingML.web"/>
+                                
+        
+        
+        <property name="java-output-path" value="/org.thingml.xtext.ThingML.web/target/classes"/>
+                            
+    
+    
+    </wb-module>
+            
+
+
+</project-modules>

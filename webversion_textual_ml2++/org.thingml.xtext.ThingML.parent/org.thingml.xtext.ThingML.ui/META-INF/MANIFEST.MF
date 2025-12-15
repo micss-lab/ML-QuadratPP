@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: org.thingml.xtext.ThingML.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: org.thingml.xtext.ThingML.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: org.thingml.xtext.ThingML.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.thingml.xtext.ThingML,
+ org.thingml.xtext.ThingML.ide,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.14.300",
+ org.eclipse.ui.ide;bundle-version="3.18.500",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Export-Package: org.thingml.xtext.ui.quickfix,
+ org.thingml.xtext.ui.contentassist,
+ org.thingml.xtext.ThingML.ui.internal
+Bundle-Activator: org.thingml.xtext.ThingML.ui.internal.ThingMLActivator
