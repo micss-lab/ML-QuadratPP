@@ -74,3 +74,4 @@ temp/
 
 # If you need some CSVs in examples, add them explicitly like:
 # !examples/**/small_sample.csv
+docs/*.mp4
