@@ -1,0 +1,1252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);&#xA;you may not use this file except in compliance with the License.&#xA;You may obtain a copy of the License at&#xA;&#xA;     http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.&#xA;See the License for the specific language governing permissions and&#xA;limitations under the License.&#xA;&#xA;See the NOTICE file distributed with this work for additional&#xA;information regarding copyright ownership."
+    modelDirectory="/thingml/src-gen" modelPluginID="thingml" forceOverwrite="true"
+    modelName="ThingML" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="11.0" copyrightFields="false" runtimeVersion="2.29">
+  <genPackages prefix="ThingML" basePackage="org.thingml.xtext" disposableProviderFactory="true"
+      loadInitialization="true" literalsInterface="false" fileExtensions="thingml"
+      ecorePackage="ThingML.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Labels">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Labels/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Labels/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Labels/ON"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Labels/SEMI"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//FillingMissingValue">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/ON"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/FF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/BF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/INTERPOLATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//FillingMissingValue/MEAN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Resampling">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/MINUTELY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/HOURLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/DAILY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/WEEKLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/MONTHLY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Resampling/YEARLY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Multivariate">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multivariate/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multivariate/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multivariate/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Stationary">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Stationary/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Stationary/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Stationary/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//SeasonalityDetection">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SeasonalityDetection/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SeasonalityDetection/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SeasonalityDetection/ON"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SeasonalityDetection/FOURIER"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SeasonalityDetection/MOVING_AVERAGE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//RemoveOutliers">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RemoveOutliers/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RemoveOutliers/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RemoveOutliers/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//ContextArea">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ContextArea/RiverFlow"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ContextArea/ServerMonitoring"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ContextArea/IoTDataCenter"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ContextArea/Other"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//LaggedFeatures">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//LaggedFeatures/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//LaggedFeatures/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//RollingWindowFeatures">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RollingWindowFeatures/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RollingWindowFeatures/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//AdvancedImputation">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//AdvancedImputation/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//AdvancedImputation/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//OutlierDetection">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OutlierDetection/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OutlierDetection/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//TimeSeriesClustering">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//TimeSeriesClustering/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//TimeSeriesClustering/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//HyperparameterTuning">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//HyperparameterTuning/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//HyperparameterTuning/GRID_SEARCH"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//HyperparameterTuning/RANDOM_SEARCH"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//HyperparameterTuning/BAYESIAN_OPTIMIZATION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//ModelEvaluation">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/RMSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/MAE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/MSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/R_SQUARED"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/ACCURACY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/PRECISION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/RECALL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ModelEvaluation/F1_SCORE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//EnsembleMethods">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EnsembleMethods/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EnsembleMethods/BAGGING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EnsembleMethods/BOOSTING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EnsembleMethods/STACKING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//AutoML">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//AutoML/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//AutoML/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//AutoML/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Sequential">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Sequential/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Sequential/FALSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Sequential/TRUE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Timestamps">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Timestamps/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Timestamps/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Timestamps/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Preprocess_feature_scaler">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_feature_scaler/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_feature_scaler/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_feature_scaler/STANDARD_SCALER"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_feature_scaler/MIN_MAX_SCALER"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_feature_scaler/ROBUST_SCALER"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Preprocess_sample_normalizer">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_sample_normalizer/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_sample_normalizer/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_sample_normalizer/NORMALIZER_L2_NORM"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_sample_normalizer/NORMALIZER_L1_NORM"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Preprocess_sample_normalizer/NORMALIZER_MAX_NORM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//PreprocessingPlots">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/LINE_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/HISTOGRAM"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/BOX_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/SCATTER_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/HEAT_MAP"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/AUTOCORRELATION_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/LAG_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/VIOLIN_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/CORRELATION_MATRIX_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/PAIR_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/CLASS_IMBALANCE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PreprocessingPlots/MULTIVARIATE_DISTRIBUTION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//PredictionPlots">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/PREDICTION_VS_ACTUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/RESIDUALS_PLOT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/ERROR_DISTRIBUTION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/CONFIDENCE_INTERVALS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/CONFUSION_MATRIX"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/ROC_CURVE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//PredictionPlots/PR_CURVE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//ForecastingPlots">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ForecastingPlots/FORECAST_VS_ACTUAL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ForecastingPlots/FORECAST_ERROR"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//ForecastingPlots/FORECAST_INTERVALS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//OverfittingPlots">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OverfittingPlots/TRAINING_LOSS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OverfittingPlots/VALIDATION_LOSS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OverfittingPlots/LEARNING_CURVE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//OverfittingPlots/BIAS_VARIANCE_TRADEOFF"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//SupervisedLearning">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SupervisedLearning/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SupervisedLearning/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SupervisedLearning/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//CreateLaggedFeatures">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//CreateLaggedFeatures/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//CreateLaggedFeatures/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//CreateLaggedFeatures/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//SlidingWindow">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SlidingWindow/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SlidingWindow/OFF"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//SlidingWindow/ON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//DataTransformation">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/LOG_TRANSFORMATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/DIFFERENCING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/NORMALIZATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/STANDARDIZATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/SCALING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/SMOOTHING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/AGGREGATION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/DOWNSAMPLING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DataTransformation/UPSAMPLING"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Penalty">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Penalty/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Penalty/L1"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Penalty/L2"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Penalty/ELASTICNET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Penalty/NONE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Optimizer">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/NEWTON_CG"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/LBFGS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/LIBLINEAR"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/SAG"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/SAGA"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/SGD"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/ADAM"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/RMSPROP"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/ADADELTA"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/ADAGRAD"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/ADAMAX"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/NADAM"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Optimizer/FTRL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Rate">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Rate/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Rate/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Rate/TIME_BASED"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Rate/STEP"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Rate/EXPONENTIAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//EarlyStopping">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EarlyStopping/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EarlyStopping/ENABLE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//EarlyStopping/DISABLE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Regularization">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Regularization/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Regularization/L1"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Regularization/L2"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Regularization/L1_L2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Metrics">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/MSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/MAE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/ACCURACY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/PRECISION"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/RECALL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Metrics/F1_SCORE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Label_Propagation_Kernel">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Label_Propagation_Kernel/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Label_Propagation_Kernel/KNN"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Label_Propagation_Kernel/RBF"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Self_Training_Criterion">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Self_Training_Criterion/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Self_Training_Criterion/THRESHOLD"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Self_Training_Criterion/KBEST"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Init_Params_Methods">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Init_Params_Methods/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Init_Params_Methods/KMEANS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Init_Params_Methods/RANDOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Covariance_Type">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Covariance_Type/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Covariance_Type/FULL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Covariance_Type/TIED"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Covariance_Type/DIAG"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Covariance_Type/SPHERICAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Laplacian_Embedding_Label_Assign_Strategy">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Laplacian_Embedding_Label_Assign_Strategy/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Laplacian_Embedding_Label_Assign_Strategy/KMEANS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Laplacian_Embedding_Label_Assign_Strategy/DISCRETIZE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Eigen_Solver">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Eigen_Solver/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Eigen_Solver/AUTO"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Eigen_Solver/ARPACK"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Eigen_Solver/LOBPCG"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Eigen_Solver/AMG"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//KNN_Algorithms">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KNN_Algorithms/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KNN_Algorithms/AUTO"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KNN_Algorithms/BALL_TREE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KNN_Algorithms/KD_TREE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KNN_Algorithms/BRUTE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//KMeans_init_enum">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_init_enum/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_init_enum/KMEANS_PLUS_PLUS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_init_enum/RANDOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//KMeans_algorithm_enum">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_algorithm_enum/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_algorithm_enum/AUTO"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_algorithm_enum/FULL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//KMeans_algorithm_enum/ELKAN"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Multi_class">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multi_class/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multi_class/AUTO"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multi_class/OVR"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Multi_class/MULTINOMIAL"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//DecisionTreeRegressorCriterion">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeRegressorCriterion/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeRegressorCriterion/MSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeRegressorCriterion/FRIEDMAN_MSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeRegressorCriterion/MAE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeRegressorCriterion/POISSON"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//DecisionTreeClassifierCriterion">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeClassifierCriterion/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeClassifierCriterion/GINI"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeClassifierCriterion/ENTROPY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//DecisionTreeSplitter">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeSplitter/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeSplitter/BEST"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//DecisionTreeSplitter/RANDOM"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Max_features_enum">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Max_features_enum/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Max_features_enum/AUTO"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Max_features_enum/SQRT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Max_features_enum/LOG2"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//RandomForestRegressorCriterion">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestRegressorCriterion/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestRegressorCriterion/MSE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestRegressorCriterion/MAE"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//RandomForestClassifierCriterion">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestClassifierCriterion/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestClassifierCriterion/GINI"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//RandomForestClassifierCriterion/ENTROPY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Activation">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/RELU"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/SIGMOID"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/SOFTMAX"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/SOFTPLUS"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/SOFTSIGN"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/TANH"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/SELU"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/ELU"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/EXPONENTIAL"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/IDENTITY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/LOGISTIC"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Activation/LINEAR"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Learning_rate_mode">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/CONSTANT"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/INVSCALING"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/ADAPTIVE"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/EXPONENTIAL_DECAY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/PIECEWISE_CONSTANT_DECAY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/POLYNOMIAL_DECAY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Learning_rate_mode/INVERSE_TIME_DECAY"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ThingML.ecore#//Loss">
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Loss/NOT_SET"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Loss/SPARSE_CATEGORICAL_CROSSENTROPY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Loss/CATEGORICAL_CROSSENTROPY"/>
+      <genEnumLiterals ecoreEnumLiteral="ThingML.ecore#//Loss/MEAN_SQUARED_ERROR"/>
+    </genEnums>
+    <genClasses ecoreClass="ThingML.ecore#//ThingMLModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ThingMLModel/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ThingMLModel/types"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ThingMLModel/protocols"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ThingMLModel/configs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Import/importURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Import/from"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PlatformAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PlatformAnnotation/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PlatformAnnotation/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//AnnotatedElement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//AnnotatedElement/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Variable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Variable/typeRef"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//TypeRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//TypeRef/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TypeRef/isArray"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TypeRef/cardinality"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Type"/>
+    <genClasses ecoreClass="ThingML.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PrimitiveType/ByteSize"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ObjectType"/>
+    <genClasses ecoreClass="ThingML.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Enumeration/typeRef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Enumeration/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//EnumerationLiteral">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//EnumerationLiteral/init"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Thing">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Thing/fragment"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/includes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/messages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/ports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/functions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/assign"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/dataAnalytics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Thing/behaviour"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PropertyAssign">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//PropertyAssign/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//PropertyAssign/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//PropertyAssign/init"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Protocol"/>
+    <genClasses ecoreClass="ThingML.ecore#//Function">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Function/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Function/typeRef"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Function/body"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Function/abstract"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Property/readonly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Property/init"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Message">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Message/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Parameter"/>
+    <genClasses ecoreClass="ThingML.ecore#//Port">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Port/sends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Port/receives"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//RequiredPort">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RequiredPort/optional"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ProvidedPort"/>
+    <genClasses ecoreClass="ThingML.ecore#//InternalPort"/>
+    <genClasses ecoreClass="ThingML.ecore#//State">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//State/properties"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//State/entry"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//State/exit"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//State/internal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//State/outgoing"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Handler">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Handler/event"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Handler/guard"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Handler/action"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Transition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transition/target"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//InternalTransition"/>
+    <genClasses ecoreClass="ThingML.ecore#//CompositeState">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//CompositeState/region"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//CompositeState/session"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Session">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Session/maxInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Region"/>
+    <genClasses ecoreClass="ThingML.ecore#//FinalState"/>
+    <genClasses ecoreClass="ThingML.ecore#//StateContainer">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//StateContainer/initial"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateContainer/history"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//StateContainer/substate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//MessageParameter"/>
+    <genClasses ecoreClass="ThingML.ecore#//DataAnalytics">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/dataset"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/labels"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/input_features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/output_features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/timestamps"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/combine_threshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/preprocess_feature_scaler"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/preprocess_sample_normalizer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/fill_missing_value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/remove_outliers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/advanced_imputation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/lagged_features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/rolling_window_features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/resampling"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/transformations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/sequential"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/steps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/lag"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/multivariate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/stationary"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/seasonality_detection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/supervised_learning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/create_lagged_features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/sliding_window"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/autoML"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/modelAlgorithm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/blackbox_ml"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/blackbox_ml_model"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/blackbox_import_algorithm"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/blackbox_label_encoder"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/trainingResults"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/hyperparameter_tuning"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/ensemble_methods"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DataAnalytics/predictionResults"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/model_evaluation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/outlier_detection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/time_series_clustering"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/contextArea"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalytics/plots"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DataAnalyticsModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DataAnalyticsModelAlgorithm/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ML2_ModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ML2_ModelAlgorithm/prediction_plots"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Time_series_ModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Time_series_ModelAlgorithm/forecasting_plots"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Deep_learning_ModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Deep_learning_ModelAlgorithm/optimizer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Deep_learning_ModelAlgorithm/batch_size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Deep_learning_ModelAlgorithm/epochs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Deep_learning_ModelAlgorithm/metrics"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Deep_learning_ModelAlgorithm/early_stopping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Deep_learning_ModelAlgorithm/overfitting_Plots"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//statistical_ModelAlgorithm"/>
+    <genClasses ecoreClass="ThingML.ecore#//machine_learning_ModelAlgorithm"/>
+    <genClasses ecoreClass="ThingML.ecore#//hybrid_ModelAlgorithm"/>
+    <genClasses ecoreClass="ThingML.ecore#//MLP">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MLP/hidden_layers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/input_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/hidden_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/output_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/regularization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/dropout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MLP/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//GRU">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GRU/return_sequences"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GRU/hidden_layers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/input_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/hidden_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/output_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/regularization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/dropout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GRU/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//CNN">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//CNN/units"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//CNN/hidden_layers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/input_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/hidden_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/output_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/regularization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/dropout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CNN/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LSTM">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LSTM/units"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LSTM/hidden_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LSTM/return_sequences"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/input_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/hidden_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/output_activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/regularization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/dropout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LSTM/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//RNN">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RNN/units"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RNN/activation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RNN/return_sequences"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RNN/regularization"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RNN/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RNN/hidden_layers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RNN/rate"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//TCN">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/hidden_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TCN/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TCN/nb_filters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TCN/kernel_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/dilations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TCN/nb_stacks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/dropout_rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/learning_rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/loss"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//TCN/dense_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TCN/neurons"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Transformer">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/hidden_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/units"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/num_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/d_model"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/num_heads"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/dff"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/dropout_rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/learning_rate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/loss"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Transformer/dense_layers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Transformer/neurons"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ARIMA">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/differencing"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/q"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ARIMA/trend"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/seasonalP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/seasonalD"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/seasonalQ"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA/seasonality"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//SARIMA">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/differencing"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/q"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/seasonalP"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/seasonalD"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/seasonalQ"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/seasonality"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SARIMA/trend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SARIMA/start_params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SARIMA/method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/transparams"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SARIMA/solver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SARIMA/maxiter"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//HWES">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//HWES/trend"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//HWES/damped"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//HWES/seasonal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//HWES/seasonal_periods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//HWES/initialization_method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//HWES/use_boxcox"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//HWES/remove_bias"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//HWES/optimized"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ETS">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ETS/error"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ETS/trend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ETS/seasonal"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ETS/damped"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ETS/seasonal_periods"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ETS/initialization_method"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ETS/use_boxcox"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ETS/remove_bias"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ETS/optimized"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//StateSpaceModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/transition_matrix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/selection_matrix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/state_cov"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/obs_cov"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/initial_state_mean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/initial_state_cov"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//StateSpaceModel/nobs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/obs_intercept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/state_intercept"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/obs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StateSpaceModel/obs_offset"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//SVR">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/kernel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SVR/degree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/gamma"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/coef0"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/tol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/C"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/epsilon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SVR/shrinking"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SVR/cache_size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SVR/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SVR/max_iter"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//RFR">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/n_estimators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RFR/criterion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/max_depth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/min_samples_leaf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RFR/min_weight_fraction_leaf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RFR/max_features"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/max_leaf_nodes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RFR/min_impurity_decrease"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/bootstrap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/oob_score"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RFR/warm_start"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//GBM">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/loss"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/learning_rate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/n_estimators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/subsample"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/criterion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/min_samples_leaf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/min_weight_fraction_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/max_depth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/min_impurity_decrease"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/random_state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/max_features"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GBM/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/max_leaf_nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/warm_start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GBM/presort"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//XGBoost">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//XGBoost/max_depth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/learning_rate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//XGBoost/n_estimators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/objective"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/booster"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/gamma"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/min_child_weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/subsample"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/colsample_bytree"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/colsample_bylevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/colsample_bynode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/reg_alpha"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/reg_lambda"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/scale_pos_weight"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/base_score"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//XGBoost/random_state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/missing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//XGBoost/importance_type"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ARIMA_GARCH">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA_GARCH/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA_GARCH/d"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA_GARCH/q"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ARIMA_GARCH/seasonal_order"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA_GARCH/seasonal_params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ARIMA_GARCH/trend"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ARIMA_GARCH/garch_order"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ARIMA_GARCH/garch_params"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Prophet">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/growth"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/seasonality_mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/seasonality_prior_scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/holidays_prior_scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/changepoint_prior_scale"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//Prophet/interval_width"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PMML_ModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PMML_ModelAlgorithm/pmml_path"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PFA_ModelAlgorithm">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PFA_ModelAlgorithm/pfa_path"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ClassifierWithPredictionCertaintyProbabilities"/>
+    <genClasses ecoreClass="ThingML.ecore#//LinearRegression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearRegression/fit_intercept"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearRegression/normalize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearRegression/copy_X"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearRegression/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearRegression/positive"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LinearClassifierLogisticRegression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LinearClassifierLogisticRegression/penalty"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/dual"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/c"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/fit_intercept"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/intercept_scaling"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LinearClassifierLogisticRegression/class_weight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/random_state"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LinearClassifierLogisticRegression/optimizer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/max_iter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LinearClassifierLogisticRegression/multi_class"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/warm_start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LinearClassifierLogisticRegression/l1_ratio"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NaiveBayesGaussian">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesGaussian/priors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesGaussian/var_smoothing"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NaiveBayesMultinomial">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesMultinomial/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesMultinomial/fit_prior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesMultinomial/class_prior"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NaiveBayesComplement">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesComplement/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesComplement/fit_prior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesComplement/class_prior"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesComplement/norm"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NaiveBayesBernoulli">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesBernoulli/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesBernoulli/binarize"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesBernoulli/fit_prior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesBernoulli/class_prior"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NaiveBayesCategorical">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesCategorical/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NaiveBayesCategorical/fit_prior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesCategorical/class_prior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NaiveBayesCategorical/min_categories"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DecisionTreeRegressor">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeRegressor/decisionTreeRegressorCriterion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeRegressor/decisionTreeSplitter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/max_depth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/min_samples_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/min_weight_fraction_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/max_features_numeric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeRegressor/max_features_enum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/max_leaf_nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/min_impurity_decrease"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/min_impurity_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeRegressor/ccp_alpha"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DecisionTreeClassifier">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeClassifier/decisionTreeClassifierCriterion"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeClassifier/decisionTreeSplitter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/max_depth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/min_samples_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/min_weight_fraction_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/max_features_numeric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeClassifier/max_features_enum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/max_leaf_nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/min_impurity_decrease"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/min_impurity_split"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DecisionTreeClassifier/class_weight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DecisionTreeClassifier/ccp_alpha"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//RandomForestRegressor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/n_estimators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RandomForestRegressor/randomForestRegressorCriterion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/max_depth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/min_samples_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/min_weight_fraction_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/max_features_numeric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RandomForestRegressor/max_features_enum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/max_leaf_nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/min_impurity_decrease"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/min_impurity_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/bootstrap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/oob_score"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/warm_start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/ccp_alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestRegressor/max_samples"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//RandomForestClassifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/n_estimators"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RandomForestClassifier/randomForestClassifierCriterion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/max_depth"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/min_samples_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/min_samples_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/min_weight_fraction_leaf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/max_features_numeric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RandomForestClassifier/max_features_enum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/max_leaf_nodes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/min_impurity_decrease"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/min_impurity_split"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/bootstrap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/oob_score"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/warm_start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//RandomForestClassifier/class_weight"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/ccp_alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//RandomForestClassifier/max_samples"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NN_MultilayerPerceptron">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/hidden_layer_sizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/hidden_layers"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/activation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/hidden_layers_activation_functions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/activations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/optimizer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/batch_size"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/learning_rate_mode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/learning_rate_init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/power"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/power_t"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/shuffle"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/warm_start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/momentum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/nesterovs_momentum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/early_stopping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/validation_fraction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/beta_1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/beta_2"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/epsilon"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/n_iter_no_change"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/max_fun"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//NN_MultilayerPerceptron/loss"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NN_MultilayerPerceptron/epochs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//KMeans">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/n_clusters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//KMeans/init_enum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//KMeans/init_str"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/n_init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/copy_x"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//KMeans/n_jobs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//KMeans/algorithm"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//MiniBatchKMeans">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/n_clusters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MiniBatchKMeans/init_enum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//MiniBatchKMeans/init_str"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/batch_size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/compute_labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/max_no_improvement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/init_size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/n_init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MiniBatchKMeans/reassignment_ratio"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DBSCAN">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DBSCAN/eps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DBSCAN/min_samples"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DBSCAN/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DBSCAN/metric_params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DBSCAN/algorithm"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DBSCAN/leaf_size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DBSCAN/p"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DBSCAN/n_jobs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//SpectralClustering">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/n_clusters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SpectralClustering/eigen_solver"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/n_components"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/n_init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/gamma"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SpectralClustering/affinity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/n_neighbors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/eigen_tol"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SpectralClustering/assign_labels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/degree"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/coef0"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SpectralClustering/kernel_params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/n_jobs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SpectralClustering/verbose"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//GaussianMixture">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/n_components"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GaussianMixture/covariance_type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/reg_covar"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/n_init"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GaussianMixture/init_params"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GaussianMixture/weights_init"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GaussianMixture/means_init"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//GaussianMixture/precisions_init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/random_state"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/warm_start"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/verbose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GaussianMixture/verbose_interval"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//SelfTrainingClassifier">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SelfTrainingClassifier/base_estimator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SelfTrainingClassifier/threshold"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//SelfTrainingClassifier/criterion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SelfTrainingClassifier/k_best"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SelfTrainingClassifier/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SelfTrainingClassifier/verbose"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LabelPropagation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LabelPropagation/kernel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelPropagation/gamma"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelPropagation/n_neighbors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelPropagation/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelPropagation/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelPropagation/n_jobs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LabelSpreading">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LabelSpreading/kernel"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/gamma"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/n_neighbors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/alpha"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/max_iter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/tol"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LabelSpreading/n_jobs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Event"/>
+    <genClasses ecoreClass="ThingML.ecore#//ReceiveMessage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ReceiveMessage/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ReceiveMessage/message"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Action"/>
+    <genClasses ecoreClass="ThingML.ecore#//ActionBlock">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ActionBlock/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ExternStatement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ExternStatement/statement"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExternStatement/segments"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LocalVariable">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//LocalVariable/readonly"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LocalVariable/init"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//SendAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//SendAction/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//SendAction/message"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//SendAction/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//VariableAssignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//VariableAssignment/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//VariableAssignment/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//VariableAssignment/expression"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Increment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Increment/var"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Decrement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Decrement/var"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ForAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ForAction/variable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ForAction/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ForAction/array"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ForAction/action"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LoopAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LoopAction/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LoopAction/action"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ConditionalAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConditionalAction/condition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConditionalAction/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConditionalAction/elseAction"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ReturnAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ReturnAction/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PrintAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//PrintAction/line"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//PrintAction/msg"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ErrorAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ErrorAction/line"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ErrorAction/msg"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//StartSession">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//StartSession/session"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//FunctionCallStatement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//FunctionCallStatement/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//FunctionCallStatement/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DASaveAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DASaveAction/dataAnalytics"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DAPreprocessAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAPreprocessAction/dataAnalytics"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DATrainAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DATrainAction/dataAnalytics"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DAPredictAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAPredictAction/dataAnalytics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAPredictAction/features"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DAPreTrainedPredictAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAPreTrainedPredictAction/dataAnalytics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAPreTrainedPredictAction/features"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DAForecastAction">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAForecastAction/dataAnalytics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//DAForecastAction/features"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Expression"/>
+    <genClasses ecoreClass="ThingML.ecore#//ExternExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ExternExpression/expression"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExternExpression/segments"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Literal"/>
+    <genClasses ecoreClass="ThingML.ecore#//ArrayInit">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ArrayInit/values"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//EnumLiteralRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//EnumLiteralRef/enum"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//EnumLiteralRef/literal"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ByteLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//ByteLiteral/byteValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//CharLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CharLiteral/charValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//IntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//IntegerLiteral/intValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//BooleanLiteral/boolValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//StringLiteral/stringValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DoubleLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//DoubleLiteral/doubleValue"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PropertyReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//PropertyReference/property"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//EventReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//EventReference/receiveMsg"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//EventReference/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//FunctionCallExpression">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//FunctionCallExpression/function"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//FunctionCallExpression/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Configuration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Configuration/instances"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Configuration/connectors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//Configuration/propassigns"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//Instance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Instance/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ConfigPropertyAssign">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConfigPropertyAssign/instance"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConfigPropertyAssign/property"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConfigPropertyAssign/index"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConfigPropertyAssign/init"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ConfigPropertyAssign/annotations"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//AbstractConnector"/>
+    <genClasses ecoreClass="ThingML.ecore#//Connector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Connector/cli"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Connector/required"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Connector/srv"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//Connector/provided"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ExternalConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExternalConnector/inst"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExternalConnector/port"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExternalConnector/protocol"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//OrExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//OrExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//OrExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//AndExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//AndExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//AndExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//EqualsExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//EqualsExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//EqualsExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NotEqualsExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NotEqualsExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NotEqualsExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//GreaterExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GreaterExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GreaterExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LowerExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LowerExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LowerExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//GreaterOrEqualExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GreaterOrEqualExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//GreaterOrEqualExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//LowerOrEqualExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LowerOrEqualExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//LowerOrEqualExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//PlusExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//PlusExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//PlusExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//MinusExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MinusExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//MinusExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//TimesExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TimesExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//TimesExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//DivExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DivExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//DivExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ModExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ModExpression/lhs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ModExpression/rhs"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//CastExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//CastExpression/term"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ThingML.ecore#//CastExpression/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ThingML.ecore#//CastExpression/isArray"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ExpressionGroup">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ExpressionGroup/term"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//NotExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//NotExpression/term"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//UnaryMinus">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//UnaryMinus/term"/>
+    </genClasses>
+    <genClasses ecoreClass="ThingML.ecore#//ArrayIndex">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ArrayIndex/array"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ThingML.ecore#//ArrayIndex/index"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
