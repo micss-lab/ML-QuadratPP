@@ -1,0 +1,753 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.thingml.xtext.thingML.Activation;
+import org.thingml.xtext.thingML.BooleanLiteral;
+import org.thingml.xtext.thingML.IntegerLiteral;
+import org.thingml.xtext.thingML.LSTM;
+import org.thingml.xtext.thingML.Regularization;
+import org.thingml.xtext.thingML.ThingMLPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>LSTM</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getUnits <em>Units</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getHidden_layer_sizes <em>Hidden layer sizes</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getHidden_layers <em>Hidden layers</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getReturn_sequences <em>Return sequences</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getInput_activation <em>Input activation</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getHidden_activation <em>Hidden activation</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getOutput_activation <em>Output activation</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getRegularization <em>Regularization</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getDropout <em>Dropout</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.LSTMImpl#getRate <em>Rate</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class LSTMImpl extends Deep_learning_ModelAlgorithmImpl implements LSTM
+{
+  /**
+   * The cached value of the '{@link #getUnits() <em>Units</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getUnits()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral units;
+
+  /**
+   * The default value of the '{@link #getHidden_layer_sizes() <em>Hidden layer sizes</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHidden_layer_sizes()
+   * @generated
+   * @ordered
+   */
+  protected static final String HIDDEN_LAYER_SIZES_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getHidden_layer_sizes() <em>Hidden layer sizes</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHidden_layer_sizes()
+   * @generated
+   * @ordered
+   */
+  protected String hidden_layer_sizes = HIDDEN_LAYER_SIZES_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getHidden_layers() <em>Hidden layers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHidden_layers()
+   * @generated
+   * @ordered
+   */
+  protected EList<IntegerLiteral> hidden_layers;
+
+  /**
+   * The cached value of the '{@link #getReturn_sequences() <em>Return sequences</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturn_sequences()
+   * @generated
+   * @ordered
+   */
+  protected BooleanLiteral return_sequences;
+
+  /**
+   * The default value of the '{@link #getInput_activation() <em>Input activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInput_activation()
+   * @generated
+   * @ordered
+   */
+  protected static final Activation INPUT_ACTIVATION_EDEFAULT = Activation.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getInput_activation() <em>Input activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getInput_activation()
+   * @generated
+   * @ordered
+   */
+  protected Activation input_activation = INPUT_ACTIVATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getHidden_activation() <em>Hidden activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHidden_activation()
+   * @generated
+   * @ordered
+   */
+  protected static final Activation HIDDEN_ACTIVATION_EDEFAULT = Activation.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getHidden_activation() <em>Hidden activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getHidden_activation()
+   * @generated
+   * @ordered
+   */
+  protected Activation hidden_activation = HIDDEN_ACTIVATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOutput_activation() <em>Output activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOutput_activation()
+   * @generated
+   * @ordered
+   */
+  protected static final Activation OUTPUT_ACTIVATION_EDEFAULT = Activation.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getOutput_activation() <em>Output activation</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOutput_activation()
+   * @generated
+   * @ordered
+   */
+  protected Activation output_activation = OUTPUT_ACTIVATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRegularization() <em>Regularization</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegularization()
+   * @generated
+   * @ordered
+   */
+  protected static final Regularization REGULARIZATION_EDEFAULT = Regularization.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getRegularization() <em>Regularization</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRegularization()
+   * @generated
+   * @ordered
+   */
+  protected Regularization regularization = REGULARIZATION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getDropout() <em>Dropout</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDropout()
+   * @generated
+   * @ordered
+   */
+  protected static final double DROPOUT_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getDropout() <em>Dropout</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDropout()
+   * @generated
+   * @ordered
+   */
+  protected double dropout = DROPOUT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRate() <em>Rate</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRate()
+   * @generated
+   * @ordered
+   */
+  protected static final double RATE_EDEFAULT = 0.0;
+
+  /**
+   * The cached value of the '{@link #getRate() <em>Rate</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRate()
+   * @generated
+   * @ordered
+   */
+  protected double rate = RATE_EDEFAULT;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected LSTMImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return ThingMLPackage.eINSTANCE.getLSTM();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getUnits()
+  {
+    return units;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetUnits(IntegerLiteral newUnits, NotificationChain msgs)
+  {
+    IntegerLiteral oldUnits = units;
+    units = newUnits;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__UNITS, oldUnits, newUnits);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setUnits(IntegerLiteral newUnits)
+  {
+    if (newUnits != units)
+    {
+      NotificationChain msgs = null;
+      if (units != null)
+        msgs = ((InternalEObject)units).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LSTM__UNITS, null, msgs);
+      if (newUnits != null)
+        msgs = ((InternalEObject)newUnits).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LSTM__UNITS, null, msgs);
+      msgs = basicSetUnits(newUnits, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__UNITS, newUnits, newUnits));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getHidden_layer_sizes()
+  {
+    return hidden_layer_sizes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHidden_layer_sizes(String newHidden_layer_sizes)
+  {
+    String oldHidden_layer_sizes = hidden_layer_sizes;
+    hidden_layer_sizes = newHidden_layer_sizes;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__HIDDEN_LAYER_SIZES, oldHidden_layer_sizes, hidden_layer_sizes));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<IntegerLiteral> getHidden_layers()
+  {
+    if (hidden_layers == null)
+    {
+      hidden_layers = new EObjectContainmentEList<IntegerLiteral>(IntegerLiteral.class, this, ThingMLPackage.LSTM__HIDDEN_LAYERS);
+    }
+    return hidden_layers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BooleanLiteral getReturn_sequences()
+  {
+    return return_sequences;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetReturn_sequences(BooleanLiteral newReturn_sequences, NotificationChain msgs)
+  {
+    BooleanLiteral oldReturn_sequences = return_sequences;
+    return_sequences = newReturn_sequences;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__RETURN_SEQUENCES, oldReturn_sequences, newReturn_sequences);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setReturn_sequences(BooleanLiteral newReturn_sequences)
+  {
+    if (newReturn_sequences != return_sequences)
+    {
+      NotificationChain msgs = null;
+      if (return_sequences != null)
+        msgs = ((InternalEObject)return_sequences).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LSTM__RETURN_SEQUENCES, null, msgs);
+      if (newReturn_sequences != null)
+        msgs = ((InternalEObject)newReturn_sequences).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.LSTM__RETURN_SEQUENCES, null, msgs);
+      msgs = basicSetReturn_sequences(newReturn_sequences, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__RETURN_SEQUENCES, newReturn_sequences, newReturn_sequences));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Activation getInput_activation()
+  {
+    return input_activation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setInput_activation(Activation newInput_activation)
+  {
+    Activation oldInput_activation = input_activation;
+    input_activation = newInput_activation == null ? INPUT_ACTIVATION_EDEFAULT : newInput_activation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__INPUT_ACTIVATION, oldInput_activation, input_activation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Activation getHidden_activation()
+  {
+    return hidden_activation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setHidden_activation(Activation newHidden_activation)
+  {
+    Activation oldHidden_activation = hidden_activation;
+    hidden_activation = newHidden_activation == null ? HIDDEN_ACTIVATION_EDEFAULT : newHidden_activation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__HIDDEN_ACTIVATION, oldHidden_activation, hidden_activation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Activation getOutput_activation()
+  {
+    return output_activation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOutput_activation(Activation newOutput_activation)
+  {
+    Activation oldOutput_activation = output_activation;
+    output_activation = newOutput_activation == null ? OUTPUT_ACTIVATION_EDEFAULT : newOutput_activation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__OUTPUT_ACTIVATION, oldOutput_activation, output_activation));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Regularization getRegularization()
+  {
+    return regularization;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRegularization(Regularization newRegularization)
+  {
+    Regularization oldRegularization = regularization;
+    regularization = newRegularization == null ? REGULARIZATION_EDEFAULT : newRegularization;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__REGULARIZATION, oldRegularization, regularization));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getDropout()
+  {
+    return dropout;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDropout(double newDropout)
+  {
+    double oldDropout = dropout;
+    dropout = newDropout;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__DROPOUT, oldDropout, dropout));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public double getRate()
+  {
+    return rate;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setRate(double newRate)
+  {
+    double oldRate = rate;
+    rate = newRate;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.LSTM__RATE, oldRate, rate));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LSTM__UNITS:
+        return basicSetUnits(null, msgs);
+      case ThingMLPackage.LSTM__HIDDEN_LAYERS:
+        return ((InternalEList<?>)getHidden_layers()).basicRemove(otherEnd, msgs);
+      case ThingMLPackage.LSTM__RETURN_SEQUENCES:
+        return basicSetReturn_sequences(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LSTM__UNITS:
+        return getUnits();
+      case ThingMLPackage.LSTM__HIDDEN_LAYER_SIZES:
+        return getHidden_layer_sizes();
+      case ThingMLPackage.LSTM__HIDDEN_LAYERS:
+        return getHidden_layers();
+      case ThingMLPackage.LSTM__RETURN_SEQUENCES:
+        return getReturn_sequences();
+      case ThingMLPackage.LSTM__INPUT_ACTIVATION:
+        return getInput_activation();
+      case ThingMLPackage.LSTM__HIDDEN_ACTIVATION:
+        return getHidden_activation();
+      case ThingMLPackage.LSTM__OUTPUT_ACTIVATION:
+        return getOutput_activation();
+      case ThingMLPackage.LSTM__REGULARIZATION:
+        return getRegularization();
+      case ThingMLPackage.LSTM__DROPOUT:
+        return getDropout();
+      case ThingMLPackage.LSTM__RATE:
+        return getRate();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LSTM__UNITS:
+        setUnits((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_LAYER_SIZES:
+        setHidden_layer_sizes((String)newValue);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_LAYERS:
+        getHidden_layers().clear();
+        getHidden_layers().addAll((Collection<? extends IntegerLiteral>)newValue);
+        return;
+      case ThingMLPackage.LSTM__RETURN_SEQUENCES:
+        setReturn_sequences((BooleanLiteral)newValue);
+        return;
+      case ThingMLPackage.LSTM__INPUT_ACTIVATION:
+        setInput_activation((Activation)newValue);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_ACTIVATION:
+        setHidden_activation((Activation)newValue);
+        return;
+      case ThingMLPackage.LSTM__OUTPUT_ACTIVATION:
+        setOutput_activation((Activation)newValue);
+        return;
+      case ThingMLPackage.LSTM__REGULARIZATION:
+        setRegularization((Regularization)newValue);
+        return;
+      case ThingMLPackage.LSTM__DROPOUT:
+        setDropout((Double)newValue);
+        return;
+      case ThingMLPackage.LSTM__RATE:
+        setRate((Double)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LSTM__UNITS:
+        setUnits((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_LAYER_SIZES:
+        setHidden_layer_sizes(HIDDEN_LAYER_SIZES_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_LAYERS:
+        getHidden_layers().clear();
+        return;
+      case ThingMLPackage.LSTM__RETURN_SEQUENCES:
+        setReturn_sequences((BooleanLiteral)null);
+        return;
+      case ThingMLPackage.LSTM__INPUT_ACTIVATION:
+        setInput_activation(INPUT_ACTIVATION_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__HIDDEN_ACTIVATION:
+        setHidden_activation(HIDDEN_ACTIVATION_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__OUTPUT_ACTIVATION:
+        setOutput_activation(OUTPUT_ACTIVATION_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__REGULARIZATION:
+        setRegularization(REGULARIZATION_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__DROPOUT:
+        setDropout(DROPOUT_EDEFAULT);
+        return;
+      case ThingMLPackage.LSTM__RATE:
+        setRate(RATE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.LSTM__UNITS:
+        return units != null;
+      case ThingMLPackage.LSTM__HIDDEN_LAYER_SIZES:
+        return HIDDEN_LAYER_SIZES_EDEFAULT == null ? hidden_layer_sizes != null : !HIDDEN_LAYER_SIZES_EDEFAULT.equals(hidden_layer_sizes);
+      case ThingMLPackage.LSTM__HIDDEN_LAYERS:
+        return hidden_layers != null && !hidden_layers.isEmpty();
+      case ThingMLPackage.LSTM__RETURN_SEQUENCES:
+        return return_sequences != null;
+      case ThingMLPackage.LSTM__INPUT_ACTIVATION:
+        return input_activation != INPUT_ACTIVATION_EDEFAULT;
+      case ThingMLPackage.LSTM__HIDDEN_ACTIVATION:
+        return hidden_activation != HIDDEN_ACTIVATION_EDEFAULT;
+      case ThingMLPackage.LSTM__OUTPUT_ACTIVATION:
+        return output_activation != OUTPUT_ACTIVATION_EDEFAULT;
+      case ThingMLPackage.LSTM__REGULARIZATION:
+        return regularization != REGULARIZATION_EDEFAULT;
+      case ThingMLPackage.LSTM__DROPOUT:
+        return dropout != DROPOUT_EDEFAULT;
+      case ThingMLPackage.LSTM__RATE:
+        return rate != RATE_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (hidden_layer_sizes: ");
+    result.append(hidden_layer_sizes);
+    result.append(", input_activation: ");
+    result.append(input_activation);
+    result.append(", hidden_activation: ");
+    result.append(hidden_activation);
+    result.append(", output_activation: ");
+    result.append(output_activation);
+    result.append(", regularization: ");
+    result.append(regularization);
+    result.append(", dropout: ");
+    result.append(dropout);
+    result.append(", rate: ");
+    result.append(rate);
+    result.append(')');
+    return result.toString();
+  }
+
+} //LSTMImpl

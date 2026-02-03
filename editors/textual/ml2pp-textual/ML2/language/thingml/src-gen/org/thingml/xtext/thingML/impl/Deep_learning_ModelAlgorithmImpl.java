@@ -1,0 +1,533 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.thingml.xtext.thingML.Deep_learning_ModelAlgorithm;
+import org.thingml.xtext.thingML.EarlyStopping;
+import org.thingml.xtext.thingML.IntegerLiteral;
+import org.thingml.xtext.thingML.Metrics;
+import org.thingml.xtext.thingML.Optimizer;
+import org.thingml.xtext.thingML.OverfittingPlots;
+import org.thingml.xtext.thingML.ThingMLPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Deep learning Model Algorithm</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getOptimizer <em>Optimizer</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getBatch_size <em>Batch size</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getEpochs <em>Epochs</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getMetrics <em>Metrics</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getEarly_stopping <em>Early stopping</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.Deep_learning_ModelAlgorithmImpl#getOverfitting_Plots <em>Overfitting Plots</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class Deep_learning_ModelAlgorithmImpl extends Time_series_ModelAlgorithmImpl implements Deep_learning_ModelAlgorithm
+{
+  /**
+   * The default value of the '{@link #getOptimizer() <em>Optimizer</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOptimizer()
+   * @generated
+   * @ordered
+   */
+  protected static final Optimizer OPTIMIZER_EDEFAULT = Optimizer.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getOptimizer() <em>Optimizer</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOptimizer()
+   * @generated
+   * @ordered
+   */
+  protected Optimizer optimizer = OPTIMIZER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getBatch_size() <em>Batch size</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getBatch_size()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral batch_size;
+
+  /**
+   * The cached value of the '{@link #getEpochs() <em>Epochs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEpochs()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral epochs;
+
+  /**
+   * The default value of the '{@link #getMetrics() <em>Metrics</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrics()
+   * @generated
+   * @ordered
+   */
+  protected static final Metrics METRICS_EDEFAULT = Metrics.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getMetrics() <em>Metrics</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMetrics()
+   * @generated
+   * @ordered
+   */
+  protected Metrics metrics = METRICS_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getEarly_stopping() <em>Early stopping</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEarly_stopping()
+   * @generated
+   * @ordered
+   */
+  protected static final EarlyStopping EARLY_STOPPING_EDEFAULT = EarlyStopping.NOT_SET;
+
+  /**
+   * The cached value of the '{@link #getEarly_stopping() <em>Early stopping</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEarly_stopping()
+   * @generated
+   * @ordered
+   */
+  protected EarlyStopping early_stopping = EARLY_STOPPING_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getOverfitting_Plots() <em>Overfitting Plots</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOverfitting_Plots()
+   * @generated
+   * @ordered
+   */
+  protected static final OverfittingPlots OVERFITTING_PLOTS_EDEFAULT = OverfittingPlots.TRAINING_LOSS;
+
+  /**
+   * The cached value of the '{@link #getOverfitting_Plots() <em>Overfitting Plots</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getOverfitting_Plots()
+   * @generated
+   * @ordered
+   */
+  protected OverfittingPlots overfitting_Plots = OVERFITTING_PLOTS_EDEFAULT;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected Deep_learning_ModelAlgorithmImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return ThingMLPackage.eINSTANCE.getDeep_learning_ModelAlgorithm();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Optimizer getOptimizer()
+  {
+    return optimizer;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOptimizer(Optimizer newOptimizer)
+  {
+    Optimizer oldOptimizer = optimizer;
+    optimizer = newOptimizer == null ? OPTIMIZER_EDEFAULT : newOptimizer;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OPTIMIZER, oldOptimizer, optimizer));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getBatch_size()
+  {
+    return batch_size;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetBatch_size(IntegerLiteral newBatch_size, NotificationChain msgs)
+  {
+    IntegerLiteral oldBatch_size = batch_size;
+    batch_size = newBatch_size;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE, oldBatch_size, newBatch_size);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setBatch_size(IntegerLiteral newBatch_size)
+  {
+    if (newBatch_size != batch_size)
+    {
+      NotificationChain msgs = null;
+      if (batch_size != null)
+        msgs = ((InternalEObject)batch_size).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE, null, msgs);
+      if (newBatch_size != null)
+        msgs = ((InternalEObject)newBatch_size).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE, null, msgs);
+      msgs = basicSetBatch_size(newBatch_size, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE, newBatch_size, newBatch_size));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getEpochs()
+  {
+    return epochs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetEpochs(IntegerLiteral newEpochs, NotificationChain msgs)
+  {
+    IntegerLiteral oldEpochs = epochs;
+    epochs = newEpochs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS, oldEpochs, newEpochs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setEpochs(IntegerLiteral newEpochs)
+  {
+    if (newEpochs != epochs)
+    {
+      NotificationChain msgs = null;
+      if (epochs != null)
+        msgs = ((InternalEObject)epochs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS, null, msgs);
+      if (newEpochs != null)
+        msgs = ((InternalEObject)newEpochs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS, null, msgs);
+      msgs = basicSetEpochs(newEpochs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS, newEpochs, newEpochs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Metrics getMetrics()
+  {
+    return metrics;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setMetrics(Metrics newMetrics)
+  {
+    Metrics oldMetrics = metrics;
+    metrics = newMetrics == null ? METRICS_EDEFAULT : newMetrics;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__METRICS, oldMetrics, metrics));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EarlyStopping getEarly_stopping()
+  {
+    return early_stopping;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setEarly_stopping(EarlyStopping newEarly_stopping)
+  {
+    EarlyStopping oldEarly_stopping = early_stopping;
+    early_stopping = newEarly_stopping == null ? EARLY_STOPPING_EDEFAULT : newEarly_stopping;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EARLY_STOPPING, oldEarly_stopping, early_stopping));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OverfittingPlots getOverfitting_Plots()
+  {
+    return overfitting_Plots;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOverfitting_Plots(OverfittingPlots newOverfitting_Plots)
+  {
+    OverfittingPlots oldOverfitting_Plots = overfitting_Plots;
+    overfitting_Plots = newOverfitting_Plots == null ? OVERFITTING_PLOTS_EDEFAULT : newOverfitting_Plots;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OVERFITTING_PLOTS, oldOverfitting_Plots, overfitting_Plots));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE:
+        return basicSetBatch_size(null, msgs);
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS:
+        return basicSetEpochs(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OPTIMIZER:
+        return getOptimizer();
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE:
+        return getBatch_size();
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS:
+        return getEpochs();
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__METRICS:
+        return getMetrics();
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EARLY_STOPPING:
+        return getEarly_stopping();
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OVERFITTING_PLOTS:
+        return getOverfitting_Plots();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OPTIMIZER:
+        setOptimizer((Optimizer)newValue);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE:
+        setBatch_size((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS:
+        setEpochs((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__METRICS:
+        setMetrics((Metrics)newValue);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EARLY_STOPPING:
+        setEarly_stopping((EarlyStopping)newValue);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OVERFITTING_PLOTS:
+        setOverfitting_Plots((OverfittingPlots)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OPTIMIZER:
+        setOptimizer(OPTIMIZER_EDEFAULT);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE:
+        setBatch_size((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS:
+        setEpochs((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__METRICS:
+        setMetrics(METRICS_EDEFAULT);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EARLY_STOPPING:
+        setEarly_stopping(EARLY_STOPPING_EDEFAULT);
+        return;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OVERFITTING_PLOTS:
+        setOverfitting_Plots(OVERFITTING_PLOTS_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OPTIMIZER:
+        return optimizer != OPTIMIZER_EDEFAULT;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__BATCH_SIZE:
+        return batch_size != null;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EPOCHS:
+        return epochs != null;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__METRICS:
+        return metrics != METRICS_EDEFAULT;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__EARLY_STOPPING:
+        return early_stopping != EARLY_STOPPING_EDEFAULT;
+      case ThingMLPackage.DEEP_LEARNING_MODEL_ALGORITHM__OVERFITTING_PLOTS:
+        return overfitting_Plots != OVERFITTING_PLOTS_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (optimizer: ");
+    result.append(optimizer);
+    result.append(", metrics: ");
+    result.append(metrics);
+    result.append(", early_stopping: ");
+    result.append(early_stopping);
+    result.append(", overfitting_Plots: ");
+    result.append(overfitting_Plots);
+    result.append(')');
+    return result.toString();
+  }
+
+} //Deep_learning_ModelAlgorithmImpl

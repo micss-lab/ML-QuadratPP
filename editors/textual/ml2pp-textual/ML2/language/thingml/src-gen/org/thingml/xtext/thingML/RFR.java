@@ -1,0 +1,382 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>RFR</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getN_estimators <em>Nestimators</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getCriterion <em>Criterion</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMax_depth <em>Max depth</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMin_samples_split <em>Min samples split</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMin_samples_leaf <em>Min samples leaf</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMin_weight_fraction_leaf <em>Min weight fraction leaf</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMax_features <em>Max features</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMax_leaf_nodes <em>Max leaf nodes</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getMin_impurity_decrease <em>Min impurity decrease</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getBootstrap <em>Bootstrap</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getOob_score <em>Oob score</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getN_jobs <em>Njobs</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getRandom_state <em>Random state</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getVerbose <em>Verbose</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.RFR#getWarm_start <em>Warm start</em>}</li>
+ * </ul>
+ *
+ * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR()
+ * @model
+ * @generated
+ */
+public interface RFR extends machine_learning_ModelAlgorithm
+{
+  /**
+   * Returns the value of the '<em><b>Nestimators</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Nestimators</em>' containment reference.
+   * @see #setN_estimators(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_N_estimators()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_estimators();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getN_estimators <em>Nestimators</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Nestimators</em>' containment reference.
+   * @see #getN_estimators()
+   * @generated
+   */
+  void setN_estimators(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Criterion</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Criterion</em>' attribute.
+   * @see #setCriterion(String)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Criterion()
+   * @model
+   * @generated
+   */
+  String getCriterion();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getCriterion <em>Criterion</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Criterion</em>' attribute.
+   * @see #getCriterion()
+   * @generated
+   */
+  void setCriterion(String value);
+
+  /**
+   * Returns the value of the '<em><b>Max depth</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Max depth</em>' containment reference.
+   * @see #setMax_depth(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Max_depth()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMax_depth();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMax_depth <em>Max depth</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Max depth</em>' containment reference.
+   * @see #getMax_depth()
+   * @generated
+   */
+  void setMax_depth(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Min samples split</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Min samples split</em>' containment reference.
+   * @see #setMin_samples_split(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Min_samples_split()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMin_samples_split();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMin_samples_split <em>Min samples split</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Min samples split</em>' containment reference.
+   * @see #getMin_samples_split()
+   * @generated
+   */
+  void setMin_samples_split(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Min samples leaf</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Min samples leaf</em>' containment reference.
+   * @see #setMin_samples_leaf(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Min_samples_leaf()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMin_samples_leaf();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMin_samples_leaf <em>Min samples leaf</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Min samples leaf</em>' containment reference.
+   * @see #getMin_samples_leaf()
+   * @generated
+   */
+  void setMin_samples_leaf(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Min weight fraction leaf</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Min weight fraction leaf</em>' attribute.
+   * @see #setMin_weight_fraction_leaf(double)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Min_weight_fraction_leaf()
+   * @model
+   * @generated
+   */
+  double getMin_weight_fraction_leaf();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMin_weight_fraction_leaf <em>Min weight fraction leaf</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Min weight fraction leaf</em>' attribute.
+   * @see #getMin_weight_fraction_leaf()
+   * @generated
+   */
+  void setMin_weight_fraction_leaf(double value);
+
+  /**
+   * Returns the value of the '<em><b>Max features</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Max features</em>' attribute.
+   * @see #setMax_features(String)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Max_features()
+   * @model
+   * @generated
+   */
+  String getMax_features();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMax_features <em>Max features</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Max features</em>' attribute.
+   * @see #getMax_features()
+   * @generated
+   */
+  void setMax_features(String value);
+
+  /**
+   * Returns the value of the '<em><b>Max leaf nodes</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Max leaf nodes</em>' containment reference.
+   * @see #setMax_leaf_nodes(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Max_leaf_nodes()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMax_leaf_nodes();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMax_leaf_nodes <em>Max leaf nodes</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Max leaf nodes</em>' containment reference.
+   * @see #getMax_leaf_nodes()
+   * @generated
+   */
+  void setMax_leaf_nodes(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Min impurity decrease</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Min impurity decrease</em>' attribute.
+   * @see #setMin_impurity_decrease(double)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Min_impurity_decrease()
+   * @model
+   * @generated
+   */
+  double getMin_impurity_decrease();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getMin_impurity_decrease <em>Min impurity decrease</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Min impurity decrease</em>' attribute.
+   * @see #getMin_impurity_decrease()
+   * @generated
+   */
+  void setMin_impurity_decrease(double value);
+
+  /**
+   * Returns the value of the '<em><b>Bootstrap</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Bootstrap</em>' containment reference.
+   * @see #setBootstrap(BooleanLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Bootstrap()
+   * @model containment="true"
+   * @generated
+   */
+  BooleanLiteral getBootstrap();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getBootstrap <em>Bootstrap</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Bootstrap</em>' containment reference.
+   * @see #getBootstrap()
+   * @generated
+   */
+  void setBootstrap(BooleanLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Oob score</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Oob score</em>' containment reference.
+   * @see #setOob_score(BooleanLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Oob_score()
+   * @model containment="true"
+   * @generated
+   */
+  BooleanLiteral getOob_score();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getOob_score <em>Oob score</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Oob score</em>' containment reference.
+   * @see #getOob_score()
+   * @generated
+   */
+  void setOob_score(BooleanLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Njobs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Njobs</em>' containment reference.
+   * @see #setN_jobs(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_N_jobs()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_jobs();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getN_jobs <em>Njobs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Njobs</em>' containment reference.
+   * @see #getN_jobs()
+   * @generated
+   */
+  void setN_jobs(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Random state</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Random state</em>' containment reference.
+   * @see #setRandom_state(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Random_state()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getRandom_state();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getRandom_state <em>Random state</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Random state</em>' containment reference.
+   * @see #getRandom_state()
+   * @generated
+   */
+  void setRandom_state(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Verbose</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Verbose</em>' containment reference.
+   * @see #setVerbose(BooleanLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Verbose()
+   * @model containment="true"
+   * @generated
+   */
+  BooleanLiteral getVerbose();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getVerbose <em>Verbose</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Verbose</em>' containment reference.
+   * @see #getVerbose()
+   * @generated
+   */
+  void setVerbose(BooleanLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Warm start</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Warm start</em>' containment reference.
+   * @see #setWarm_start(BooleanLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getRFR_Warm_start()
+   * @model containment="true"
+   * @generated
+   */
+  BooleanLiteral getWarm_start();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.RFR#getWarm_start <em>Warm start</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Warm start</em>' containment reference.
+   * @see #getWarm_start()
+   * @generated
+   */
+  void setWarm_start(BooleanLiteral value);
+
+} // RFR

@@ -1,0 +1,11346 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import java.io.IOException;
+
+import java.net.URL;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
+
+import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
+
+import org.thingml.xtext.thingML.ThingMLFactory;
+import org.thingml.xtext.thingML.ThingMLPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model <b>Package</b>.
+ * <!-- end-user-doc -->
+ * @generated
+ */
+public class ThingMLPackageImpl extends EPackageImpl implements ThingMLPackage
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected String packageFilename = "thingML.loadinitialization_ecore";
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass thingMLModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass importEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass platformAnnotationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass namedElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass annotatedElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass primitiveTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass objectTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumerationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumerationLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass thingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyAssignEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass protocolEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass messageEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass portEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass requiredPortEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass providedPortEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass internalPortEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass handlerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass transitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass internalTransitionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass compositeStateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sessionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass regionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass finalStateEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateContainerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass messageParameterEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataAnalyticsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dataAnalyticsModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass ml2_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass time_series_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass deep_learning_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass statistical_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass machine_learning_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hybrid_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass mlpEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gruEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass cnnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lstmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rnnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass tcnEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass transformerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arimaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sarimaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass hwesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass etsEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stateSpaceModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass svrEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass rfrEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gbmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass xgBoostEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arimA_GARCHEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass prophetEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pmmL_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass pfA_ModelAlgorithmEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass classifierWithPredictionCertaintyProbabilitiesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass linearRegressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass linearClassifierLogisticRegressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass naiveBayesGaussianEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass naiveBayesMultinomialEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass naiveBayesComplementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass naiveBayesBernoulliEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass naiveBayesCategoricalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass decisionTreeRegressorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass decisionTreeClassifierEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass randomForestRegressorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass randomForestClassifierEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass nN_MultilayerPerceptronEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass kMeansEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass miniBatchKMeansEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass dbscanEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass spectralClusteringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass gaussianMixtureEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass selfTrainingClassifierEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelPropagationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass labelSpreadingEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass receiveMessageEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass actionBlockEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass localVariableEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass sendActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableAssignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass incrementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass decrementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass forActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass loopActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass conditionalActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass returnActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass printActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass errorActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass startSessionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionCallStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daSaveActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daPreprocessActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daTrainActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daPredictActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daPreTrainedPredictActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass daForecastActionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass literalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arrayInitEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumLiteralRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass byteLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass charLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass integerLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass doubleLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass propertyReferenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass eventReferenceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionCallExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass configurationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass instanceEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass configPropertyAssignEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass abstractConnectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass connectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass externalConnectorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass equalsExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notEqualsExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass greaterExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lowerExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass greaterOrEqualExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass lowerOrEqualExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass plusExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass minusExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass timesExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass divExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass modExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass castExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionGroupEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notExpressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass unaryMinusEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass arrayIndexEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum labelsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum fillingMissingValueEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum resamplingEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum multivariateEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum stationaryEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum seasonalityDetectionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum removeOutliersEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum contextAreaEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum laggedFeaturesEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum rollingWindowFeaturesEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum advancedImputationEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum outlierDetectionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum timeSeriesClusteringEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum hyperparameterTuningEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum modelEvaluationEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum ensembleMethodsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum autoMLEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum sequentialEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum timestampsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum preprocess_feature_scalerEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum preprocess_sample_normalizerEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum preprocessingPlotsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum predictionPlotsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum forecastingPlotsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum overfittingPlotsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum supervisedLearningEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum createLaggedFeaturesEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum slidingWindowEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum dataTransformationEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum penaltyEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum optimizerEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum rateEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum earlyStoppingEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum regularizationEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum metricsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum label_Propagation_KernelEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum self_Training_CriterionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum init_Params_MethodsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum covariance_TypeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum laplacian_Embedding_Label_Assign_StrategyEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum eigen_SolverEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum knN_AlgorithmsEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum kMeans_init_enumEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum kMeans_algorithm_enumEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum multi_classEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum decisionTreeRegressorCriterionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum decisionTreeClassifierCriterionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum decisionTreeSplitterEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum max_features_enumEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum randomForestRegressorCriterionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum randomForestClassifierCriterionEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum activationEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum learning_rate_modeEEnum = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum lossEEnum = null;
+
+  /**
+   * Creates an instance of the model <b>Package</b>, registered with
+   * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
+   * package URI value.
+   * <p>Note: the correct way to create the package is via the static
+   * factory method {@link #init init()}, which also performs
+   * initialization of the package, or returns the registered package,
+   * if one already exists.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.emf.ecore.EPackage.Registry
+   * @see org.thingml.xtext.thingML.ThingMLPackage#eNS_URI
+   * @see #init()
+   * @generated
+   */
+  private ThingMLPackageImpl()
+  {
+    super(eNS_URI, ThingMLFactory.eINSTANCE);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private static boolean isInited = false;
+
+  /**
+   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+   *
+   * <p>This method is used to initialize {@link ThingMLPackage#eINSTANCE} when that field is accessed.
+   * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #eNS_URI
+   * @generated
+   */
+  public static ThingMLPackage init()
+  {
+    if (isInited) return (ThingMLPackage)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI);
+
+    // Obtain or create and register package
+    Object registeredThingMLPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    ThingMLPackageImpl theThingMLPackage = registeredThingMLPackage instanceof ThingMLPackageImpl ? (ThingMLPackageImpl)registeredThingMLPackage : new ThingMLPackageImpl();
+
+    isInited = true;
+
+    // Load packages
+    theThingMLPackage.loadPackage();
+
+    // Fix loaded packages
+    theThingMLPackage.fixPackageContents();
+
+    // Mark meta-data to indicate it can't be changed
+    theThingMLPackage.freeze();
+
+    // Update the registry and return the package
+    EPackage.Registry.INSTANCE.put(ThingMLPackage.eNS_URI, theThingMLPackage);
+    return theThingMLPackage;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getThingMLModel()
+  {
+    if (thingMLModelEClass == null)
+    {
+      thingMLModelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(0);
+    }
+    return thingMLModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThingMLModel_Imports()
+  {
+        return (EReference)getThingMLModel().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThingMLModel_Types()
+  {
+        return (EReference)getThingMLModel().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThingMLModel_Protocols()
+  {
+        return (EReference)getThingMLModel().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThingMLModel_Configs()
+  {
+        return (EReference)getThingMLModel().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getImport()
+  {
+    if (importEClass == null)
+    {
+      importEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(1);
+    }
+    return importEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImport_ImportURI()
+  {
+        return (EAttribute)getImport().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getImport_From()
+  {
+        return (EAttribute)getImport().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPlatformAnnotation()
+  {
+    if (platformAnnotationEClass == null)
+    {
+      platformAnnotationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(2);
+    }
+    return platformAnnotationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPlatformAnnotation_Name()
+  {
+        return (EAttribute)getPlatformAnnotation().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPlatformAnnotation_Value()
+  {
+        return (EAttribute)getPlatformAnnotation().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNamedElement()
+  {
+    if (namedElementEClass == null)
+    {
+      namedElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(3);
+    }
+    return namedElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNamedElement_Name()
+  {
+        return (EAttribute)getNamedElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAnnotatedElement()
+  {
+    if (annotatedElementEClass == null)
+    {
+      annotatedElementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(4);
+    }
+    return annotatedElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAnnotatedElement_Annotations()
+  {
+        return (EReference)getAnnotatedElement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVariable()
+  {
+    if (variableEClass == null)
+    {
+      variableEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(5);
+    }
+    return variableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVariable_TypeRef()
+  {
+        return (EReference)getVariable().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTypeRef()
+  {
+    if (typeRefEClass == null)
+    {
+      typeRefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(6);
+    }
+    return typeRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeRef_Type()
+  {
+        return (EReference)getTypeRef().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTypeRef_IsArray()
+  {
+        return (EAttribute)getTypeRef().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTypeRef_Cardinality()
+  {
+        return (EReference)getTypeRef().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getType()
+  {
+    if (typeEClass == null)
+    {
+      typeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(7);
+    }
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPrimitiveType()
+  {
+    if (primitiveTypeEClass == null)
+    {
+      primitiveTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(8);
+    }
+    return primitiveTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPrimitiveType_ByteSize()
+  {
+        return (EAttribute)getPrimitiveType().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getObjectType()
+  {
+    if (objectTypeEClass == null)
+    {
+      objectTypeEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(9);
+    }
+    return objectTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEnumeration()
+  {
+    if (enumerationEClass == null)
+    {
+      enumerationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(10);
+    }
+    return enumerationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumeration_TypeRef()
+  {
+        return (EReference)getEnumeration().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumeration_Literals()
+  {
+        return (EReference)getEnumeration().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEnumerationLiteral()
+  {
+    if (enumerationLiteralEClass == null)
+    {
+      enumerationLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(11);
+    }
+    return enumerationLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumerationLiteral_Init()
+  {
+        return (EReference)getEnumerationLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getThing()
+  {
+    if (thingEClass == null)
+    {
+      thingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(12);
+    }
+    return thingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getThing_Fragment()
+  {
+        return (EAttribute)getThing().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Includes()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Messages()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Ports()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Properties()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Functions()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Assign()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_DataAnalytics()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getThing_Behaviour()
+  {
+        return (EReference)getThing().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPropertyAssign()
+  {
+    if (propertyAssignEClass == null)
+    {
+      propertyAssignEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(13);
+    }
+    return propertyAssignEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPropertyAssign_Property()
+  {
+        return (EReference)getPropertyAssign().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPropertyAssign_Index()
+  {
+        return (EReference)getPropertyAssign().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPropertyAssign_Init()
+  {
+        return (EReference)getPropertyAssign().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getProtocol()
+  {
+    if (protocolEClass == null)
+    {
+      protocolEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(14);
+    }
+    return protocolEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunction()
+  {
+    if (functionEClass == null)
+    {
+      functionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(15);
+    }
+    return functionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunction_Parameters()
+  {
+        return (EReference)getFunction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunction_TypeRef()
+  {
+        return (EReference)getFunction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunction_Body()
+  {
+        return (EReference)getFunction().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getFunction_Abstract()
+  {
+        return (EAttribute)getFunction().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getProperty()
+  {
+    if (propertyEClass == null)
+    {
+      propertyEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(16);
+    }
+    return propertyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProperty_Readonly()
+  {
+        return (EAttribute)getProperty().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getProperty_Init()
+  {
+        return (EReference)getProperty().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMessage()
+  {
+    if (messageEClass == null)
+    {
+      messageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(17);
+    }
+    return messageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMessage_Parameters()
+  {
+        return (EReference)getMessage().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParameter()
+  {
+    if (parameterEClass == null)
+    {
+      parameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(18);
+    }
+    return parameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPort()
+  {
+    if (portEClass == null)
+    {
+      portEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(19);
+    }
+    return portEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPort_Sends()
+  {
+        return (EReference)getPort().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPort_Receives()
+  {
+        return (EReference)getPort().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRequiredPort()
+  {
+    if (requiredPortEClass == null)
+    {
+      requiredPortEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(20);
+    }
+    return requiredPortEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRequiredPort_Optional()
+  {
+        return (EAttribute)getRequiredPort().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getProvidedPort()
+  {
+    if (providedPortEClass == null)
+    {
+      providedPortEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(21);
+    }
+    return providedPortEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInternalPort()
+  {
+    if (internalPortEClass == null)
+    {
+      internalPortEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(22);
+    }
+    return internalPortEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getState()
+  {
+    if (stateEClass == null)
+    {
+      stateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(23);
+    }
+    return stateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Properties()
+  {
+        return (EReference)getState().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Entry()
+  {
+        return (EReference)getState().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Exit()
+  {
+        return (EReference)getState().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Internal()
+  {
+        return (EReference)getState().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getState_Outgoing()
+  {
+        return (EReference)getState().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getHandler()
+  {
+    if (handlerEClass == null)
+    {
+      handlerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(24);
+    }
+    return handlerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHandler_Event()
+  {
+        return (EReference)getHandler().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHandler_Guard()
+  {
+        return (EReference)getHandler().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHandler_Action()
+  {
+        return (EReference)getHandler().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTransition()
+  {
+    if (transitionEClass == null)
+    {
+      transitionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(25);
+    }
+    return transitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransition_Target()
+  {
+        return (EReference)getTransition().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInternalTransition()
+  {
+    if (internalTransitionEClass == null)
+    {
+      internalTransitionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(26);
+    }
+    return internalTransitionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCompositeState()
+  {
+    if (compositeStateEClass == null)
+    {
+      compositeStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(27);
+    }
+    return compositeStateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCompositeState_Region()
+  {
+        return (EReference)getCompositeState().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCompositeState_Session()
+  {
+        return (EReference)getCompositeState().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSession()
+  {
+    if (sessionEClass == null)
+    {
+      sessionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(28);
+    }
+    return sessionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSession_MaxInstances()
+  {
+        return (EReference)getSession().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRegion()
+  {
+    if (regionEClass == null)
+    {
+      regionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(29);
+    }
+    return regionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFinalState()
+  {
+    if (finalStateEClass == null)
+    {
+      finalStateEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(30);
+    }
+    return finalStateEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStateContainer()
+  {
+    if (stateContainerEClass == null)
+    {
+      stateContainerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(31);
+    }
+    return stateContainerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStateContainer_Initial()
+  {
+        return (EReference)getStateContainer().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateContainer_History()
+  {
+        return (EAttribute)getStateContainer().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStateContainer_Substate()
+  {
+        return (EReference)getStateContainer().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMessageParameter()
+  {
+    if (messageParameterEClass == null)
+    {
+      messageParameterEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(32);
+    }
+    return messageParameterEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDataAnalytics()
+  {
+    if (dataAnalyticsEClass == null)
+    {
+      dataAnalyticsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(33);
+    }
+    return dataAnalyticsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Dataset()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Labels()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Features()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Input_features()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Output_features()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Timestamps()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Combine_threshold()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Preprocess_feature_scaler()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Preprocess_sample_normalizer()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Fill_missing_value()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Remove_outliers()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Advanced_imputation()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Lagged_features()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Rolling_window_features()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Resampling()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Transformations()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Sequential()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Steps()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Lag()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Multivariate()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(19);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Stationary()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(20);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Seasonality_detection()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(21);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Supervised_learning()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(22);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Create_lagged_features()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(23);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Sliding_window()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(24);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_AutoML()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(25);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_ModelAlgorithm()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(26);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_Blackbox_ml()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(27);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Blackbox_ml_model()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(28);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Blackbox_import_algorithm()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(29);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Blackbox_label_encoder()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(30);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_TrainingResults()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(31);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Hyperparameter_tuning()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(32);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Ensemble_methods()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(33);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDataAnalytics_PredictionResults()
+  {
+        return (EReference)getDataAnalytics().getEStructuralFeatures().get(34);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Model_evaluation()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(35);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Outlier_detection()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(36);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Time_series_clustering()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(37);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_ContextArea()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(38);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalytics_Plots()
+  {
+        return (EAttribute)getDataAnalytics().getEStructuralFeatures().get(39);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDataAnalyticsModelAlgorithm()
+  {
+    if (dataAnalyticsModelAlgorithmEClass == null)
+    {
+      dataAnalyticsModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(63);
+    }
+    return dataAnalyticsModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDataAnalyticsModelAlgorithm_Name()
+  {
+        return (EAttribute)getDataAnalyticsModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getML2_ModelAlgorithm()
+  {
+    if (ml2_ModelAlgorithmEClass == null)
+    {
+      ml2_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(64);
+    }
+    return ml2_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getML2_ModelAlgorithm_Prediction_plots()
+  {
+        return (EAttribute)getML2_ModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTime_series_ModelAlgorithm()
+  {
+    if (time_series_ModelAlgorithmEClass == null)
+    {
+      time_series_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(65);
+    }
+    return time_series_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTime_series_ModelAlgorithm_Forecasting_plots()
+  {
+        return (EAttribute)getTime_series_ModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDeep_learning_ModelAlgorithm()
+  {
+    if (deep_learning_ModelAlgorithmEClass == null)
+    {
+      deep_learning_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(66);
+    }
+    return deep_learning_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeep_learning_ModelAlgorithm_Optimizer()
+  {
+        return (EAttribute)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeep_learning_ModelAlgorithm_Batch_size()
+  {
+        return (EReference)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeep_learning_ModelAlgorithm_Epochs()
+  {
+        return (EReference)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeep_learning_ModelAlgorithm_Metrics()
+  {
+        return (EAttribute)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeep_learning_ModelAlgorithm_Early_stopping()
+  {
+        return (EAttribute)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeep_learning_ModelAlgorithm_Overfitting_Plots()
+  {
+        return (EAttribute)getDeep_learning_ModelAlgorithm().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getstatistical_ModelAlgorithm()
+  {
+    if (statistical_ModelAlgorithmEClass == null)
+    {
+      statistical_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(67);
+    }
+    return statistical_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getmachine_learning_ModelAlgorithm()
+  {
+    if (machine_learning_ModelAlgorithmEClass == null)
+    {
+      machine_learning_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(68);
+    }
+    return machine_learning_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass gethybrid_ModelAlgorithm()
+  {
+    if (hybrid_ModelAlgorithmEClass == null)
+    {
+      hybrid_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(69);
+    }
+    return hybrid_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMLP()
+  {
+    if (mlpEClass == null)
+    {
+      mlpEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(70);
+    }
+    return mlpEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Hidden_layer_sizes()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMLP_Hidden_layers()
+  {
+        return (EReference)getMLP().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Input_activation()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Hidden_activation()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Output_activation()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Regularization()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Dropout()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMLP_Rate()
+  {
+        return (EAttribute)getMLP().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGRU()
+  {
+    if (gruEClass == null)
+    {
+      gruEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(71);
+    }
+    return gruEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGRU_Return_sequences()
+  {
+        return (EReference)getGRU().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Hidden_layer_sizes()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGRU_Hidden_layers()
+  {
+        return (EReference)getGRU().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Input_activation()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Hidden_activation()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Output_activation()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Regularization()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Dropout()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGRU_Rate()
+  {
+        return (EAttribute)getGRU().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCNN()
+  {
+    if (cnnEClass == null)
+    {
+      cnnEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(72);
+    }
+    return cnnEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCNN_Units()
+  {
+        return (EReference)getCNN().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Hidden_layer_sizes()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCNN_Hidden_layers()
+  {
+        return (EReference)getCNN().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Input_activation()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Hidden_activation()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Output_activation()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Regularization()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Dropout()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCNN_Rate()
+  {
+        return (EAttribute)getCNN().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLSTM()
+  {
+    if (lstmEClass == null)
+    {
+      lstmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(73);
+    }
+    return lstmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLSTM_Units()
+  {
+        return (EReference)getLSTM().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Hidden_layer_sizes()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLSTM_Hidden_layers()
+  {
+        return (EReference)getLSTM().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLSTM_Return_sequences()
+  {
+        return (EReference)getLSTM().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Input_activation()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Hidden_activation()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Output_activation()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Regularization()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Dropout()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLSTM_Rate()
+  {
+        return (EAttribute)getLSTM().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRNN()
+  {
+    if (rnnEClass == null)
+    {
+      rnnEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(74);
+    }
+    return rnnEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRNN_Units()
+  {
+        return (EReference)getRNN().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRNN_Activation()
+  {
+        return (EAttribute)getRNN().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRNN_Return_sequences()
+  {
+        return (EReference)getRNN().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRNN_Regularization()
+  {
+        return (EAttribute)getRNN().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRNN_Hidden_layer_sizes()
+  {
+        return (EAttribute)getRNN().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRNN_Hidden_layers()
+  {
+        return (EReference)getRNN().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRNN_Rate()
+  {
+        return (EAttribute)getRNN().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTCN()
+  {
+    if (tcnEClass == null)
+    {
+      tcnEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(75);
+    }
+    return tcnEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Hidden_layers()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTCN_Units()
+  {
+        return (EReference)getTCN().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTCN_Nb_filters()
+  {
+        return (EReference)getTCN().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTCN_Kernel_size()
+  {
+        return (EReference)getTCN().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Dilations()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTCN_Nb_stacks()
+  {
+        return (EReference)getTCN().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Dropout_rate()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Activation()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Learning_rate()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Loss()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTCN_Dense_layers()
+  {
+        return (EAttribute)getTCN().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTCN_Neurons()
+  {
+        return (EReference)getTCN().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTransformer()
+  {
+    if (transformerEClass == null)
+    {
+      transformerEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(76);
+    }
+    return transformerEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Hidden_layers()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_Units()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_Num_layers()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_D_model()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_Num_heads()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_Dff()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Dropout_rate()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Activation()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Learning_rate()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Loss()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getTransformer_Dense_layers()
+  {
+        return (EAttribute)getTransformer().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTransformer_Neurons()
+  {
+        return (EReference)getTransformer().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getARIMA()
+  {
+    if (arimaEClass == null)
+    {
+      arimaEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(77);
+    }
+    return arimaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_P()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_Differencing()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_Q()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getARIMA_Trend()
+  {
+        return (EAttribute)getARIMA().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_SeasonalP()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_SeasonalD()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_SeasonalQ()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_Seasonality()
+  {
+        return (EReference)getARIMA().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSARIMA()
+  {
+    if (sarimaEClass == null)
+    {
+      sarimaEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(78);
+    }
+    return sarimaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_P()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_Differencing()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_Q()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_SeasonalP()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_SeasonalD()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_SeasonalQ()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_Seasonality()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSARIMA_Trend()
+  {
+        return (EAttribute)getSARIMA().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSARIMA_Start_params()
+  {
+        return (EAttribute)getSARIMA().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSARIMA_Method()
+  {
+        return (EAttribute)getSARIMA().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_Transparams()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSARIMA_Solver()
+  {
+        return (EAttribute)getSARIMA().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSARIMA_Maxiter()
+  {
+        return (EReference)getSARIMA().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getHWES()
+  {
+    if (hwesEClass == null)
+    {
+      hwesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(79);
+    }
+    return hwesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHWES_Trend()
+  {
+        return (EAttribute)getHWES().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHWES_Damped()
+  {
+        return (EReference)getHWES().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHWES_Seasonal()
+  {
+        return (EAttribute)getHWES().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHWES_Seasonal_periods()
+  {
+        return (EReference)getHWES().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getHWES_Initialization_method()
+  {
+        return (EAttribute)getHWES().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHWES_Use_boxcox()
+  {
+        return (EReference)getHWES().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHWES_Remove_bias()
+  {
+        return (EReference)getHWES().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getHWES_Optimized()
+  {
+        return (EReference)getHWES().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getETS()
+  {
+    if (etsEClass == null)
+    {
+      etsEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(80);
+    }
+    return etsEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getETS_Error()
+  {
+        return (EAttribute)getETS().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getETS_Trend()
+  {
+        return (EAttribute)getETS().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getETS_Seasonal()
+  {
+        return (EAttribute)getETS().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getETS_Damped()
+  {
+        return (EReference)getETS().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getETS_Seasonal_periods()
+  {
+        return (EReference)getETS().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getETS_Initialization_method()
+  {
+        return (EAttribute)getETS().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getETS_Use_boxcox()
+  {
+        return (EReference)getETS().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getETS_Remove_bias()
+  {
+        return (EReference)getETS().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getETS_Optimized()
+  {
+        return (EReference)getETS().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStateSpaceModel()
+  {
+    if (stateSpaceModelEClass == null)
+    {
+      stateSpaceModelEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(81);
+    }
+    return stateSpaceModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Transition_matrix()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Selection_matrix()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_State_cov()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Obs_cov()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Initial_state_mean()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Initial_state_cov()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStateSpaceModel_Nobs()
+  {
+        return (EReference)getStateSpaceModel().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Obs_intercept()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_State_intercept()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Obs()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStateSpaceModel_Obs_offset()
+  {
+        return (EAttribute)getStateSpaceModel().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSVR()
+  {
+    if (svrEClass == null)
+    {
+      svrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(82);
+    }
+    return svrEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Kernel()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSVR_Degree()
+  {
+        return (EReference)getSVR().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Gamma()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Coef0()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Tol()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_C()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Epsilon()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSVR_Shrinking()
+  {
+        return (EReference)getSVR().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSVR_Cache_size()
+  {
+        return (EAttribute)getSVR().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSVR_Verbose()
+  {
+        return (EReference)getSVR().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSVR_Max_iter()
+  {
+        return (EReference)getSVR().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRFR()
+  {
+    if (rfrEClass == null)
+    {
+      rfrEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(83);
+    }
+    return rfrEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_N_estimators()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRFR_Criterion()
+  {
+        return (EAttribute)getRFR().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Max_depth()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Min_samples_split()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Min_samples_leaf()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRFR_Min_weight_fraction_leaf()
+  {
+        return (EAttribute)getRFR().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRFR_Max_features()
+  {
+        return (EAttribute)getRFR().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Max_leaf_nodes()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRFR_Min_impurity_decrease()
+  {
+        return (EAttribute)getRFR().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Bootstrap()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Oob_score()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_N_jobs()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Random_state()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Verbose()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRFR_Warm_start()
+  {
+        return (EReference)getRFR().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGBM()
+  {
+    if (gbmEClass == null)
+    {
+      gbmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(84);
+    }
+    return gbmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Loss()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Learning_rate()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_N_estimators()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Subsample()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Criterion()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Min_samples_split()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Min_samples_leaf()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Min_weight_fraction_leaf()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Max_depth()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Min_impurity_decrease()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Init()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Random_state()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Max_features()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGBM_Alpha()
+  {
+        return (EAttribute)getGBM().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Verbose()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Max_leaf_nodes()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Warm_start()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGBM_Presort()
+  {
+        return (EReference)getGBM().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getXGBoost()
+  {
+    if (xgBoostEClass == null)
+    {
+      xgBoostEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(85);
+    }
+    return xgBoostEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getXGBoost_Max_depth()
+  {
+        return (EReference)getXGBoost().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Learning_rate()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getXGBoost_N_estimators()
+  {
+        return (EReference)getXGBoost().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Objective()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Booster()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Gamma()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Min_child_weight()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Subsample()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Colsample_bytree()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Colsample_bylevel()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Colsample_bynode()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Reg_alpha()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Reg_lambda()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Scale_pos_weight()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Base_score()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getXGBoost_Random_state()
+  {
+        return (EReference)getXGBoost().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Missing()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getXGBoost_Importance_type()
+  {
+        return (EAttribute)getXGBoost().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getARIMA_GARCH()
+  {
+    if (arimA_GARCHEClass == null)
+    {
+      arimA_GARCHEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(86);
+    }
+    return arimA_GARCHEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_GARCH_P()
+  {
+        return (EReference)getARIMA_GARCH().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_GARCH_D()
+  {
+        return (EReference)getARIMA_GARCH().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_GARCH_Q()
+  {
+        return (EReference)getARIMA_GARCH().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getARIMA_GARCH_Seasonal_order()
+  {
+        return (EAttribute)getARIMA_GARCH().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_GARCH_Seasonal_params()
+  {
+        return (EReference)getARIMA_GARCH().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getARIMA_GARCH_Trend()
+  {
+        return (EAttribute)getARIMA_GARCH().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getARIMA_GARCH_Garch_order()
+  {
+        return (EAttribute)getARIMA_GARCH().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getARIMA_GARCH_Garch_params()
+  {
+        return (EReference)getARIMA_GARCH().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getProphet()
+  {
+    if (prophetEClass == null)
+    {
+      prophetEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(87);
+    }
+    return prophetEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Growth()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Seasonality_mode()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Seasonality_prior_scale()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Holidays_prior_scale()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Changepoint_prior_scale()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getProphet_Interval_width()
+  {
+        return (EAttribute)getProphet().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPMML_ModelAlgorithm()
+  {
+    if (pmmL_ModelAlgorithmEClass == null)
+    {
+      pmmL_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(94);
+    }
+    return pmmL_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPMML_ModelAlgorithm_Pmml_path()
+  {
+        return (EAttribute)getPMML_ModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPFA_ModelAlgorithm()
+  {
+    if (pfA_ModelAlgorithmEClass == null)
+    {
+      pfA_ModelAlgorithmEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(95);
+    }
+    return pfA_ModelAlgorithmEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPFA_ModelAlgorithm_Pfa_path()
+  {
+        return (EAttribute)getPFA_ModelAlgorithm().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getClassifierWithPredictionCertaintyProbabilities()
+  {
+    if (classifierWithPredictionCertaintyProbabilitiesEClass == null)
+    {
+      classifierWithPredictionCertaintyProbabilitiesEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(96);
+    }
+    return classifierWithPredictionCertaintyProbabilitiesEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLinearRegression()
+  {
+    if (linearRegressionEClass == null)
+    {
+      linearRegressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(97);
+    }
+    return linearRegressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearRegression_Fit_intercept()
+  {
+        return (EReference)getLinearRegression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearRegression_Normalize()
+  {
+        return (EReference)getLinearRegression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearRegression_Copy_X()
+  {
+        return (EReference)getLinearRegression().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearRegression_N_jobs()
+  {
+        return (EReference)getLinearRegression().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearRegression_Positive()
+  {
+        return (EReference)getLinearRegression().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLinearClassifierLogisticRegression()
+  {
+    if (linearClassifierLogisticRegressionEClass == null)
+    {
+      linearClassifierLogisticRegressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(98);
+    }
+    return linearClassifierLogisticRegressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLinearClassifierLogisticRegression_Penalty()
+  {
+        return (EAttribute)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Dual()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Tol()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_C()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Fit_intercept()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Intercept_scaling()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLinearClassifierLogisticRegression_Class_weight()
+  {
+        return (EAttribute)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Random_state()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLinearClassifierLogisticRegression_Optimizer()
+  {
+        return (EAttribute)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Max_iter()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLinearClassifierLogisticRegression_Multi_class()
+  {
+        return (EAttribute)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Verbose()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_Warm_start()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_N_jobs()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLinearClassifierLogisticRegression_L1_ratio()
+  {
+        return (EReference)getLinearClassifierLogisticRegression().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNaiveBayesGaussian()
+  {
+    if (naiveBayesGaussianEClass == null)
+    {
+      naiveBayesGaussianEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(99);
+    }
+    return naiveBayesGaussianEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesGaussian_Priors()
+  {
+        return (EAttribute)getNaiveBayesGaussian().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesGaussian_Var_smoothing()
+  {
+        return (EReference)getNaiveBayesGaussian().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNaiveBayesMultinomial()
+  {
+    if (naiveBayesMultinomialEClass == null)
+    {
+      naiveBayesMultinomialEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(100);
+    }
+    return naiveBayesMultinomialEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesMultinomial_Alpha()
+  {
+        return (EReference)getNaiveBayesMultinomial().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesMultinomial_Fit_prior()
+  {
+        return (EReference)getNaiveBayesMultinomial().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesMultinomial_Class_prior()
+  {
+        return (EAttribute)getNaiveBayesMultinomial().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNaiveBayesComplement()
+  {
+    if (naiveBayesComplementEClass == null)
+    {
+      naiveBayesComplementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(101);
+    }
+    return naiveBayesComplementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesComplement_Alpha()
+  {
+        return (EReference)getNaiveBayesComplement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesComplement_Fit_prior()
+  {
+        return (EReference)getNaiveBayesComplement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesComplement_Class_prior()
+  {
+        return (EAttribute)getNaiveBayesComplement().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesComplement_Norm()
+  {
+        return (EReference)getNaiveBayesComplement().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNaiveBayesBernoulli()
+  {
+    if (naiveBayesBernoulliEClass == null)
+    {
+      naiveBayesBernoulliEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(102);
+    }
+    return naiveBayesBernoulliEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesBernoulli_Alpha()
+  {
+        return (EReference)getNaiveBayesBernoulli().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesBernoulli_Binarize()
+  {
+        return (EReference)getNaiveBayesBernoulli().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesBernoulli_Fit_prior()
+  {
+        return (EReference)getNaiveBayesBernoulli().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesBernoulli_Class_prior()
+  {
+        return (EAttribute)getNaiveBayesBernoulli().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNaiveBayesCategorical()
+  {
+    if (naiveBayesCategoricalEClass == null)
+    {
+      naiveBayesCategoricalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(103);
+    }
+    return naiveBayesCategoricalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesCategorical_Alpha()
+  {
+        return (EReference)getNaiveBayesCategorical().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNaiveBayesCategorical_Fit_prior()
+  {
+        return (EReference)getNaiveBayesCategorical().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesCategorical_Class_prior()
+  {
+        return (EAttribute)getNaiveBayesCategorical().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNaiveBayesCategorical_Min_categories()
+  {
+        return (EAttribute)getNaiveBayesCategorical().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDecisionTreeRegressor()
+  {
+    if (decisionTreeRegressorEClass == null)
+    {
+      decisionTreeRegressorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(104);
+    }
+    return decisionTreeRegressorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeRegressor_DecisionTreeRegressorCriterion()
+  {
+        return (EAttribute)getDecisionTreeRegressor().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeRegressor_DecisionTreeSplitter()
+  {
+        return (EAttribute)getDecisionTreeRegressor().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Max_depth()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Min_samples_split()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Min_samples_leaf()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Min_weight_fraction_leaf()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Max_features_numeric()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeRegressor_Max_features_enum()
+  {
+        return (EAttribute)getDecisionTreeRegressor().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Random_state()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Max_leaf_nodes()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Min_impurity_decrease()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Min_impurity_split()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeRegressor_Ccp_alpha()
+  {
+        return (EReference)getDecisionTreeRegressor().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDecisionTreeClassifier()
+  {
+    if (decisionTreeClassifierEClass == null)
+    {
+      decisionTreeClassifierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(105);
+    }
+    return decisionTreeClassifierEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeClassifier_DecisionTreeClassifierCriterion()
+  {
+        return (EAttribute)getDecisionTreeClassifier().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeClassifier_DecisionTreeSplitter()
+  {
+        return (EAttribute)getDecisionTreeClassifier().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Max_depth()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Min_samples_split()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Min_samples_leaf()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Min_weight_fraction_leaf()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Max_features_numeric()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeClassifier_Max_features_enum()
+  {
+        return (EAttribute)getDecisionTreeClassifier().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Random_state()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Max_leaf_nodes()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Min_impurity_decrease()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Min_impurity_split()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDecisionTreeClassifier_Class_weight()
+  {
+        return (EAttribute)getDecisionTreeClassifier().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecisionTreeClassifier_Ccp_alpha()
+  {
+        return (EReference)getDecisionTreeClassifier().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRandomForestRegressor()
+  {
+    if (randomForestRegressorEClass == null)
+    {
+      randomForestRegressorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(106);
+    }
+    return randomForestRegressorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_N_estimators()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRandomForestRegressor_RandomForestRegressorCriterion()
+  {
+        return (EAttribute)getRandomForestRegressor().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Max_depth()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Min_samples_split()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Min_samples_leaf()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Min_weight_fraction_leaf()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Max_features_numeric()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRandomForestRegressor_Max_features_enum()
+  {
+        return (EAttribute)getRandomForestRegressor().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Max_leaf_nodes()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Min_impurity_decrease()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Min_impurity_split()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Bootstrap()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Oob_score()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_N_jobs()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Random_state()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Verbose()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Warm_start()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Ccp_alpha()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestRegressor_Max_samples()
+  {
+        return (EReference)getRandomForestRegressor().getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getRandomForestClassifier()
+  {
+    if (randomForestClassifierEClass == null)
+    {
+      randomForestClassifierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(107);
+    }
+    return randomForestClassifierEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_N_estimators()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRandomForestClassifier_RandomForestClassifierCriterion()
+  {
+        return (EAttribute)getRandomForestClassifier().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Max_depth()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Min_samples_split()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Min_samples_leaf()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Min_weight_fraction_leaf()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Max_features_numeric()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRandomForestClassifier_Max_features_enum()
+  {
+        return (EAttribute)getRandomForestClassifier().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Max_leaf_nodes()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Min_impurity_decrease()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Min_impurity_split()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Bootstrap()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Oob_score()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_N_jobs()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Random_state()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Verbose()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Warm_start()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getRandomForestClassifier_Class_weight()
+  {
+        return (EAttribute)getRandomForestClassifier().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Ccp_alpha()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getRandomForestClassifier_Max_samples()
+  {
+        return (EReference)getRandomForestClassifier().getEStructuralFeatures().get(19);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNN_MultilayerPerceptron()
+  {
+    if (nN_MultilayerPerceptronEClass == null)
+    {
+      nN_MultilayerPerceptronEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(108);
+    }
+    return nN_MultilayerPerceptronEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Hidden_layer_sizes()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Hidden_layers()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Activation()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Hidden_layers_activation_functions()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Activations()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Optimizer()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Alpha()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Batch_size()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Learning_rate_mode()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Learning_rate_init()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Power()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Power_t()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Max_iter()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Shuffle()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Random_state()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Tol()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(15);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Verbose()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(16);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Warm_start()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(17);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Momentum()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(18);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Nesterovs_momentum()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(19);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Early_stopping()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(20);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Validation_fraction()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(21);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Beta_1()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(22);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Beta_2()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(23);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Epsilon()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(24);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_N_iter_no_change()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(25);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Max_fun()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(26);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getNN_MultilayerPerceptron_Loss()
+  {
+        return (EAttribute)getNN_MultilayerPerceptron().getEStructuralFeatures().get(27);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNN_MultilayerPerceptron_Epochs()
+  {
+        return (EReference)getNN_MultilayerPerceptron().getEStructuralFeatures().get(28);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getKMeans()
+  {
+    if (kMeansEClass == null)
+    {
+      kMeansEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(109);
+    }
+    return kMeansEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_N_clusters()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getKMeans_Init_enum()
+  {
+        return (EAttribute)getKMeans().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getKMeans_Init_str()
+  {
+        return (EAttribute)getKMeans().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_N_init()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_Max_iter()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_Tol()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_Verbose()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_Random_state()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_Copy_x()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getKMeans_N_jobs()
+  {
+        return (EReference)getKMeans().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getKMeans_Algorithm()
+  {
+        return (EAttribute)getKMeans().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMiniBatchKMeans()
+  {
+    if (miniBatchKMeansEClass == null)
+    {
+      miniBatchKMeansEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(110);
+    }
+    return miniBatchKMeansEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_N_clusters()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMiniBatchKMeans_Init_enum()
+  {
+        return (EAttribute)getMiniBatchKMeans().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMiniBatchKMeans_Init_str()
+  {
+        return (EAttribute)getMiniBatchKMeans().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Max_iter()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Batch_size()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Verbose()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Compute_labels()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Random_state()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Tol()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Max_no_improvement()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Init_size()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_N_init()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMiniBatchKMeans_Reassignment_ratio()
+  {
+        return (EReference)getMiniBatchKMeans().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDBSCAN()
+  {
+    if (dbscanEClass == null)
+    {
+      dbscanEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(111);
+    }
+    return dbscanEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDBSCAN_Eps()
+  {
+        return (EReference)getDBSCAN().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDBSCAN_Min_samples()
+  {
+        return (EReference)getDBSCAN().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDBSCAN_Metric()
+  {
+        return (EAttribute)getDBSCAN().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDBSCAN_Metric_params()
+  {
+        return (EAttribute)getDBSCAN().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDBSCAN_Algorithm()
+  {
+        return (EAttribute)getDBSCAN().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDBSCAN_Leaf_size()
+  {
+        return (EReference)getDBSCAN().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDBSCAN_P()
+  {
+        return (EReference)getDBSCAN().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDBSCAN_N_jobs()
+  {
+        return (EReference)getDBSCAN().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSpectralClustering()
+  {
+    if (spectralClusteringEClass == null)
+    {
+      spectralClusteringEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(112);
+    }
+    return spectralClusteringEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_N_clusters()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpectralClustering_Eigen_solver()
+  {
+        return (EAttribute)getSpectralClustering().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_N_components()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Random_state()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_N_init()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Gamma()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpectralClustering_Affinity()
+  {
+        return (EAttribute)getSpectralClustering().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_N_neighbors()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Eigen_tol()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpectralClustering_Assign_labels()
+  {
+        return (EAttribute)getSpectralClustering().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Degree()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Coef0()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSpectralClustering_Kernel_params()
+  {
+        return (EAttribute)getSpectralClustering().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_N_jobs()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSpectralClustering_Verbose()
+  {
+        return (EReference)getSpectralClustering().getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGaussianMixture()
+  {
+    if (gaussianMixtureEClass == null)
+    {
+      gaussianMixtureEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(113);
+    }
+    return gaussianMixtureEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_N_components()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGaussianMixture_Covariance_type()
+  {
+        return (EAttribute)getGaussianMixture().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Tol()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Reg_covar()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Max_iter()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_N_init()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGaussianMixture_Init_params()
+  {
+        return (EAttribute)getGaussianMixture().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGaussianMixture_Weights_init()
+  {
+        return (EAttribute)getGaussianMixture().getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGaussianMixture_Means_init()
+  {
+        return (EAttribute)getGaussianMixture().getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getGaussianMixture_Precisions_init()
+  {
+        return (EAttribute)getGaussianMixture().getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Random_state()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Warm_start()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Verbose()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(12);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGaussianMixture_Verbose_interval()
+  {
+        return (EReference)getGaussianMixture().getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSelfTrainingClassifier()
+  {
+    if (selfTrainingClassifierEClass == null)
+    {
+      selfTrainingClassifierEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(114);
+    }
+    return selfTrainingClassifierEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelfTrainingClassifier_Base_estimator()
+  {
+        return (EReference)getSelfTrainingClassifier().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelfTrainingClassifier_Threshold()
+  {
+        return (EReference)getSelfTrainingClassifier().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getSelfTrainingClassifier_Criterion()
+  {
+        return (EAttribute)getSelfTrainingClassifier().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelfTrainingClassifier_K_best()
+  {
+        return (EReference)getSelfTrainingClassifier().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelfTrainingClassifier_Max_iter()
+  {
+        return (EReference)getSelfTrainingClassifier().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSelfTrainingClassifier_Verbose()
+  {
+        return (EReference)getSelfTrainingClassifier().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLabelPropagation()
+  {
+    if (labelPropagationEClass == null)
+    {
+      labelPropagationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(115);
+    }
+    return labelPropagationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLabelPropagation_Kernel()
+  {
+        return (EAttribute)getLabelPropagation().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelPropagation_Gamma()
+  {
+        return (EReference)getLabelPropagation().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelPropagation_N_neighbors()
+  {
+        return (EReference)getLabelPropagation().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelPropagation_Max_iter()
+  {
+        return (EReference)getLabelPropagation().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelPropagation_Tol()
+  {
+        return (EReference)getLabelPropagation().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelPropagation_N_jobs()
+  {
+        return (EReference)getLabelPropagation().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLabelSpreading()
+  {
+    if (labelSpreadingEClass == null)
+    {
+      labelSpreadingEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(116);
+    }
+    return labelSpreadingEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLabelSpreading_Kernel()
+  {
+        return (EAttribute)getLabelSpreading().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_Gamma()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_N_neighbors()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_Alpha()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_Max_iter()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_Tol()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLabelSpreading_N_jobs()
+  {
+        return (EReference)getLabelSpreading().getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEvent()
+  {
+    if (eventEClass == null)
+    {
+      eventEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(136);
+    }
+    return eventEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getReceiveMessage()
+  {
+    if (receiveMessageEClass == null)
+    {
+      receiveMessageEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(137);
+    }
+    return receiveMessageEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReceiveMessage_Port()
+  {
+        return (EReference)getReceiveMessage().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReceiveMessage_Message()
+  {
+        return (EReference)getReceiveMessage().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAction()
+  {
+    if (actionEClass == null)
+    {
+      actionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(138);
+    }
+    return actionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getActionBlock()
+  {
+    if (actionBlockEClass == null)
+    {
+      actionBlockEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(139);
+    }
+    return actionBlockEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getActionBlock_Actions()
+  {
+        return (EReference)getActionBlock().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternStatement()
+  {
+    if (externStatementEClass == null)
+    {
+      externStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(140);
+    }
+    return externStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExternStatement_Statement()
+  {
+        return (EAttribute)getExternStatement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternStatement_Segments()
+  {
+        return (EReference)getExternStatement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLocalVariable()
+  {
+    if (localVariableEClass == null)
+    {
+      localVariableEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(141);
+    }
+    return localVariableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getLocalVariable_Readonly()
+  {
+        return (EAttribute)getLocalVariable().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLocalVariable_Init()
+  {
+        return (EReference)getLocalVariable().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSendAction()
+  {
+    if (sendActionEClass == null)
+    {
+      sendActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(142);
+    }
+    return sendActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSendAction_Port()
+  {
+        return (EReference)getSendAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSendAction_Message()
+  {
+        return (EReference)getSendAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSendAction_Parameters()
+  {
+        return (EReference)getSendAction().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVariableAssignment()
+  {
+    if (variableAssignmentEClass == null)
+    {
+      variableAssignmentEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(143);
+    }
+    return variableAssignmentEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVariableAssignment_Property()
+  {
+        return (EReference)getVariableAssignment().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVariableAssignment_Index()
+  {
+        return (EReference)getVariableAssignment().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getVariableAssignment_Expression()
+  {
+        return (EReference)getVariableAssignment().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIncrement()
+  {
+    if (incrementEClass == null)
+    {
+      incrementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(144);
+    }
+    return incrementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getIncrement_Var()
+  {
+        return (EReference)getIncrement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDecrement()
+  {
+    if (decrementEClass == null)
+    {
+      decrementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(145);
+    }
+    return decrementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDecrement_Var()
+  {
+        return (EReference)getDecrement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getForAction()
+  {
+    if (forActionEClass == null)
+    {
+      forActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(146);
+    }
+    return forActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForAction_Variable()
+  {
+        return (EReference)getForAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForAction_Index()
+  {
+        return (EReference)getForAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForAction_Array()
+  {
+        return (EReference)getForAction().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getForAction_Action()
+  {
+        return (EReference)getForAction().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLoopAction()
+  {
+    if (loopActionEClass == null)
+    {
+      loopActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(147);
+    }
+    return loopActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLoopAction_Condition()
+  {
+        return (EReference)getLoopAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLoopAction_Action()
+  {
+        return (EReference)getLoopAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConditionalAction()
+  {
+    if (conditionalActionEClass == null)
+    {
+      conditionalActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(148);
+    }
+    return conditionalActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionalAction_Condition()
+  {
+        return (EReference)getConditionalAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionalAction_Action()
+  {
+        return (EReference)getConditionalAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConditionalAction_ElseAction()
+  {
+        return (EReference)getConditionalAction().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getReturnAction()
+  {
+    if (returnActionEClass == null)
+    {
+      returnActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(149);
+    }
+    return returnActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReturnAction_Exp()
+  {
+        return (EReference)getReturnAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPrintAction()
+  {
+    if (printActionEClass == null)
+    {
+      printActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(150);
+    }
+    return printActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getPrintAction_Line()
+  {
+        return (EAttribute)getPrintAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPrintAction_Msg()
+  {
+        return (EReference)getPrintAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getErrorAction()
+  {
+    if (errorActionEClass == null)
+    {
+      errorActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(151);
+    }
+    return errorActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getErrorAction_Line()
+  {
+        return (EAttribute)getErrorAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getErrorAction_Msg()
+  {
+        return (EReference)getErrorAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStartSession()
+  {
+    if (startSessionEClass == null)
+    {
+      startSessionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(152);
+    }
+    return startSessionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getStartSession_Session()
+  {
+        return (EReference)getStartSession().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionCallStatement()
+  {
+    if (functionCallStatementEClass == null)
+    {
+      functionCallStatementEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(153);
+    }
+    return functionCallStatementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCallStatement_Function()
+  {
+        return (EReference)getFunctionCallStatement().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCallStatement_Parameters()
+  {
+        return (EReference)getFunctionCallStatement().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDASaveAction()
+  {
+    if (daSaveActionEClass == null)
+    {
+      daSaveActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(154);
+    }
+    return daSaveActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDASaveAction_DataAnalytics()
+  {
+        return (EReference)getDASaveAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDAPreprocessAction()
+  {
+    if (daPreprocessActionEClass == null)
+    {
+      daPreprocessActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(155);
+    }
+    return daPreprocessActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAPreprocessAction_DataAnalytics()
+  {
+        return (EReference)getDAPreprocessAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDATrainAction()
+  {
+    if (daTrainActionEClass == null)
+    {
+      daTrainActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(156);
+    }
+    return daTrainActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDATrainAction_DataAnalytics()
+  {
+        return (EReference)getDATrainAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDAPredictAction()
+  {
+    if (daPredictActionEClass == null)
+    {
+      daPredictActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(157);
+    }
+    return daPredictActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAPredictAction_DataAnalytics()
+  {
+        return (EReference)getDAPredictAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAPredictAction_Features()
+  {
+        return (EReference)getDAPredictAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDAPreTrainedPredictAction()
+  {
+    if (daPreTrainedPredictActionEClass == null)
+    {
+      daPreTrainedPredictActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(158);
+    }
+    return daPreTrainedPredictActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAPreTrainedPredictAction_DataAnalytics()
+  {
+        return (EReference)getDAPreTrainedPredictAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAPreTrainedPredictAction_Features()
+  {
+        return (EReference)getDAPreTrainedPredictAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDAForecastAction()
+  {
+    if (daForecastActionEClass == null)
+    {
+      daForecastActionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(159);
+    }
+    return daForecastActionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAForecastAction_DataAnalytics()
+  {
+        return (EReference)getDAForecastAction().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDAForecastAction_Features()
+  {
+        return (EReference)getDAForecastAction().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    if (expressionEClass == null)
+    {
+      expressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(160);
+    }
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternExpression()
+  {
+    if (externExpressionEClass == null)
+    {
+      externExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(161);
+    }
+    return externExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getExternExpression_Expression()
+  {
+        return (EAttribute)getExternExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternExpression_Segments()
+  {
+        return (EReference)getExternExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLiteral()
+  {
+    if (literalEClass == null)
+    {
+      literalEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(162);
+    }
+    return literalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getArrayInit()
+  {
+    if (arrayInitEClass == null)
+    {
+      arrayInitEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(163);
+    }
+    return arrayInitEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getArrayInit_Values()
+  {
+        return (EReference)getArrayInit().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEnumLiteralRef()
+  {
+    if (enumLiteralRefEClass == null)
+    {
+      enumLiteralRefEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(164);
+    }
+    return enumLiteralRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumLiteralRef_Enum()
+  {
+        return (EReference)getEnumLiteralRef().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEnumLiteralRef_Literal()
+  {
+        return (EReference)getEnumLiteralRef().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getByteLiteral()
+  {
+    if (byteLiteralEClass == null)
+    {
+      byteLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(165);
+    }
+    return byteLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getByteLiteral_ByteValue()
+  {
+        return (EAttribute)getByteLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCharLiteral()
+  {
+    if (charLiteralEClass == null)
+    {
+      charLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(166);
+    }
+    return charLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCharLiteral_CharValue()
+  {
+        return (EAttribute)getCharLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIntegerLiteral()
+  {
+    if (integerLiteralEClass == null)
+    {
+      integerLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(167);
+    }
+    return integerLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getIntegerLiteral_IntValue()
+  {
+        return (EAttribute)getIntegerLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBooleanLiteral()
+  {
+    if (booleanLiteralEClass == null)
+    {
+      booleanLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(168);
+    }
+    return booleanLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBooleanLiteral_BoolValue()
+  {
+        return (EAttribute)getBooleanLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStringLiteral()
+  {
+    if (stringLiteralEClass == null)
+    {
+      stringLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(169);
+    }
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStringLiteral_StringValue()
+  {
+        return (EAttribute)getStringLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDoubleLiteral()
+  {
+    if (doubleLiteralEClass == null)
+    {
+      doubleLiteralEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(170);
+    }
+    return doubleLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDoubleLiteral_DoubleValue()
+  {
+        return (EAttribute)getDoubleLiteral().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPropertyReference()
+  {
+    if (propertyReferenceEClass == null)
+    {
+      propertyReferenceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(171);
+    }
+    return propertyReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPropertyReference_Property()
+  {
+        return (EReference)getPropertyReference().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEventReference()
+  {
+    if (eventReferenceEClass == null)
+    {
+      eventReferenceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(172);
+    }
+    return eventReferenceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEventReference_ReceiveMsg()
+  {
+        return (EReference)getEventReference().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEventReference_Parameter()
+  {
+        return (EReference)getEventReference().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFunctionCallExpression()
+  {
+    if (functionCallExpressionEClass == null)
+    {
+      functionCallExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(173);
+    }
+    return functionCallExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCallExpression_Function()
+  {
+        return (EReference)getFunctionCallExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFunctionCallExpression_Parameters()
+  {
+        return (EReference)getFunctionCallExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConfiguration()
+  {
+    if (configurationEClass == null)
+    {
+      configurationEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(174);
+    }
+    return configurationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfiguration_Instances()
+  {
+        return (EReference)getConfiguration().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfiguration_Connectors()
+  {
+        return (EReference)getConfiguration().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfiguration_Propassigns()
+  {
+        return (EReference)getConfiguration().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getInstance()
+  {
+    if (instanceEClass == null)
+    {
+      instanceEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(175);
+    }
+    return instanceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getInstance_Type()
+  {
+        return (EReference)getInstance().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConfigPropertyAssign()
+  {
+    if (configPropertyAssignEClass == null)
+    {
+      configPropertyAssignEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(176);
+    }
+    return configPropertyAssignEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfigPropertyAssign_Instance()
+  {
+        return (EReference)getConfigPropertyAssign().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfigPropertyAssign_Property()
+  {
+        return (EReference)getConfigPropertyAssign().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfigPropertyAssign_Index()
+  {
+        return (EReference)getConfigPropertyAssign().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfigPropertyAssign_Init()
+  {
+        return (EReference)getConfigPropertyAssign().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConfigPropertyAssign_Annotations()
+  {
+        return (EReference)getConfigPropertyAssign().getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAbstractConnector()
+  {
+    if (abstractConnectorEClass == null)
+    {
+      abstractConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(177);
+    }
+    return abstractConnectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getConnector()
+  {
+    if (connectorEClass == null)
+    {
+      connectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(178);
+    }
+    return connectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConnector_Cli()
+  {
+        return (EReference)getConnector().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConnector_Required()
+  {
+        return (EReference)getConnector().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConnector_Srv()
+  {
+        return (EReference)getConnector().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getConnector_Provided()
+  {
+        return (EReference)getConnector().getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExternalConnector()
+  {
+    if (externalConnectorEClass == null)
+    {
+      externalConnectorEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(179);
+    }
+    return externalConnectorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalConnector_Inst()
+  {
+        return (EReference)getExternalConnector().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalConnector_Port()
+  {
+        return (EReference)getExternalConnector().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExternalConnector_Protocol()
+  {
+        return (EReference)getExternalConnector().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOrExpression()
+  {
+    if (orExpressionEClass == null)
+    {
+      orExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(180);
+    }
+    return orExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOrExpression_Lhs()
+  {
+        return (EReference)getOrExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOrExpression_Rhs()
+  {
+        return (EReference)getOrExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAndExpression()
+  {
+    if (andExpressionEClass == null)
+    {
+      andExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(181);
+    }
+    return andExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAndExpression_Lhs()
+  {
+        return (EReference)getAndExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAndExpression_Rhs()
+  {
+        return (EReference)getAndExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEqualsExpression()
+  {
+    if (equalsExpressionEClass == null)
+    {
+      equalsExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(182);
+    }
+    return equalsExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualsExpression_Lhs()
+  {
+        return (EReference)getEqualsExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualsExpression_Rhs()
+  {
+        return (EReference)getEqualsExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNotEqualsExpression()
+  {
+    if (notEqualsExpressionEClass == null)
+    {
+      notEqualsExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(183);
+    }
+    return notEqualsExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNotEqualsExpression_Lhs()
+  {
+        return (EReference)getNotEqualsExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNotEqualsExpression_Rhs()
+  {
+        return (EReference)getNotEqualsExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGreaterExpression()
+  {
+    if (greaterExpressionEClass == null)
+    {
+      greaterExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(184);
+    }
+    return greaterExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreaterExpression_Lhs()
+  {
+        return (EReference)getGreaterExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreaterExpression_Rhs()
+  {
+        return (EReference)getGreaterExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLowerExpression()
+  {
+    if (lowerExpressionEClass == null)
+    {
+      lowerExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(185);
+    }
+    return lowerExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLowerExpression_Lhs()
+  {
+        return (EReference)getLowerExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLowerExpression_Rhs()
+  {
+        return (EReference)getLowerExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getGreaterOrEqualExpression()
+  {
+    if (greaterOrEqualExpressionEClass == null)
+    {
+      greaterOrEqualExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(186);
+    }
+    return greaterOrEqualExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreaterOrEqualExpression_Lhs()
+  {
+        return (EReference)getGreaterOrEqualExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreaterOrEqualExpression_Rhs()
+  {
+        return (EReference)getGreaterOrEqualExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getLowerOrEqualExpression()
+  {
+    if (lowerOrEqualExpressionEClass == null)
+    {
+      lowerOrEqualExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(187);
+    }
+    return lowerOrEqualExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLowerOrEqualExpression_Lhs()
+  {
+        return (EReference)getLowerOrEqualExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getLowerOrEqualExpression_Rhs()
+  {
+        return (EReference)getLowerOrEqualExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getPlusExpression()
+  {
+    if (plusExpressionEClass == null)
+    {
+      plusExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(188);
+    }
+    return plusExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPlusExpression_Lhs()
+  {
+        return (EReference)getPlusExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getPlusExpression_Rhs()
+  {
+        return (EReference)getPlusExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMinusExpression()
+  {
+    if (minusExpressionEClass == null)
+    {
+      minusExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(189);
+    }
+    return minusExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMinusExpression_Lhs()
+  {
+        return (EReference)getMinusExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMinusExpression_Rhs()
+  {
+        return (EReference)getMinusExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getTimesExpression()
+  {
+    if (timesExpressionEClass == null)
+    {
+      timesExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(190);
+    }
+    return timesExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTimesExpression_Lhs()
+  {
+        return (EReference)getTimesExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getTimesExpression_Rhs()
+  {
+        return (EReference)getTimesExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getDivExpression()
+  {
+    if (divExpressionEClass == null)
+    {
+      divExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(191);
+    }
+    return divExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDivExpression_Lhs()
+  {
+        return (EReference)getDivExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDivExpression_Rhs()
+  {
+        return (EReference)getDivExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getModExpression()
+  {
+    if (modExpressionEClass == null)
+    {
+      modExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(192);
+    }
+    return modExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getModExpression_Lhs()
+  {
+        return (EReference)getModExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getModExpression_Rhs()
+  {
+        return (EReference)getModExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCastExpression()
+  {
+    if (castExpressionEClass == null)
+    {
+      castExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(193);
+    }
+    return castExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCastExpression_Term()
+  {
+        return (EReference)getCastExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCastExpression_Type()
+  {
+        return (EReference)getCastExpression().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getCastExpression_IsArray()
+  {
+        return (EAttribute)getCastExpression().getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpressionGroup()
+  {
+    if (expressionGroupEClass == null)
+    {
+      expressionGroupEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(194);
+    }
+    return expressionGroupEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpressionGroup_Term()
+  {
+        return (EReference)getExpressionGroup().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNotExpression()
+  {
+    if (notExpressionEClass == null)
+    {
+      notExpressionEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(195);
+    }
+    return notExpressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNotExpression_Term()
+  {
+        return (EReference)getNotExpression().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getUnaryMinus()
+  {
+    if (unaryMinusEClass == null)
+    {
+      unaryMinusEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(196);
+    }
+    return unaryMinusEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getUnaryMinus_Term()
+  {
+        return (EReference)getUnaryMinus().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getArrayIndex()
+  {
+    if (arrayIndexEClass == null)
+    {
+      arrayIndexEClass = (EClass)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(197);
+    }
+    return arrayIndexEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getArrayIndex_Array()
+  {
+        return (EReference)getArrayIndex().getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getArrayIndex_Index()
+  {
+        return (EReference)getArrayIndex().getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLabels()
+  {
+    if (labelsEEnum == null)
+    {
+      labelsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(34);
+    }
+    return labelsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getFillingMissingValue()
+  {
+    if (fillingMissingValueEEnum == null)
+    {
+      fillingMissingValueEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(35);
+    }
+    return fillingMissingValueEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getResampling()
+  {
+    if (resamplingEEnum == null)
+    {
+      resamplingEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(36);
+    }
+    return resamplingEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getMultivariate()
+  {
+    if (multivariateEEnum == null)
+    {
+      multivariateEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(37);
+    }
+    return multivariateEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getStationary()
+  {
+    if (stationaryEEnum == null)
+    {
+      stationaryEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(38);
+    }
+    return stationaryEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getSeasonalityDetection()
+  {
+    if (seasonalityDetectionEEnum == null)
+    {
+      seasonalityDetectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(39);
+    }
+    return seasonalityDetectionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRemoveOutliers()
+  {
+    if (removeOutliersEEnum == null)
+    {
+      removeOutliersEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(40);
+    }
+    return removeOutliersEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getContextArea()
+  {
+    if (contextAreaEEnum == null)
+    {
+      contextAreaEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(41);
+    }
+    return contextAreaEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLaggedFeatures()
+  {
+    if (laggedFeaturesEEnum == null)
+    {
+      laggedFeaturesEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(42);
+    }
+    return laggedFeaturesEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRollingWindowFeatures()
+  {
+    if (rollingWindowFeaturesEEnum == null)
+    {
+      rollingWindowFeaturesEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(43);
+    }
+    return rollingWindowFeaturesEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getAdvancedImputation()
+  {
+    if (advancedImputationEEnum == null)
+    {
+      advancedImputationEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(44);
+    }
+    return advancedImputationEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getOutlierDetection()
+  {
+    if (outlierDetectionEEnum == null)
+    {
+      outlierDetectionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(45);
+    }
+    return outlierDetectionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getTimeSeriesClustering()
+  {
+    if (timeSeriesClusteringEEnum == null)
+    {
+      timeSeriesClusteringEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(46);
+    }
+    return timeSeriesClusteringEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getHyperparameterTuning()
+  {
+    if (hyperparameterTuningEEnum == null)
+    {
+      hyperparameterTuningEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(47);
+    }
+    return hyperparameterTuningEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getModelEvaluation()
+  {
+    if (modelEvaluationEEnum == null)
+    {
+      modelEvaluationEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(48);
+    }
+    return modelEvaluationEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getEnsembleMethods()
+  {
+    if (ensembleMethodsEEnum == null)
+    {
+      ensembleMethodsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(49);
+    }
+    return ensembleMethodsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getAutoML()
+  {
+    if (autoMLEEnum == null)
+    {
+      autoMLEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(50);
+    }
+    return autoMLEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getSequential()
+  {
+    if (sequentialEEnum == null)
+    {
+      sequentialEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(51);
+    }
+    return sequentialEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getTimestamps()
+  {
+    if (timestampsEEnum == null)
+    {
+      timestampsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(52);
+    }
+    return timestampsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getPreprocess_feature_scaler()
+  {
+    if (preprocess_feature_scalerEEnum == null)
+    {
+      preprocess_feature_scalerEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(53);
+    }
+    return preprocess_feature_scalerEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getPreprocess_sample_normalizer()
+  {
+    if (preprocess_sample_normalizerEEnum == null)
+    {
+      preprocess_sample_normalizerEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(54);
+    }
+    return preprocess_sample_normalizerEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getPreprocessingPlots()
+  {
+    if (preprocessingPlotsEEnum == null)
+    {
+      preprocessingPlotsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(55);
+    }
+    return preprocessingPlotsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getPredictionPlots()
+  {
+    if (predictionPlotsEEnum == null)
+    {
+      predictionPlotsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(56);
+    }
+    return predictionPlotsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getForecastingPlots()
+  {
+    if (forecastingPlotsEEnum == null)
+    {
+      forecastingPlotsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(57);
+    }
+    return forecastingPlotsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getOverfittingPlots()
+  {
+    if (overfittingPlotsEEnum == null)
+    {
+      overfittingPlotsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(58);
+    }
+    return overfittingPlotsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getSupervisedLearning()
+  {
+    if (supervisedLearningEEnum == null)
+    {
+      supervisedLearningEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(59);
+    }
+    return supervisedLearningEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getCreateLaggedFeatures()
+  {
+    if (createLaggedFeaturesEEnum == null)
+    {
+      createLaggedFeaturesEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(60);
+    }
+    return createLaggedFeaturesEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getSlidingWindow()
+  {
+    if (slidingWindowEEnum == null)
+    {
+      slidingWindowEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(61);
+    }
+    return slidingWindowEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getDataTransformation()
+  {
+    if (dataTransformationEEnum == null)
+    {
+      dataTransformationEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(62);
+    }
+    return dataTransformationEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getPenalty()
+  {
+    if (penaltyEEnum == null)
+    {
+      penaltyEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(88);
+    }
+    return penaltyEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getOptimizer()
+  {
+    if (optimizerEEnum == null)
+    {
+      optimizerEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(89);
+    }
+    return optimizerEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRate()
+  {
+    if (rateEEnum == null)
+    {
+      rateEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(90);
+    }
+    return rateEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getEarlyStopping()
+  {
+    if (earlyStoppingEEnum == null)
+    {
+      earlyStoppingEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(91);
+    }
+    return earlyStoppingEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRegularization()
+  {
+    if (regularizationEEnum == null)
+    {
+      regularizationEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(92);
+    }
+    return regularizationEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getMetrics()
+  {
+    if (metricsEEnum == null)
+    {
+      metricsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(93);
+    }
+    return metricsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLabel_Propagation_Kernel()
+  {
+    if (label_Propagation_KernelEEnum == null)
+    {
+      label_Propagation_KernelEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(117);
+    }
+    return label_Propagation_KernelEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getSelf_Training_Criterion()
+  {
+    if (self_Training_CriterionEEnum == null)
+    {
+      self_Training_CriterionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(118);
+    }
+    return self_Training_CriterionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getInit_Params_Methods()
+  {
+    if (init_Params_MethodsEEnum == null)
+    {
+      init_Params_MethodsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(119);
+    }
+    return init_Params_MethodsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getCovariance_Type()
+  {
+    if (covariance_TypeEEnum == null)
+    {
+      covariance_TypeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(120);
+    }
+    return covariance_TypeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLaplacian_Embedding_Label_Assign_Strategy()
+  {
+    if (laplacian_Embedding_Label_Assign_StrategyEEnum == null)
+    {
+      laplacian_Embedding_Label_Assign_StrategyEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(121);
+    }
+    return laplacian_Embedding_Label_Assign_StrategyEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getEigen_Solver()
+  {
+    if (eigen_SolverEEnum == null)
+    {
+      eigen_SolverEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(122);
+    }
+    return eigen_SolverEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getKNN_Algorithms()
+  {
+    if (knN_AlgorithmsEEnum == null)
+    {
+      knN_AlgorithmsEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(123);
+    }
+    return knN_AlgorithmsEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getKMeans_init_enum()
+  {
+    if (kMeans_init_enumEEnum == null)
+    {
+      kMeans_init_enumEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(124);
+    }
+    return kMeans_init_enumEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getKMeans_algorithm_enum()
+  {
+    if (kMeans_algorithm_enumEEnum == null)
+    {
+      kMeans_algorithm_enumEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(125);
+    }
+    return kMeans_algorithm_enumEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getMulti_class()
+  {
+    if (multi_classEEnum == null)
+    {
+      multi_classEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(126);
+    }
+    return multi_classEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getDecisionTreeRegressorCriterion()
+  {
+    if (decisionTreeRegressorCriterionEEnum == null)
+    {
+      decisionTreeRegressorCriterionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(127);
+    }
+    return decisionTreeRegressorCriterionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getDecisionTreeClassifierCriterion()
+  {
+    if (decisionTreeClassifierCriterionEEnum == null)
+    {
+      decisionTreeClassifierCriterionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(128);
+    }
+    return decisionTreeClassifierCriterionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getDecisionTreeSplitter()
+  {
+    if (decisionTreeSplitterEEnum == null)
+    {
+      decisionTreeSplitterEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(129);
+    }
+    return decisionTreeSplitterEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getMax_features_enum()
+  {
+    if (max_features_enumEEnum == null)
+    {
+      max_features_enumEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(130);
+    }
+    return max_features_enumEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRandomForestRegressorCriterion()
+  {
+    if (randomForestRegressorCriterionEEnum == null)
+    {
+      randomForestRegressorCriterionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(131);
+    }
+    return randomForestRegressorCriterionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getRandomForestClassifierCriterion()
+  {
+    if (randomForestClassifierCriterionEEnum == null)
+    {
+      randomForestClassifierCriterionEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(132);
+    }
+    return randomForestClassifierCriterionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getActivation()
+  {
+    if (activationEEnum == null)
+    {
+      activationEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(133);
+    }
+    return activationEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLearning_rate_mode()
+  {
+    if (learning_rate_modeEEnum == null)
+    {
+      learning_rate_modeEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(134);
+    }
+    return learning_rate_modeEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EEnum getLoss()
+  {
+    if (lossEEnum == null)
+    {
+      lossEEnum = (EEnum)EPackage.Registry.INSTANCE.getEPackage(ThingMLPackage.eNS_URI).getEClassifiers().get(135);
+    }
+    return lossEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ThingMLFactory getThingMLFactory()
+  {
+    return (ThingMLFactory)getEFactoryInstance();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private boolean isLoaded = false;
+
+  /**
+   * Laods the package and any sub-packages from their serialized form.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void loadPackage()
+  {
+    if (isLoaded) return;
+    isLoaded = true;
+
+    URL url = getClass().getResource(packageFilename);
+    if (url == null)
+    {
+      throw new RuntimeException("Missing serialized package: " + packageFilename);
+    }
+    URI uri = URI.createURI(url.toString());
+    Resource resource = new EcoreResourceFactoryImpl().createResource(uri);
+    try
+    {
+      resource.load(null);
+    }
+    catch (IOException exception)
+    {
+      throw new WrappedException(exception);
+    }
+    initializeFromLoadedEPackage(this, (EPackage)resource.getContents().get(0));
+    createResource(eNS_URI);
+  }
+
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private boolean isFixed = false;
+
+  /**
+   * Fixes up the loaded package, to make it appear as if it had been programmatically built.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void fixPackageContents()
+  {
+    if (isFixed) return;
+    isFixed = true;
+    fixEClassifiers();
+  }
+
+  /**
+   * Sets the instance class on the given classifier.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected void fixInstanceClass(EClassifier eClassifier)
+  {
+    if (eClassifier.getInstanceClassName() == null)
+    {
+      eClassifier.setInstanceClassName("org.thingml.xtext.thingML." + eClassifier.getName());
+      setGeneratedClassName(eClassifier);
+    }
+  }
+
+} //ThingMLPackageImpl

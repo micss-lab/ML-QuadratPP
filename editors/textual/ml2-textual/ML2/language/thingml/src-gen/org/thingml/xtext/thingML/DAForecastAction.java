@@ -1,0 +1,74 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>DA Forecast Action</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.DAForecastAction#getDataAnalytics <em>Data Analytics</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DAForecastAction#getFeatures <em>Features</em>}</li>
+ * </ul>
+ *
+ * @see org.thingml.xtext.thingML.ThingMLPackage#getDAForecastAction()
+ * @model
+ * @generated
+ */
+public interface DAForecastAction extends Action
+{
+  /**
+   * Returns the value of the '<em><b>Data Analytics</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Data Analytics</em>' reference.
+   * @see #setDataAnalytics(DataAnalytics)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDAForecastAction_DataAnalytics()
+   * @model
+   * @generated
+   */
+  DataAnalytics getDataAnalytics();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DAForecastAction#getDataAnalytics <em>Data Analytics</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Data Analytics</em>' reference.
+   * @see #getDataAnalytics()
+   * @generated
+   */
+  void setDataAnalytics(DataAnalytics value);
+
+  /**
+   * Returns the value of the '<em><b>Features</b></em>' reference list.
+   * The list contents are of type {@link org.thingml.xtext.thingML.Property}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Features</em>' reference list.
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDAForecastAction_Features()
+   * @model
+   * @generated
+   */
+  EList<Property> getFeatures();
+
+} // DAForecastAction

@@ -1,0 +1,224 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>DBSCAN</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getEps <em>Eps</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getMin_samples <em>Min samples</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getMetric <em>Metric</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getMetric_params <em>Metric params</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getAlgorithm <em>Algorithm</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getLeaf_size <em>Leaf size</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getP <em>P</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.DBSCAN#getN_jobs <em>Njobs</em>}</li>
+ * </ul>
+ *
+ * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN()
+ * @model
+ * @generated
+ */
+public interface DBSCAN extends ML2_ModelAlgorithm
+{
+  /**
+   * Returns the value of the '<em><b>Eps</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Eps</em>' containment reference.
+   * @see #setEps(DoubleLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Eps()
+   * @model containment="true"
+   * @generated
+   */
+  DoubleLiteral getEps();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getEps <em>Eps</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Eps</em>' containment reference.
+   * @see #getEps()
+   * @generated
+   */
+  void setEps(DoubleLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Min samples</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Min samples</em>' containment reference.
+   * @see #setMin_samples(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Min_samples()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getMin_samples();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getMin_samples <em>Min samples</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Min samples</em>' containment reference.
+   * @see #getMin_samples()
+   * @generated
+   */
+  void setMin_samples(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Metric</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metric</em>' attribute.
+   * @see #setMetric(String)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Metric()
+   * @model
+   * @generated
+   */
+  String getMetric();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getMetric <em>Metric</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Metric</em>' attribute.
+   * @see #getMetric()
+   * @generated
+   */
+  void setMetric(String value);
+
+  /**
+   * Returns the value of the '<em><b>Metric params</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Metric params</em>' attribute.
+   * @see #setMetric_params(String)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Metric_params()
+   * @model
+   * @generated
+   */
+  String getMetric_params();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getMetric_params <em>Metric params</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Metric params</em>' attribute.
+   * @see #getMetric_params()
+   * @generated
+   */
+  void setMetric_params(String value);
+
+  /**
+   * Returns the value of the '<em><b>Algorithm</b></em>' attribute.
+   * The literals are from the enumeration {@link org.thingml.xtext.thingML.KNN_Algorithms}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Algorithm</em>' attribute.
+   * @see org.thingml.xtext.thingML.KNN_Algorithms
+   * @see #setAlgorithm(KNN_Algorithms)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Algorithm()
+   * @model
+   * @generated
+   */
+  KNN_Algorithms getAlgorithm();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getAlgorithm <em>Algorithm</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Algorithm</em>' attribute.
+   * @see org.thingml.xtext.thingML.KNN_Algorithms
+   * @see #getAlgorithm()
+   * @generated
+   */
+  void setAlgorithm(KNN_Algorithms value);
+
+  /**
+   * Returns the value of the '<em><b>Leaf size</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Leaf size</em>' containment reference.
+   * @see #setLeaf_size(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_Leaf_size()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getLeaf_size();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getLeaf_size <em>Leaf size</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Leaf size</em>' containment reference.
+   * @see #getLeaf_size()
+   * @generated
+   */
+  void setLeaf_size(IntegerLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>P</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>P</em>' containment reference.
+   * @see #setP(DoubleLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_P()
+   * @model containment="true"
+   * @generated
+   */
+  DoubleLiteral getP();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getP <em>P</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>P</em>' containment reference.
+   * @see #getP()
+   * @generated
+   */
+  void setP(DoubleLiteral value);
+
+  /**
+   * Returns the value of the '<em><b>Njobs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Njobs</em>' containment reference.
+   * @see #setN_jobs(IntegerLiteral)
+   * @see org.thingml.xtext.thingML.ThingMLPackage#getDBSCAN_N_jobs()
+   * @model containment="true"
+   * @generated
+   */
+  IntegerLiteral getN_jobs();
+
+  /**
+   * Sets the value of the '{@link org.thingml.xtext.thingML.DBSCAN#getN_jobs <em>Njobs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Njobs</em>' containment reference.
+   * @see #getN_jobs()
+   * @generated
+   */
+  void setN_jobs(IntegerLiteral value);
+
+} // DBSCAN

@@ -1,0 +1,630 @@
+/**
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ */
+package org.thingml.xtext.thingML.impl;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.thingml.xtext.thingML.ARIMA_GARCH;
+import org.thingml.xtext.thingML.IntegerLiteral;
+import org.thingml.xtext.thingML.ThingMLPackage;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>ARIMA GARCH</b></em>'.
+ * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getP <em>P</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getD <em>D</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getQ <em>Q</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getSeasonal_order <em>Seasonal order</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getSeasonal_params <em>Seasonal params</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getTrend <em>Trend</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getGarch_order <em>Garch order</em>}</li>
+ *   <li>{@link org.thingml.xtext.thingML.impl.ARIMA_GARCHImpl#getGarch_params <em>Garch params</em>}</li>
+ * </ul>
+ *
+ * @generated
+ */
+public class ARIMA_GARCHImpl extends hybrid_ModelAlgorithmImpl implements ARIMA_GARCH
+{
+  /**
+   * The cached value of the '{@link #getP() <em>P</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getP()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral p;
+
+  /**
+   * The cached value of the '{@link #getD() <em>D</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getD()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral d;
+
+  /**
+   * The cached value of the '{@link #getQ() <em>Q</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getQ()
+   * @generated
+   * @ordered
+   */
+  protected IntegerLiteral q;
+
+  /**
+   * The default value of the '{@link #getSeasonal_order() <em>Seasonal order</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSeasonal_order()
+   * @generated
+   * @ordered
+   */
+  protected static final String SEASONAL_ORDER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSeasonal_order() <em>Seasonal order</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSeasonal_order()
+   * @generated
+   * @ordered
+   */
+  protected String seasonal_order = SEASONAL_ORDER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSeasonal_params() <em>Seasonal params</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSeasonal_params()
+   * @generated
+   * @ordered
+   */
+  protected EList<IntegerLiteral> seasonal_params;
+
+  /**
+   * The default value of the '{@link #getTrend() <em>Trend</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTrend()
+   * @generated
+   * @ordered
+   */
+  protected static final String TREND_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTrend() <em>Trend</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTrend()
+   * @generated
+   * @ordered
+   */
+  protected String trend = TREND_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getGarch_order() <em>Garch order</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGarch_order()
+   * @generated
+   * @ordered
+   */
+  protected static final String GARCH_ORDER_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getGarch_order() <em>Garch order</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGarch_order()
+   * @generated
+   * @ordered
+   */
+  protected String garch_order = GARCH_ORDER_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getGarch_params() <em>Garch params</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGarch_params()
+   * @generated
+   * @ordered
+   */
+  protected EList<IntegerLiteral> garch_params;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected ARIMA_GARCHImpl()
+  {
+    super();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return ThingMLPackage.eINSTANCE.getARIMA_GARCH();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getP()
+  {
+    return p;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetP(IntegerLiteral newP, NotificationChain msgs)
+  {
+    IntegerLiteral oldP = p;
+    p = newP;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__P, oldP, newP);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setP(IntegerLiteral newP)
+  {
+    if (newP != p)
+    {
+      NotificationChain msgs = null;
+      if (p != null)
+        msgs = ((InternalEObject)p).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__P, null, msgs);
+      if (newP != null)
+        msgs = ((InternalEObject)newP).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__P, null, msgs);
+      msgs = basicSetP(newP, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__P, newP, newP));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getD()
+  {
+    return d;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetD(IntegerLiteral newD, NotificationChain msgs)
+  {
+    IntegerLiteral oldD = d;
+    d = newD;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__D, oldD, newD);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setD(IntegerLiteral newD)
+  {
+    if (newD != d)
+    {
+      NotificationChain msgs = null;
+      if (d != null)
+        msgs = ((InternalEObject)d).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__D, null, msgs);
+      if (newD != null)
+        msgs = ((InternalEObject)newD).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__D, null, msgs);
+      msgs = basicSetD(newD, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__D, newD, newD));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntegerLiteral getQ()
+  {
+    return q;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetQ(IntegerLiteral newQ, NotificationChain msgs)
+  {
+    IntegerLiteral oldQ = q;
+    q = newQ;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__Q, oldQ, newQ);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setQ(IntegerLiteral newQ)
+  {
+    if (newQ != q)
+    {
+      NotificationChain msgs = null;
+      if (q != null)
+        msgs = ((InternalEObject)q).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__Q, null, msgs);
+      if (newQ != null)
+        msgs = ((InternalEObject)newQ).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ThingMLPackage.ARIMA_GARCH__Q, null, msgs);
+      msgs = basicSetQ(newQ, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__Q, newQ, newQ));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getSeasonal_order()
+  {
+    return seasonal_order;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSeasonal_order(String newSeasonal_order)
+  {
+    String oldSeasonal_order = seasonal_order;
+    seasonal_order = newSeasonal_order;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__SEASONAL_ORDER, oldSeasonal_order, seasonal_order));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<IntegerLiteral> getSeasonal_params()
+  {
+    if (seasonal_params == null)
+    {
+      seasonal_params = new EObjectContainmentEList<IntegerLiteral>(IntegerLiteral.class, this, ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS);
+    }
+    return seasonal_params;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getTrend()
+  {
+    return trend;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTrend(String newTrend)
+  {
+    String oldTrend = trend;
+    trend = newTrend;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__TREND, oldTrend, trend));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getGarch_order()
+  {
+    return garch_order;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setGarch_order(String newGarch_order)
+  {
+    String oldGarch_order = garch_order;
+    garch_order = newGarch_order;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ThingMLPackage.ARIMA_GARCH__GARCH_ORDER, oldGarch_order, garch_order));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<IntegerLiteral> getGarch_params()
+  {
+    if (garch_params == null)
+    {
+      garch_params = new EObjectContainmentEList<IntegerLiteral>(IntegerLiteral.class, this, ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS);
+    }
+    return garch_params;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.ARIMA_GARCH__P:
+        return basicSetP(null, msgs);
+      case ThingMLPackage.ARIMA_GARCH__D:
+        return basicSetD(null, msgs);
+      case ThingMLPackage.ARIMA_GARCH__Q:
+        return basicSetQ(null, msgs);
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS:
+        return ((InternalEList<?>)getSeasonal_params()).basicRemove(otherEnd, msgs);
+      case ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS:
+        return ((InternalEList<?>)getGarch_params()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.ARIMA_GARCH__P:
+        return getP();
+      case ThingMLPackage.ARIMA_GARCH__D:
+        return getD();
+      case ThingMLPackage.ARIMA_GARCH__Q:
+        return getQ();
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_ORDER:
+        return getSeasonal_order();
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS:
+        return getSeasonal_params();
+      case ThingMLPackage.ARIMA_GARCH__TREND:
+        return getTrend();
+      case ThingMLPackage.ARIMA_GARCH__GARCH_ORDER:
+        return getGarch_order();
+      case ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS:
+        return getGarch_params();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.ARIMA_GARCH__P:
+        setP((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__D:
+        setD((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__Q:
+        setQ((IntegerLiteral)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_ORDER:
+        setSeasonal_order((String)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS:
+        getSeasonal_params().clear();
+        getSeasonal_params().addAll((Collection<? extends IntegerLiteral>)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__TREND:
+        setTrend((String)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__GARCH_ORDER:
+        setGarch_order((String)newValue);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS:
+        getGarch_params().clear();
+        getGarch_params().addAll((Collection<? extends IntegerLiteral>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.ARIMA_GARCH__P:
+        setP((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__D:
+        setD((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__Q:
+        setQ((IntegerLiteral)null);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_ORDER:
+        setSeasonal_order(SEASONAL_ORDER_EDEFAULT);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS:
+        getSeasonal_params().clear();
+        return;
+      case ThingMLPackage.ARIMA_GARCH__TREND:
+        setTrend(TREND_EDEFAULT);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__GARCH_ORDER:
+        setGarch_order(GARCH_ORDER_EDEFAULT);
+        return;
+      case ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS:
+        getGarch_params().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case ThingMLPackage.ARIMA_GARCH__P:
+        return p != null;
+      case ThingMLPackage.ARIMA_GARCH__D:
+        return d != null;
+      case ThingMLPackage.ARIMA_GARCH__Q:
+        return q != null;
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_ORDER:
+        return SEASONAL_ORDER_EDEFAULT == null ? seasonal_order != null : !SEASONAL_ORDER_EDEFAULT.equals(seasonal_order);
+      case ThingMLPackage.ARIMA_GARCH__SEASONAL_PARAMS:
+        return seasonal_params != null && !seasonal_params.isEmpty();
+      case ThingMLPackage.ARIMA_GARCH__TREND:
+        return TREND_EDEFAULT == null ? trend != null : !TREND_EDEFAULT.equals(trend);
+      case ThingMLPackage.ARIMA_GARCH__GARCH_ORDER:
+        return GARCH_ORDER_EDEFAULT == null ? garch_order != null : !GARCH_ORDER_EDEFAULT.equals(garch_order);
+      case ThingMLPackage.ARIMA_GARCH__GARCH_PARAMS:
+        return garch_params != null && !garch_params.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (seasonal_order: ");
+    result.append(seasonal_order);
+    result.append(", trend: ");
+    result.append(trend);
+    result.append(", garch_order: ");
+    result.append(garch_order);
+    result.append(')');
+    return result.toString();
+  }
+
+} //ARIMA_GARCHImpl
