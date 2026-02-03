@@ -1,24 +1,23 @@
-## Repository structure
+# ML-QuadratPP (ML2++)
 
-This repository is organized as follows:
+**ML2++** is a model-driven framework and domain-specific modeling language (DSL) for building **IoT + Machine Learning** applications with a strong focus on **time-series forecasting** and automated ML workflows.
 
-- `docs/` — Documentation and research artifacts  
-  - `docs/papers/` — Paper PDFs (e.g., MODELSWARD, FSE Tool Paper, MoDIoT)  
-  - `docs/tutorials/` — Tutorials and use-case walkthrough PDFs  
-  - `docs/images/` — Images/screenshots used in documentation  
+With ML2++, users define:
+- **IoT system structure** (things/components, messages, ports, deployment aspects)
+- **Data analytics configuration** (input/output features, preprocessing steps, ML/forecasting model settings)
+- **Training and evaluation settings** (splits, metrics, plots, and reporting)
 
-- `editors/` — Source code for the ML-QuadratPP editors  
-  - `editors/textual/` — Textual editor(s) (Xtext / Eclipse / Maven)  
-    - `ml2pp-textual/` — ML2++ textual editor  
-    - `ml2-textual/` — ML2 textual editor (baseline / compatibility)  
-    - `web/` — Web version of the textual editor (if applicable)  
-  - `editors/graphical/` — Graphical editor (Sirius Web + Docker)  
-    - `ml2pp-graphical/` — Dockerized graphical editor setup (`docker-compose.yml`, backend, web UI)  
+ML2++ aims to reduce manual coding by generating the key artifacts needed to run an ML-enabled IoT pipeline, including:
+- preprocessing configuration and scripts
+- model training and prediction workflow (e.g., forecasting for the next *k* steps)
+- evaluation outputs (metrics and visualizations)
+- example datasets and use-case models
 
-- `examples/` — Example models and datasets  
-  - `examples/textual/` — Textual examples  
-  - `examples/graphical/` — Graphical examples  
-  - `examples/datasets/` — Small CSV datasets used in example use cases  
+## Main components
 
-- `scripts/` — Helper scripts (data preparation, utilities, etc.)
+- **Textual Editor (Xtext / Eclipse / Maven):** write and validate ML2++ models as text.
+- **Graphical Editor (Sirius Web + Docker):** create ML2++ models visually in a web environment.
+- **Examples:** sample models and small datasets for quick experimentation.
+- **Documentation:** tutorials and paper PDFs describing the language and tool.
 
+> If you use this repository in academic work, please cite the corresponding papers in `docs/papers/`.
